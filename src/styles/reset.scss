@@ -1,1 +1,29 @@
 // 기본적으로 지정하려는 scss 설정
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.innerBox {
+  margin: 0 auto;
+  width: 80%;
+  p {
+    font-family: 'KoPubWorld-Batang-Medium';
+  }
+}
+
+.divide-line {
+  background-color: #999999;
+  width: 1.5px;
+}
