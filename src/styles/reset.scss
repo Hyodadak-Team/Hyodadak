@@ -1,1 +1,32 @@
 // 기본적으로 지정하려는 scss 설정
+@import './color.scss';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.innerBox {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.flexBtw {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_main {
+  color: white;
+  background-color: $main-color;
+}
