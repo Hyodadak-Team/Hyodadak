@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/header.scss'
 
 export default function HeadeQues() {
   const [notice, setNotice] = useState<boolean>(false)
