@@ -1,4 +1,5 @@
 // 기본적으로 지정하려는 scss 설정
+@import './color.scss';
 * {
   margin: 0;
   padding: 0;
@@ -16,8 +17,9 @@ a {
 }
 
 .innerBox {
-  margin: 0 auto;
   width: 80%;
+  margin: 0 auto;
+
   p {
     font-family: 'KoPubWorld-Batang-Medium';
   }
@@ -26,4 +28,14 @@ a {
 .divide-line {
   background-color: #999999;
   width: 1.5px;
+}
+
+.flexBtw {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn_main {
+  color: white;
+  background-color: $main-color;
 }
