@@ -1,1 +1,3 @@
-// 애플리케이션 페이지 단위
+export default function Index() {
+  return <p>임시화면입니다</p>
+}

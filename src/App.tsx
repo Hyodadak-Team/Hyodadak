@@ -1,30 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.scss'
+import React, { useState, useEffect } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Index from './pages/index'
+import HeaderRes from './composables/HeaderRes'
+import HeaderQues from './composables/HeaderQues'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [user, setUser] = useState<boolean>(false)
+  useEffect(() => {
+    // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
+    setUser(false)
+  }, [])
   return (
-    <>
-      <div>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button type="button" onClick={() => setCount(count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="App">
+      {user ? <HeaderRes /> : <HeaderQues />}
+      <Routes>
+        <Route>
+          <Route path="/" element={<Index />} />
+        </Route>
+      </Routes>
+    </div>
   )
 }
 
