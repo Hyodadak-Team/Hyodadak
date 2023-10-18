@@ -1,4 +1,4 @@
-@import './color.scss';
+@import './palette.scss';
 .header {
   border-bottom: 1px solid #eee;
   .innerBox {
@@ -47,7 +47,7 @@
   }
 }
 .header_ques {
-  font-family: 'KoPubWorld-Batang-Medium';
+  font-family: $ques-font-default;
   .innerBox {
     ul > li > a {
       img {
@@ -68,7 +68,7 @@
 }
 
 .header_res {
-  font-family: 'Pretendard-SemiBold';
+  font-family: $res-font-bold;
   .innerBox {
     .blank {
       width: 50%;

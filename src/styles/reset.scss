@@ -1,5 +1,5 @@
 // 기본적으로 지정하려는 scss 설정
-@import './color.scss';
+@import './palette.scss';
 * {
   margin: 0;
   padding: 0;
@@ -19,6 +19,15 @@ a {
 .innerBox {
   width: 80%;
   margin: 0 auto;
+
+  p {
+    font-family: $ques-font-default;
+  }
+}
+
+.divide-line {
+  background-color: #999999;
+  width: 1.5px;
 }
 
 .flexBtw {

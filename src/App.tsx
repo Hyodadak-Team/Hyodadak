@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Index from './pages/index'
+import Notice from './pages/notice'
 import HeaderRes from './composables/HeaderRes'
 import HeaderQues from './composables/HeaderQues'
 
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route>
           <Route path="/" element={<Index />} />
+          <Route path="/notice" element={<Notice />} />
         </Route>
       </Routes>
     </div>
