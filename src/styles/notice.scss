@@ -67,6 +67,8 @@
       height: 48px;
       align-items: center;
       margin-bottom: 10px;
+      cursor: pointer;
+      border-radius: 10px;
 
       img {
         width: 22px;
@@ -77,11 +79,8 @@
         display: none;
       }
 
-      &:hover,
       &.active {
-        border-radius: 10px;
         background-color: #f8f8f8;
-        cursor: pointer;
 
         p {
           color: $main-color;
@@ -93,6 +92,10 @@
         .icon.hover {
           display: block;
         }
+      }
+
+      &:hover {
+        border: 2px solid #c6c6c6;
       }
     }
   }
