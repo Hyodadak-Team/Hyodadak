@@ -37,7 +37,7 @@ function Notice() {
                 className={`menu ${menu.id === activeMenu ? 'active' : ''}`}
                 key={menu.id}
                 onClick={() => handleMenuClick(menu.id)}
-                onKeyDown={(e) => {
+                onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     handleMenuClick(menu.id)
                   }
