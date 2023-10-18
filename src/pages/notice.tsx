@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { INoticeMenu } from '../types/notice'
-import homeLogo from '../assets/home_icon.svg'
 import noticeMenu from '../constants/noticeMenu'
 
 function Notice() {
@@ -19,7 +18,7 @@ function Notice() {
       </div>
       <div className="innerBox">
         <div className="notice_navbar">
-          <img src={homeLogo} className="icon home" alt="home-icon" />
+          <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
           <Link to="/">
             <li>처음으로</li>
           </Link>
@@ -47,7 +46,7 @@ function Notice() {
                 tabIndex={0}
               >
                 <img
-                  src={`src/assets/notice-${menu.range}_${
+                  src={`/img/notice-${menu.range}_${
                     menu.id === activeMenu ? 'on' : 'off'
                   }_icon.svg`}
                   alt="menu-icon"
