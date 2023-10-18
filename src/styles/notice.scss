@@ -1,7 +1,9 @@
+@import './palette.scss';
+
 .shortcut_bar {
   width: 100%;
   height: 64px;
-  background: linear-gradient(to right, #ffaa6d, #ff6d6d, #a1c7ff);
+  background: linear-gradient(to right, #ffaa6d, $main-color, #a1c7ff);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +14,7 @@
   }
 
   p {
-    font-family: 'KoPubWorld-Batang-Medium';
+    font-family: $ques-font-default;
     color: #fff;
 
     &.highlight {
@@ -23,7 +25,7 @@
 
 .inner {
   p {
-    font-family: 'KoPubWorld-Batang-Medium';
+    font-family: $ques-font-default;
   }
 }
 
@@ -32,14 +34,14 @@
   display: flex;
 
   li {
-    font-family: 'Pretendard-Regular';
+    font-family: $res-font-default;
     font-size: 16px;
     margin: 0 8px;
 
     &:hover {
       cursor: pointer;
       font-weight: 700;
-      color: #ff6d6d;
+      color: $main-color;
     }
   }
 }
@@ -82,7 +84,7 @@
         cursor: pointer;
 
         p {
-          color: #ff6d6d;
+          color: $main-color;
           font-size: 900;
         }
         .icon.default {
