@@ -4,6 +4,7 @@ import Index from './pages/index'
 import Notice from './pages/notice'
 import HeaderRes from './composables/HeaderRes'
 import HeaderQues from './composables/HeaderQues'
+import SimulationQues from './pages/Simulation'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
