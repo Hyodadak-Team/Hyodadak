@@ -19,6 +19,7 @@ function App() {
         <Route>
           <Route path="/" element={<Index />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/simulation" element={<SimulationQues />} />
         </Route>
       </Routes>
     </div>
