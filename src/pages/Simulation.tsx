@@ -1,5 +1,5 @@
 import React from 'react'
-import SimulationBanner from '../components_ques/simulation_banner'
+import SimulationBanner from '../components_ques/Simulation_banner'
 import SimulationMainQues from '../components_ques/Simulation_main'
 
 export default function SimulationQues() {
