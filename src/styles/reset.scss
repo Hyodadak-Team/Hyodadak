@@ -39,3 +39,34 @@ a {
   color: white;
   background-color: $main-color;
 }
+
+// questioner page
+.ques_navbar {
+  margin-top: 50px;
+  display: flex;
+
+  li {
+    font-family: $res-font-default;
+    font-size: 16px;
+    margin: 0 8px;
+
+    &:hover {
+      cursor: pointer;
+      font-weight: 700;
+      color: $main-color;
+    }
+  }
+  a:last-child {
+    color: $main-color;
+  }
+}
+
+.ques_title {
+  margin: 30px 0;
+
+  p {
+    font-size: 35px;
+  }
+}
+
+// responser page
