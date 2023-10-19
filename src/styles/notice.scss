@@ -29,31 +29,6 @@
   }
 }
 
-.notice_navbar {
-  margin-top: 50px;
-  display: flex;
-
-  li {
-    font-family: $res-font-default;
-    font-size: 16px;
-    margin: 0 8px;
-
-    &:hover {
-      cursor: pointer;
-      font-weight: 700;
-      color: $main-color;
-    }
-  }
-}
-
-.notice_title {
-  margin: 30px 0;
-
-  p {
-    font-size: 40px;
-  }
-}
-
 .notice_main {
   width: 100%;
   display: flex;
