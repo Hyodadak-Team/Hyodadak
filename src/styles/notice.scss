@@ -75,7 +75,37 @@
     }
   }
   .main_section {
-    background-color: #ff6d6d;
+    background-color: #fce6d6;
     width: calc(790 / 1040 * 100%);
+
+    .search_section {
+      width: 100%;
+      height: 50px;
+
+      .search-icon {
+        cursor: pointer;
+        position: relative;
+        bottom: 34px;
+        left: 18px;
+      }
+
+      .search-input {
+        border-style: none;
+        background-color: #f8f8f8;
+        width: 100%;
+        height: 100%;
+        font-family: $ques-font-default;
+        padding: 0 48px;
+
+        &:focus {
+          outline-color: #c6c6c6;
+        }
+      }
+    }
+
+    .notice_list-section {
+      margin: 45px 0;
+      background-color: #fff848;
+    }
   }
 }

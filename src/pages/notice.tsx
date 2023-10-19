@@ -55,7 +55,20 @@ function Notice() {
               </div>
             ))}
           </div>
-          <div className="main_section">작업 예정</div>
+          <div className="main_section">
+            <div className="search_section">
+              <input
+                className="search-input"
+                placeholder="궁금한 내용을 입력해보세요"
+              />
+              <img
+                src="/img/search-icon.svg"
+                className="search-icon"
+                alt="search-icon"
+              />
+            </div>
+            <div className="notice_list-section">리스트들 넣을 예정</div>
+          </div>
         </div>
       </div>
     </>
