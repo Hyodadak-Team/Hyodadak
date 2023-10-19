@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function SimulationBanner() {
   return (
-    <div className="simulation_banner">
+    <div>
       <div className="main_box">
         <div className="main_title">
           <div className="ques_navbar">

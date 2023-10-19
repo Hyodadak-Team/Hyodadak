@@ -1,70 +1,107 @@
 // 기본적으로 지정하려는 scss 설정
 @import './palette.scss';
 
-.simulation_banner {
+
+
+.main_box {
   height: 362px;
   background-color: #f8f8f8;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
 
-  .main_box {
-    width: 80%;
-    margin-left: 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+  .main_title {
+    height: 284px;
+    margin-left: -100px;
 
-    .main_title {
-      height: 284px;
+    .ques_navbar {
+      margin-top: 8%;
+      display: flex;
 
-      .ques_navbar {
-        margin-top: 8%;
-        display: flex;
+      li {
+        font-family: $res-font-default;
+        font-size: 16px;
+        margin: 0 8px;
 
-        li {
-          font-family: $res-font-default;
-          font-size: 16px;
-          margin: 0 8px;
-
-          &:hover {
-            cursor: pointer;
-            font-weight: 700;
-            color: $main-color;
-          }
-        }
-        a:last-child {
+        &:hover {
+          cursor: pointer;
+          font-weight: 700;
           color: $main-color;
         }
       }
-
-      h1 {
-        text-align: left;
-        margin-top: 7%;
-        font-family: $ques-font-default;
-      }
-      h3 {
-        text-align: left;
-        margin-top: 3%;
-        font-family: 'KoPubWorld-Batang-Light';
-      }
-
-      .sub_content {
-        margin-top: 10%;
-        text-align: left;
-
-        li {
-          margin-top: 2%;
-          list-style: inside;
-          font-family: $res-font-default;
-        }
+      a:last-child {
+        color: $main-color;
       }
     }
 
-    .main_image {
-      padding-top: 3%;
-      img {
-        width: 362px;
-        height: 284px;
+    h1 {
+      text-align: left;
+      margin-top: 7%;
+      font-family: $ques-font-default;
+    }
+    h3 {
+      text-align: left;
+      margin-top: 3%;
+      font-family: 'KoPubWorld-Batang-Light';
+    }
+
+    .sub_content {
+      margin-top: 10%;
+      text-align: left;
+
+      li {
+        margin-top: 2%;
+        list-style: inside;
+        font-family: $res-font-default;
       }
     }
   }
+
+  .main_image {
+    padding-top: 3%;
+    margin-right: -100px;
+    img {
+      width: 362px;
+      height: 284px;
+    }
+  }
 }
+
+.simulation_btn {
+  width: 80%;
+  margin-top: 3%;
+  margin-left: 10%;
+  display: flex;
+  justify-content: left;
+
+  li {
+    margin-bottom: 10px;
+    margin-right: 20px;
+
+    button {
+      font-size: 16px;
+      font-family: $ques-font-default;
+      color: $main-color;
+      background-color: #fff;
+      border-radius: 20px;
+      border: 1.5px solid $main-color;
+      padding: 5px 16px;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+    button:hover {
+      color: #fff;
+      background-color: $main-color;
+    }
+
+    // 클릭된 버튼 색 다르게
+    // button:active {
+    //   color: #fff;
+    //   border-color: $main-color;
+    //   background-color: $main-color;
+    // }
+  }
+}
+
