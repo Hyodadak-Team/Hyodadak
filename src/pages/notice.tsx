@@ -17,7 +17,7 @@ function Notice() {
         <p className="highlight">바로가기</p>
       </div>
       <div className="innerBox">
-        <div className="notice_navbar">
+        <div className="ques_navbar">
           <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
           <Link to="/">
             <li>처음으로</li>
@@ -27,7 +27,7 @@ function Notice() {
             <li>공지사항</li>
           </Link>
         </div>
-        <div className="notice_title">
+        <div className="ques_title">
           <p>공지사항</p>
         </div>
         <div className="notice_main">
