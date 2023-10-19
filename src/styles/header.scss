@@ -50,6 +50,7 @@
   font-family: $ques-font-default;
   .innerBox {
     ul > li > a {
+      white-space: nowrap;
       img {
         margin-right: 7px;
       }

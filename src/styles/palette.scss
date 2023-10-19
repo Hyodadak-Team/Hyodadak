@@ -1,5 +1,10 @@
 // color-palette
 $main-color: #ff6d6d;
+$gradient-color: linear-gradient(
+  90deg,
+  rgba(255, 109, 109, 1) 26%,
+  rgba(255, 144, 109, 1) 100%
+);
 
 // font-palette
 $ques-font-default: 'KoPubWorld-Batang-Medium';
