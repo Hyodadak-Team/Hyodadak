@@ -1,12 +1,12 @@
 import React from 'react'
 import SimulationBanner from '../components_ques/simulation_banner'
+import SimulationMainQues from '../components_ques/Simulation_main'
 
 export default function SimulationQues() {
   return (
     <div className="mainBox">
-      <div className="innerBox">
-        <SimulationBanner />
-      </div>
+      <SimulationBanner />
+      <SimulationMainQues />
     </div>
   )
 }
