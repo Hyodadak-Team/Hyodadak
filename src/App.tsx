@@ -4,6 +4,7 @@ import Index from './pages/index'
 import Notice from './pages/notice'
 import HeaderRes from './composables/HeaderRes'
 import HeaderQues from './composables/HeaderQues'
+import SimulationQues from './pages/Simulation'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -18,6 +19,7 @@ function App() {
         <Route>
           <Route path="/" element={<Index />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/simulation" element={<SimulationQues />} />
         </Route>
       </Routes>
     </div>

@@ -1,0 +1,70 @@
+// 기본적으로 지정하려는 scss 설정
+@import './palette.scss';
+
+.simulation_banner {
+  height: 362px;
+  background-color: #f8f8f8;
+
+  .main_box {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    .main_title {
+      height: 284px;
+
+      .ques_navbar {
+        margin-top: 8%;
+        display: flex;
+
+        li {
+          font-family: $res-font-default;
+          font-size: 16px;
+          margin: 0 8px;
+
+          &:hover {
+            cursor: pointer;
+            font-weight: 700;
+            color: $main-color;
+          }
+        }
+        a:last-child {
+          color: $main-color;
+        }
+      }
+
+      h1 {
+        text-align: left;
+        margin-top: 7%;
+        font-family: $ques-font-default;
+      }
+      h3 {
+        text-align: left;
+        margin-top: 3%;
+        font-family: 'KoPubWorld-Batang-Light';
+      }
+
+      .sub_content {
+        margin-top: 10%;
+        text-align: left;
+
+        li {
+          margin-top: 2%;
+          list-style: inside;
+          font-family: $res-font-default;
+        }
+      }
+    }
+
+    .main_image {
+      padding-top: 3%;
+      img {
+        width: 362px;
+        height: 284px;
+      }
+    }
+  }
+}
