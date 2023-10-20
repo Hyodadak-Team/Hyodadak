@@ -57,7 +57,17 @@ export default function SimulationMainQues() {
           </div>
           <div className="inner_down" />
         </div>
+        <div className="simulation_main_inner">
+          <div className="inner_up">
+            <div className="successable">
+              <p>성공</p>
+            </div>
+            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+          </div>
+          <div className="inner_down" />
+        </div>
       </div>
+      <p className="simulation_update">새로운 서비스 업데이트 예정입니다.</p>
     </div>
   )
 }

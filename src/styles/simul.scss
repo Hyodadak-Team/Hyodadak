@@ -102,18 +102,21 @@
 }
 
 .simulation_main_box {
-  width: 1440px;
+  width: 80%;
   margin-left: 10%;
   margin-top: 2%;
   display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   .simulation_main_inner {
-    margin-right: 5%;
+    width: 30%;
+    margin-right: 10px;
+    margin-bottom: 20px;
     border: 2px solid #eeeeee;
     border-radius: 20px;
 
     .inner_up {
-      width: 330px;
       height: 140px;
       border-radius: 20px;
       background-color: #eeeeee;
@@ -164,4 +167,11 @@
       }
     }
   }
+}
+
+.simulation_update {
+  width: 1440px;
+  margin-top: 50px;
+  color: #999999;
+  text-align: center;
 }
