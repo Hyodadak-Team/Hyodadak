@@ -28,9 +28,34 @@ export default function SimulationMainQues() {
       </div>
       <div className="simulation_main_box">
         <div className="simulation_main_inner">
-          <div className="simulation_main_card" />
-          <div className="simulation_main_card" />
-          <div className="simulation_main_card" />
+          <div className="inner_up">
+            <div className="successable">
+              <p>성공</p>
+            </div>
+            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+          </div>
+          <div className="inner_down">
+            <p className="inner_down_title">서브웨이 샌드위치</p>
+            <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
+          </div>
+        </div>
+        <div className="simulation_main_inner">
+          <div className="inner_up">
+            <div className="successable">
+              <p>성공</p>
+            </div>
+            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+          </div>
+          <div className="inner_down" />
+        </div>
+        <div className="simulation_main_inner">
+          <div className="inner_up">
+            <div className="successable">
+              <p>성공</p>
+            </div>
+            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+          </div>
+          <div className="inner_down" />
         </div>
       </div>
     </div>

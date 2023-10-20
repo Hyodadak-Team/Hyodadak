@@ -1,8 +1,6 @@
 // 기본적으로 지정하려는 scss 설정
 @import './palette.scss';
 
-
-
 .main_box {
   height: 362px;
   background-color: #f8f8f8;
@@ -14,7 +12,6 @@
 
   .main_title {
     height: 284px;
-    margin-left: -100px;
 
     .ques_navbar {
       margin-top: 8%;
@@ -61,7 +58,6 @@
 
   .main_image {
     padding-top: 3%;
-    margin-right: -100px;
     img {
       width: 362px;
       height: 284px;
@@ -105,3 +101,67 @@
   }
 }
 
+.simulation_main_box {
+  width: 1440px;
+  margin-left: 10%;
+  margin-top: 2%;
+  display: flex;
+
+  .simulation_main_inner {
+    margin-right: 5%;
+    border: 2px solid #eeeeee;
+    border-radius: 20px;
+
+    .inner_up {
+      width: 330px;
+      height: 140px;
+      border-radius: 20px;
+      background-color: #eeeeee;
+
+      .successable {
+        position: relative;
+        top: 16px;
+        left: 250px;
+        width: 58px;
+        height: 29px;
+        background-color: $main-color;
+        border-radius: 10px;
+        color: #fff;
+
+        p {
+          position: relative;
+          top: 2px;
+          text-align: center;
+          font-size: 16px;
+        }
+      }
+
+      img {
+        position: relative;
+        top: 18%;
+        left: 13%;
+        width: 238px;
+        height: 46px;
+      }
+    }
+
+    .inner_down {
+      width: 330px;
+      height: 100px;
+      background-color: #fff;
+
+      .inner_down_title {
+        padding-top: 20px;
+        margin-left: 15px;
+        font-family: $ques-font-bold;
+        font-size: 23px;
+      }
+      .inner_down_subtitle {
+        font-family: $ques-font-default;
+        font-size: 16px;
+        color: #999999;
+        margin-left: 15px;
+      }
+    }
+  }
+}
