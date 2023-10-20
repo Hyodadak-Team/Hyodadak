@@ -75,7 +75,6 @@
     }
   }
   .main_section {
-    background-color: #fce6d6;
     width: calc(790 / 1040 * 100%);
 
     .search_section {
@@ -105,7 +104,26 @@
 
     .notice_list-section {
       margin: 45px 0;
-      background-color: #fff848;
+
+      .notice_box {
+        display: flex;
+        font-family: 'KoPubWorld-Batang-Light';
+
+        div {
+          margin: 0;
+        }
+
+        .notice-title {
+          display: flex;
+          margin: 0 18px;
+          width: 90%;
+
+          div:nth-child(1) {
+            margin-right: 10px;
+            font-family: $ques-font-bold;
+          }
+        }
+      }
     }
   }
 }
