@@ -1,4 +1,4 @@
-export interface DataType {
+export interface IPartnerInfo {
   profile_img: string
   name: string
   major: string[]

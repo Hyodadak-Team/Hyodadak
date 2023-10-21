@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import MyPartnerBox from '../components_ques/MyPartner'
-import { DataType } from '../types/mypage'
+import MyPartnerBox from '../components_ques/MyPartnerBox'
+import { IPartnerInfo } from '../types/mypage'
 
 export default function MyPartner() {
-  const dataJson: DataType[] = [
+  // dataJson 삭제 예정
+  const dataJson: IPartnerInfo[] = [
     {
       profile_img: '',
       name: '기믄정',

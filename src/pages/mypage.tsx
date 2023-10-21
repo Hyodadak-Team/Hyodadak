@@ -60,25 +60,26 @@ export default function Mypage() {
 
           <div className="nameBox">
             {modifiyMode ? (
-              <input
-                defaultValue={data.name}
-                onChange={(e) => setModifiyInput(e.target.value)}
-                data-testid="modify-input"
-              />
+              <>
+                <input
+                  defaultValue={data.name}
+                  onChange={(e) => setModifiyInput(e.target.value)}
+                  data-testid="modify-input"
+                />
+                <button type="button" onClick={() => modifyValue(modifiyInput)}>
+                  저장
+                </button>
+              </>
             ) : (
-              <p>{data.name}</p>
-            )}
-            {modifiyMode ? (
-              <button type="button" onClick={() => modifyValue(modifiyInput)}>
-                저장
-              </button>
-            ) : (
-              <Link
-                to="#/"
-                onClick={() => setModifiyMode((cur: boolean) => !cur)}
-              >
-                수정
-              </Link>
+              <>
+                <p>{data.name}</p>
+                <Link
+                  to="#/"
+                  onClick={() => setModifiyMode((cur: boolean) => !cur)}
+                >
+                  수정
+                </Link>
+              </>
             )}
           </div>
         </div>

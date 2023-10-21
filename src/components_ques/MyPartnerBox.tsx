@@ -1,7 +1,7 @@
-import { DataType } from '../types/mypage'
+import { IPartnerInfo } from '../types/mypage'
 
 type MyPartnerBoxProps = {
-  data: DataType
+  data: IPartnerInfo
 }
 
 export default function MyPartnerBox({
