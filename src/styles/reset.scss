@@ -40,6 +40,16 @@ a {
   background-color: $main-color;
 }
 
+div[class*='btn_gradient'] {
+  color: white;
+  background: $gradient-color;
+  border-radius: 5px;
+}
+
+.basic_profile_img {
+  filter: opacity(50%);
+}
+
 // questioner page
 .ques_navbar {
   margin-top: 50px;
