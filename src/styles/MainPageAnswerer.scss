@@ -1,10 +1,11 @@
 @import './reset.scss';
 @import './font.scss';
+@import './palette.scss';
+.innerBox {
+  p {
+    font-family: 'Pretendard-Regular';
+  }
 
-.inner {
-  width: 1440px;
-  margin: 0 auto;
-  font-family: $res-font-default;
   .partnerAnswer {
     height: 370px;
     background-color: #f8f8f8;
@@ -37,7 +38,7 @@
         height: 250px;
         .partnerAnswer_post_property {
           display: flex;
-          font-size: 14px;
+          font-size: 16px;
           text-align: center;
           line-height: 20px;
           .partnerAnswer_post_property_point {
@@ -54,18 +55,18 @@
         }
         .partnerAnswer_post_title {
           margin-top: 5px;
-          font-size: 18px;
+          font-size: 20px;
           font-weight: bold;
         }
         .partnerAnswer_post_detail {
           margin-top: 15px;
-          font-size: 14px;
+          font-size: 16px;
         }
         .partnerAnswer_post_footer {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 20px;
+          margin-top: 30px;
           .partnerAnswer_post_footer_time {
             font-size: 14px;
             color: #999999;

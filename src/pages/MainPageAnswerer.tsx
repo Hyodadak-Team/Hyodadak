@@ -3,7 +3,7 @@ import '../styles/MainPageAnswerer.scss'
 
 export default function MainPageAnswerer() {
   return (
-    <div className="inner">
+    <div className="innerBox">
       <div className="partnerAnswer">
         <div className="partnerAnswer_text">
           <p className="partnerAnswer_title">파트너 질문</p>

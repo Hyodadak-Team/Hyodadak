@@ -7,6 +7,7 @@ import HeaderRes from './composables/HeaderRes'
 import HeaderQues from './composables/HeaderQues'
 import SimulationQues from './pages/Simulation'
 import MyPartner from './pages/mypartner'
+import MainPageAnswerer from './pages/MainPageAnswerer'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -24,6 +25,7 @@ function App() {
           <Route path="/simulation" element={<SimulationQues />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
+          <Route path="/main_res" element={<MainPageAnswerer />} />
         </Route>
       </Routes>
     </div>
