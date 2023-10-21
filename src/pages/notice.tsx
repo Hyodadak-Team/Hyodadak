@@ -2,11 +2,27 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
+import noticeList from '../constants/noticeList'
+import setPagination from '../utils/pagination'
+import Pagination from '../composables/Pagination'
 
 function Notice() {
+  // notice-menu
   const [activeMenu, setActiveMenu] = useState(1)
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
+  }
+
+  // notice-pagination
+  const itemsPerPage = 7
+  const [currentPage, setCurrentPage] = useState(1)
+  const { sortedList, currentItems } = setPagination(
+    noticeList,
+    currentPage,
+    itemsPerPage,
+  )
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber)
   }
 
   return (
@@ -55,7 +71,40 @@ function Notice() {
               </div>
             ))}
           </div>
-          <div className="main_section">작업 예정</div>
+          <div className="main_section">
+            <div className="search_section">
+              <input
+                className="search-input"
+                placeholder="궁금한 내용을 입력해보세요"
+              />
+              <img
+                src="/img/search-icon.svg"
+                className="search-icon"
+                alt="search-icon"
+              />
+            </div>
+            <div className="notice_list-section">
+              {currentItems.map((notice) => (
+                <div className="notice_list">
+                  <div className="notice_box" key={notice.id}>
+                    <div>{notice.id}</div>
+                    <div className="notice-title">
+                      <div>[{notice.type}]</div>
+                      <div>{notice.title}</div>
+                    </div>
+                    <div>{notice.date}</div>
+                  </div>
+                  <div className="divide-list" />
+                </div>
+              ))}
+            </div>
+            <Pagination
+              itemsPerPage={itemsPerPage}
+              totalItems={sortedList.length}
+              currentPage={currentPage}
+              onPageChange={handlePageChange}
+            />
+          </div>
         </div>
       </div>
     </>
