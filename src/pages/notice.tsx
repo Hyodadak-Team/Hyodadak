@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { INoticeMenu } from '../types/notice'
+import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
 import noticeList from '../constants/noticeList'
 import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
+import NoticeArticle from '../components/NoticeArticle'
 
 function Notice() {
   // notice-menu
@@ -24,6 +25,9 @@ function Notice() {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
+
+  // notice-article
+  const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
 
   return (
     <>
@@ -84,20 +88,37 @@ function Notice() {
               />
             </div>
             <div className="notice_list-section">
-              {currentItems.map((notice) => (
-                <div className="notice_list">
-                  <div className="notice_box" key={notice.id}>
-                    <div>{notice.id}</div>
-                    <div className="notice-title">
-                      <div>[{notice.type}]</div>
-                      <div>{notice.title}</div>
-                    </div>
-                    <div>{notice.date}</div>
+              {currentItems.map((notice) => {
+                return (
+                  <div className="notice_list" key={notice.id}>
+                    <Link to={`/notice/article/${notice.id}`}>
+                      <div
+                        className="notice_box"
+                        onClick={() => {
+                          setSelectedNotice(notice)
+                        }}
+                        onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            setSelectedNotice(notice)
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                      >
+                        <div>{notice.id}</div>
+                        <div className="notice-title">
+                          <div>[{notice.type}]</div>
+                          <div>{notice.title}</div>
+                        </div>
+                        <div>{notice.date}</div>
+                      </div>
+                    </Link>
+                    <div className="divide-list" />
                   </div>
-                  <div className="divide-list" />
-                </div>
-              ))}
+                )
+              })}
             </div>
+            {selectedNotice && <NoticeArticle />}
             <Pagination
               itemsPerPage={itemsPerPage}
               totalItems={sortedList.length}

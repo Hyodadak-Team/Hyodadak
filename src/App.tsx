@@ -8,6 +8,7 @@ import HeaderQues from './composables/HeaderQues'
 import SimulationQues from './pages/Simulation'
 import MyPartner from './pages/mypartner'
 import MainPageAnswerer from './pages/MainPageAnswerer'
+import NoticeArticle from './components/NoticeArticle'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -22,6 +23,7 @@ function App() {
         <Route>
           <Route path="/" element={<Index />} />
           <Route path="/notice" element={<Notice />} />
+          <Route path="/notice/article/:id" element={<NoticeArticle />} />
           <Route path="/simulation" element={<SimulationQues />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
