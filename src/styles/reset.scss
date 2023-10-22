@@ -20,8 +20,16 @@ a {
   width: 1440px;
   margin: 0 auto;
 
-  p {
-    font-family: $ques-font-default;
+  &.res {
+    p {
+      font-family: 'Pretendard-Regular';
+    }
+  }
+
+  &.ques {
+    p {
+      font-family: $ques-font-default;
+    }
   }
 }
 
