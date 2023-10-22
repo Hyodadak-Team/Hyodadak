@@ -127,3 +127,21 @@
     }
   }
 }
+
+.ques_title {
+  .article {
+    font-family: $ques-font-default;
+
+    &.date {
+      font-size: 20px;
+      color: #999999;
+    }
+  }
+}
+.article-content {
+  margin: 60px 0;
+
+  .content {
+    font-family: $ques-font-default;
+  }
+}

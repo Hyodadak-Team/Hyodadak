@@ -9,6 +9,7 @@ export interface INotice {
   type: string
   title: string
   date: string
+  content: string
 }
 
 export interface IPaginationProps {
