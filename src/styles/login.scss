@@ -1,0 +1,100 @@
+@import url();
+
+// .login_wrap{
+//   width: 500px;
+//   // display: flex;
+//   // justify-content: center;
+// }
+.btn_set{
+  button  {
+    width: 410px;
+    height: 58px;
+    border-radius: 5px;
+    border: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}
+
+
+.all{
+  // height: 1080px;
+  // width: 1440px;
+
+  display: flex;
+  justify-content: center;
+  
+  .container{
+    
+    .info{
+      padding-top: 200px;
+      display: flex;
+      justify-content: center;
+      font-size:40px;
+    }
+
+    .login_top{
+      padding-top: 100px;
+      padding-bottom: 50px;
+      .login_wrap{
+        width: 500px;
+        display: flex;
+        justify-content: center;
+        form{
+          .login_form_row{
+            padding-top: 20px;
+           
+            input{
+              width: 410px;
+              height: 50px;
+              font-size: 20px;
+            }
+          }
+          .comment_rule{
+            padding-top:5px;
+          }
+
+          .login_btn{
+            padding-top: 15px;
+            display: flex;
+            justify-content: center;
+            .member_login{
+              background-color: #FF6D6D;
+              color : white;
+            }
+            .kakao_login{
+              background-color: #FFE84F;
+            }
+          }
+        }
+      }
+    }
+    hr{
+      width : 410px;
+      margin: 0 auto;
+    }
+    .login_bottom{
+      padding-top: 50px;
+      display: flex;
+      justify-content: center;
+      .login_wrap{
+        .comment_join{
+          font-size: 20px;
+          display: flex;
+          justify-content: center;
+        
+        }
+        .join_btn{
+          padding-top: 15px;
+          .member_join{
+            background-color: white;
+            color : #FF6D6D;
+            border: 3px solid #FF6D6D;
+            
+          }
+        }
+      }
+    }
+  }
+  
+}

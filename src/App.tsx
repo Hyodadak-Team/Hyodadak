@@ -9,6 +9,7 @@ import SimulationQues from './pages/Simulation'
 import MyPartner from './pages/mypartner'
 import MainPageAnswerer from './pages/MainPageAnswerer'
 import PartnerQuestion from './pages/PartnerQuestion'
+import Login from './components/Login'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -28,6 +29,7 @@ function App() {
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/main_res" element={<MainPageAnswerer />} />
           <Route path="/partner_ques" element={<PartnerQuestion />} />
+          <Route path="/login" element={<Login />} />
         </Route>
       </Routes>
     </div>
