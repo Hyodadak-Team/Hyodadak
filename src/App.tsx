@@ -11,6 +11,7 @@ import MainPageAnswerer from './pages/MainPageAnswerer'
 import NoticeArticle from './components/NoticeArticle'
 import PartnerQuestion from './pages/PartnerQuestion'
 import Login from './components/Login'
+import QuestionDetail from './pages/QuestionDetail'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -32,6 +33,7 @@ function App() {
           <Route path="/main_res" element={<MainPageAnswerer />} />
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/quest_detail" element={<QuestionDetail />} />
         </Route>
       </Routes>
     </div>
