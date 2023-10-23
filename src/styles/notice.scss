@@ -142,6 +142,29 @@
   margin: 60px 0;
 
   .content {
-    font-family: $ques-font-default;
+    font-family: 'KoPubWorld-Batang-Light';
+  }
+}
+
+.article-control {
+  margin: 36px 0;
+
+  .prev_page,
+  .next_page {
+    display: flex;
+    font-size: 18px;
+    margin: 14px 0;
+    cursor: pointer;
+
+    p:nth-child(1) {
+      margin-right: 20px;
+    }
+    p:nth-child(2) {
+      font-family: $ques-font-bold;
+    }
+
+    .no_article {
+      color: #999999;
+    }
   }
 }

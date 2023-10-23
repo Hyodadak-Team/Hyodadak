@@ -36,7 +36,7 @@ function Notice() {
         <div />
         <p className="highlight">바로가기</p>
       </div>
-      <div className="innerBox">
+      <div className="innerBox ques">
         <div className="ques_navbar">
           <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
           <Link to="/">
