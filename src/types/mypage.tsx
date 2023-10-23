@@ -6,4 +6,5 @@ export interface IPartnerInfo {
   level: number
   question_num: number
   money: number
+  type: string
 }
