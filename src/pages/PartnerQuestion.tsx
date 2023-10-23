@@ -3,7 +3,7 @@ import '../styles/PartnerQuestion.scss'
 export default function PartnerQuestion() {
   return (
     <div className="background">
-      <div className="innerBox">
+      <div className="innerBox res">
         <div className="subHeader">
           <p className="subHeader_title">파트너 질문보기</p>
           <div className="subHeader_management">
@@ -18,13 +18,27 @@ export default function PartnerQuestion() {
         <div className="questionBoard">
           <div className="questionBoard_sidebar">
             <ul>
-              <li>전체</li>
-              <li>무인주문기</li>
-              <li>스마트 가전제품 사용</li>
-              <li>상품구매</li>
-              <li>이동수단</li>
-              <li>서비스이용 예약</li>
-              <li>기타</li>
+              <li>
+                <p>전체</p>
+              </li>
+              <li>
+                <p>무인주문기</p>
+              </li>
+              <li>
+                <p>스마트 가전제품 사용</p>
+              </li>
+              <li>
+                <p>상품구매</p>
+              </li>
+              <li>
+                <p>이동수단</p>
+              </li>
+              <li>
+                <p>서비스이용 예약</p>
+              </li>
+              <li>
+                <p>기타</p>
+              </li>
             </ul>
           </div>
           <div className="questionBoard_main">
