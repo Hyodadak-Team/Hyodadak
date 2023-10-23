@@ -12,6 +12,7 @@ import NoticeArticle from './components/NoticeArticle'
 import PartnerQuestion from './pages/PartnerQuestion'
 import Login from './components/Login'
 import QuestionDetail from './pages/QuestionDetail'
+import Join from './pages/Join'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -34,6 +35,7 @@ function App() {
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
           <Route path="/quest_detail" element={<QuestionDetail />} />
+          <Route path="join" element={<Join />} />
         </Route>
       </Routes>
     </div>
