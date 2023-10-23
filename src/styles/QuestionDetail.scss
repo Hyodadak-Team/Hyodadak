@@ -1,3 +1,155 @@
 @import './reset.scss';
 @import './font.scss';
 @import './palette.scss';
+
+.innerBox {
+  .questionDetail_header {
+    margin-top: 60px;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 15px;
+    .questionDetail_header_property {
+      display: flex;
+      font-size: 18px;
+      text-align: center;
+      .questionDetail_header_property_point {
+        margin-right: 10px;
+        height: 20px;
+        width: 35px;
+        background-color: #bbbbbb;
+        border-radius: 3px;
+        color: #ffffff;
+      }
+      .questionDetail_header_property_category {
+        margin-right: 10px;
+        color: #ff6d6d;
+        font-family: 'Pretendard-SemiBold';
+      }
+      .questionDetail_header_property_time {
+        color: #999999;
+      }
+    }
+    .questionDetail_header_title {
+      display: flex;
+      p {
+        font-family: 'Pretendard-Bold';
+        margin-top: 15px;
+        font-size: 28px;
+      }
+      .questionDetail_header_title_state {
+        color: #999999;
+        margin-right: 10px;
+      }
+    }
+  }
+  .questionDetail_detail {
+    padding: 70px 0px 50px 0px;
+    .questionDetail_detail_img {
+      margin-bottom: 30px;
+    }
+    .questionDetail_detail_text {
+      font-size: 22px;
+      margin-bottom: 70px;
+    }
+    .questionDetail_detail_property {
+      display: flex;
+      .questionDetail_detail_property_viewIcon {
+        margin-right: 8px;
+      }
+      .questionDetail_detail_property_viewCount {
+        font-size: 20px;
+        margin-right: 30px;
+      }
+      .questionDetail_detail_property_answerIcon {
+        margin-right: 8px;
+      }
+      .questionDetail_detail_property_answerCount {
+        font-size: 20px;
+      }
+    }
+  }
+  .questionDetail_answer {
+    width: 100%;
+    height: 450px;
+    background-color: #f8f8f8;
+    padding: 50px 0px;
+    .questionDetail_answer_input::placeholder {
+      color: #abb5be;
+    }
+    .questionDetail_answer_input {
+      width: 100%;
+      height: 250px;
+      padding: 30px;
+      font-size: 20px;
+      border: 1px solid #ced4da;
+      resize: none;
+      margin-bottom: 30px;
+    }
+    .questionDetail_answer_btn {
+      display: flex;
+      justify-content: flex-end;
+      .questionDetail_answer_btn_img {
+        cursor: pointer;
+      }
+      .questionDetail_answer_btn_submit {
+        cursor: pointer;
+        font-family: 'Pretendard-Bold';
+        font-size: 20px;
+        width: 160px;
+        height: 53px;
+        margin-left: 15px;
+        background-color: #ff6d6d;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+  }
+  .questionDetail_answerList {
+    margin-top: 70px;
+    .questionDetail_answerList_box {
+      .questionDetail_answerList_box_profile {
+        width: 100%;
+        height: 120px;
+        background-color: #f8f8f8;
+        padding: 25px 35px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .questionDetail_answerList_box_profile_left {
+          display: flex;
+          align-items: center;
+          .questionDetail_answerList_box_profile_left_img {
+            margin-right: 13px;
+          }
+          .questionDetail_answerList_box_profile_left_text {
+            font-size: 20px;
+            .questionDetail_answerList_box_profile_left_text_id {
+              font-family: 'Pretendard-Bold';
+            }
+          }
+        }
+        .questionDetail_answerList_box_profile_right {
+          .questionDetail_answerList_box_profile_right_level {
+            font-size: 40px;
+            font-family: 'Pretendard-Bold';
+            color: #ff6d6d;
+          }
+        }
+      }
+      .questionDetail_answerList_box_detail {
+        padding: 40px 40px 25px 40px;
+        border-bottom: 1px solid #eeeeee;
+        .questionDetail_answerList_box_detail_text {
+          font-size: 20px;
+          margin-bottom: 30px;
+        }
+        .questionDetail_answerList_box_detail_viewReply {
+          cursor: pointer;
+          font-size: 14px;
+          color: #ff6d6d;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
