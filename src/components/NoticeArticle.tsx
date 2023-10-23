@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom'
 import noticeList from '../constants/noticeList'
 import formatContent from '../utils/formatContent'
 import setPrevNextValues from '../utils/setPrevNextValues'
+import RoundBtn from '../composables/Button/RoundBtn'
 
 function NoticeArticle() {
   const { id } = useParams()
@@ -62,6 +63,9 @@ function NoticeArticle() {
         </div>
       </div>
       <div className="divide-list" />
+      <div className="article-button_section">
+        <RoundBtn icon="list" path="notice" content="목록으로" />
+      </div>
     </div>
   )
 }
