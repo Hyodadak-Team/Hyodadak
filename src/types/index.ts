@@ -1,1 +1,6 @@
-// 타입스크립트 타입 정의 집합
+// Button
+export interface IRoundBtnProps {
+  icon?: string
+  path?: string
+  content: string
+}

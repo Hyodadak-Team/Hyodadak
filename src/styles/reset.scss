@@ -89,6 +89,43 @@ div[class*='btn_gradient'] {
   filter: opacity(50%);
 }
 
+.round_btn {
+  font-size: 16px;
+  font-family: $ques-font-default;
+  color: $main-color;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1.5px solid $main-color;
+  padding: 5px 16px;
+  line-height: 1.2;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .icon {
+    &.default {
+      display: block;
+    }
+    &.hover {
+      display: none;
+    }
+  }
+
+  &:hover {
+    color: #fff;
+    background-color: $main-color;
+
+    .icon {
+      &.default {
+        display: none;
+      }
+      &.hover {
+        display: block;
+      }
+    }
+  }
+}
+
 // questioner page
 .ques_navbar {
   margin-top: 50px;
