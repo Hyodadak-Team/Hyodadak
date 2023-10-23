@@ -1,0 +1,212 @@
+@import './palette.scss';
+
+.shortcut_bar {
+  width: 100%;
+  height: 64px;
+  background: linear-gradient(to right, #ffaa6d, $main-color, #a1c7ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  div {
+    width: 10px;
+  }
+
+  p {
+    font-family: $ques-font-default;
+    color: #fff;
+
+    &.highlight {
+      color: #fff848;
+      text-decoration: underline;
+    }
+  }
+}
+
+.banner_section {
+  width: 100%;
+  height: 418px;
+  padding-bottom: 35px;
+  background-color: #f8f8f8;
+  display: flex;
+  justify-content: space-around;
+  // justify-content: space-between;
+  align-items: center;
+
+  .titles {
+    .main_title {
+      font-family: $ques-font-default;
+      font-size: 40px;
+
+      span {
+        color: $main-color;
+      }
+    }
+
+    .sub_title {
+      font-family: $res-font-default;
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  }
+
+  .btns {
+    display: flex;
+    text-align: center;
+
+    .btn_menu {
+      margin: 31px;
+
+      .img_box {
+        width: 143px;
+        height: 143px;
+        background-color: #fff;
+        border-radius: 37px;
+        margin-bottom: 29px;
+        box-shadow: 1px 1px 5px #eee;
+
+        img {
+          transform: translateY(15px);
+        }
+      }
+
+      p {
+        font-family: $ques-font-bold;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.swiper_section {
+  position: relative;
+  width: 100%;
+  height: 147px;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: 1px 1px 5px #eee;
+  transform: translateY(-74px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  .swiper {
+    height: 107px;
+    width: 90%; // 100%
+    // margin-left: 48px;
+    // margin-right: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
+
+    .response_name {
+      font-family: $res-font-default;
+      font-size: 18px;
+      color: $main-color;
+
+      span {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+
+      img {
+        height: 17px;
+        margin-right: 7px;
+        transform: translateY(2px);
+      }
+    }
+
+    .reponse_title {
+      font-family: $ques-font-bold;
+      font-size: 28px;
+      margin-top: 5px;
+    }
+
+    .dots {
+      img {
+        height: 10px;
+        align-items: center;
+        margin: 7px;
+        transform: translateX(600px);
+        cursor: pointer;
+      }
+    }
+  }
+
+  button {
+    position: absolute;
+    right: 38px;
+    width: 200px;
+    height: 58px;
+    font-size: 20px;
+    font-family: $ques-font-default;
+    color: $main-color;
+    background-color: #fff;
+    border-radius: 50px;
+    border: 2px solid $main-color;
+    line-height: 20px;
+    cursor: pointer;
+
+    img {
+      height: 20px;
+      margin-left: 3px;
+      transform: translateY(4px);
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $main-color;
+      // 화살표 이미지 색 변화 어떻게??
+    }
+  }
+}
+
+.notice_section {
+  p {
+    font-family: $ques-font-bold;
+    font-size: 30px;
+    margin-bottom: 31px;
+  }
+
+  .notice_list {
+    li {
+      border-bottom: 1px solid #999;
+      padding: 10px;
+      height: 76px;
+      font-family: $ques-font-default;
+      font-size: 18px;
+    }
+
+    li:first-child {
+      border-top: 1px solid #999;
+    }
+  }
+
+  button {
+    width: 124px;
+    height: 47px;
+    font-size: 20px;
+    font-family: $ques-font-default;
+    color: $main-color;
+    background-color: #fff;
+    border-radius: 50px;
+    border: 2px solid $main-color;
+    cursor: pointer;
+    margin-top: 35px;
+    margin-bottom: 70px;
+
+    img {
+      height: 20px;
+      margin-right: 10px;
+      transform: translateY(4px);
+    }
+
+    &:hover {
+      color: #fff;
+      background-color: $main-color;
+      // 플러스 이미지 색 변화 어떻게??
+    }
+  }
+}
