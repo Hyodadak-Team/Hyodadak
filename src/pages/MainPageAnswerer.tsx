@@ -3,7 +3,7 @@ import '../styles/MainPageAnswerer.scss'
 
 export default function MainPageAnswerer() {
   return (
-    <div className="innerBox">
+    <div className="innerBox res">
       <div className="partnerAnswer">
         <div className="partnerAnswer_text">
           <p className="partnerAnswer_title">파트너 질문</p>
@@ -27,7 +27,7 @@ export default function MainPageAnswerer() {
               <p className="partnerAnswer_post_footer_time">1분전</p>
               <div className="partnerAnswer_post_footer_chatBtn">
                 <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                채팅하기
+                <p>채팅하기</p>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function MainPageAnswerer() {
               <p className="partnerAnswer_post_footer_time">1분전</p>
               <div className="partnerAnswer_post_footer_chatBtn">
                 <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                채팅하기
+                <p>채팅하기</p>
               </div>
             </div>
           </div>
@@ -69,7 +69,7 @@ export default function MainPageAnswerer() {
               <p className="partnerAnswer_post_footer_time">1분전</p>
               <div className="partnerAnswer_post_footer_chatBtn">
                 <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                채팅하기
+                <p>채팅하기</p>
               </div>
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function MainPageAnswerer() {
               <p className="partnerAnswer_post_footer_time">1분전</p>
               <div className="partnerAnswer_post_footer_chatBtn">
                 <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                채팅하기
+                <p>채팅하기</p>
               </div>
             </div>
           </div>
