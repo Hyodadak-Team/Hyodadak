@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function SimulationMainQues() {
   return (
@@ -27,45 +28,62 @@ export default function SimulationMainQues() {
         </li>
       </div>
       <div className="simulation_main_box">
-        <div className="simulation_main_inner">
-          <div className="inner_up">
-            <div className="successable">
-              <p>성공</p>
+        <Link to="/simulation/subway">
+          <div className="simulation_main_inner">
+            <div className="inner_up">
+              <div className="successable">
+                <p>성공</p>
+              </div>
+              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
             </div>
-            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
-          </div>
-          <div className="inner_down">
-            <p className="inner_down_title">서브웨이 샌드위치</p>
-            <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
-          </div>
-        </div>
-        <div className="simulation_main_inner">
-          <div className="inner_up">
-            <div className="successable">
-              <p>성공</p>
+            <div className="inner_down">
+              <p className="inner_down_title">서브웨이 샌드위치</p>
+              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
             </div>
-            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
           </div>
-          <div className="inner_down" />
-        </div>
-        <div className="simulation_main_inner">
-          <div className="inner_up">
-            <div className="successable">
-              <p>성공</p>
+        </Link>
+        <Link to="/">
+          <div className="simulation_main_inner">
+            <div className="inner_up">
+              <div className="successable">
+                <p>성공</p>
+              </div>
+              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
             </div>
-            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
-          </div>
-          <div className="inner_down" />
-        </div>
-        <div className="simulation_main_inner">
-          <div className="inner_up">
-            <div className="successable">
-              <p>성공</p>
+            <div className="inner_down">
+              <p className="inner_down_title">서브웨이 샌드위치</p>
+              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
             </div>
-            <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
           </div>
-          <div className="inner_down" />
-        </div>
+        </Link>
+        <Link to="/">
+          <div className="simulation_main_inner">
+            <div className="inner_up">
+              <div className="successable">
+                <p>성공</p>
+              </div>
+              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+            </div>
+            <div className="inner_down">
+              <p className="inner_down_title">서브웨이 샌드위치</p>
+              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
+            </div>
+          </div>
+        </Link>
+        <Link to="/">
+          <div className="simulation_main_inner">
+            <div className="inner_up">
+              <div className="successable">
+                <p>성공</p>
+              </div>
+              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+            </div>
+            <div className="inner_down">
+              <p className="inner_down_title">서브웨이 샌드위치</p>
+              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
+            </div>
+          </div>
+        </Link>
       </div>
       <p className="simulation_update">새로운 서비스 업데이트 예정입니다.</p>
     </div>

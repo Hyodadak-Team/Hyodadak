@@ -14,6 +14,7 @@ import Login from './components/Login'
 import QuestionDetail from './pages/QuestionDetail'
 import Join from './pages/Join'
 import MainQues from './pages/MainQues'
+import SubWay1 from './pages/SimulationSubWay/Subway1'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -30,6 +31,7 @@ function App() {
           <Route path="/notice" element={<Notice />} />
           <Route path="/notice/article/:id" element={<NoticeArticle />} />
           <Route path="/simulation" element={<SimulationQues />} />
+          <Route path="//simulation/subway" element={<SubWay1 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/main_res" element={<MainPageAnswerer />} />
