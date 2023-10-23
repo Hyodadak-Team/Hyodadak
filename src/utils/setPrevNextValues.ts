@@ -14,7 +14,7 @@ const setPrevNextValues = (noticeId: number | null, noticeList: INotice[]) => {
 
     const [prevContent, nextContent] = [
       noticeList[prevId - 1],
-      noticeList[nextId - 1],
+      noticeList[nextId],
     ]
 
     if (prevContent) {
