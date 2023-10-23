@@ -28,7 +28,7 @@ function NoticeArticle() {
         </Link>
       </div>
       <div className="ques_title">
-        <p className="article title">
+        <p className="article title bold">
           [{filteredNotice.type}] {filteredNotice.title}
         </p>
         <p className="article date">{filteredNotice.date}</p>

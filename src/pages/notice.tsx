@@ -48,7 +48,7 @@ function Notice() {
           </Link>
         </div>
         <div className="ques_title">
-          <p>공지사항</p>
+          <p className="bold">공지사항</p>
         </div>
         <div className="notice_main">
           <div className="side_section">
