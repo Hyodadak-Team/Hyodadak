@@ -13,6 +13,7 @@ export default function MyPartner() {
       level: 3,
       question_num: 20,
       money: 20000,
+      type: 'ans',
     },
     {
       profile_img: '',
@@ -22,6 +23,7 @@ export default function MyPartner() {
       level: 3,
       question_num: 20,
       money: 20000,
+      type: 'ans',
     },
   ]
   return (
