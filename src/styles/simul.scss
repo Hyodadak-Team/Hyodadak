@@ -1,12 +1,15 @@
 // 기본적으로 지정하려는 scss 설정
 @import './palette.scss';
 
+.backgroundBox {
+  
+}
 .main_box {
   height: 362px;
   background-color: #f8f8f8;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
 
@@ -67,13 +70,12 @@
 
 .simulation_btn {
   width: 1440px;
-  margin-top: 3%;
-  margin-left: 15%;
+  margin-top: 20px;
   display: flex;
   justify-content: left;
 
   li {
-    margin-bottom: 10px;
+    margin-top: 40px;
     margin-right: 20px;
 
     button {
@@ -103,15 +105,13 @@
 
 .simulation_main_box {
   width: 1440px;
-  margin-left: 15%;
-  margin-top: 2%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
   a {
-    width: 430px;
-    margin-right: 20px;
+    width: 30%;
+    margin-top: 40px;
 
     .simulation_main_inner {
       width: 430px;

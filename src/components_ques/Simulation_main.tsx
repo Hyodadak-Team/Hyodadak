@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function SimulationMainQues() {
   return (
     <div>
-      <div className="simulation_btn">
+      <div className="simulation_btn innerBox">
         <li>
           <button type="button">전체</button>
         </li>
@@ -27,7 +27,7 @@ export default function SimulationMainQues() {
           <button type="button">기타</button>
         </li>
       </div>
-      <div className="simulation_main_box">
+      <div className="simulation_main_box innerBox">
         <Link to="/simulation/subway">
           <div className="simulation_main_inner">
             <div className="inner_up">
