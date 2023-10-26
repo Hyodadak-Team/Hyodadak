@@ -111,33 +111,33 @@
   flex-wrap: wrap;
 
   a {
-    width: 30%;
+    width: 32%;
     margin-top: 40px;
 
     .simulation_main_inner {
-      width: 430px;
+      width: 100%;
       margin-right: 10px;
       margin-bottom: 20px;
       border: 2px solid #eeeeee;
       border-radius: 20px;
   
       .inner_up {
+        position: relative;
         height: 140px;
-        border-radius: 20px;
+        border-radius: 16px 16px 0 0;
         background-color: #eeeeee;
   
         .successable {
-          position: relative;
+          position: absolute;
           top: 16px;
           left: 350px;
           width: 58px;
-          height: 29px;
+          height: 26px;
           background-color: $main-color;
           border-radius: 10px;
           color: #fff;
   
           p {
-            position: relative;
             top: 2px;
             text-align: center;
             font-size: 16px;
@@ -145,37 +145,34 @@
         }
   
         .sublogo {
-          position: relative;
-          top: 20px;
-          left: 100px;
-          width: 238px;
-          height: 46px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .megalogo {
-          position: relative;
+          position: absolute;
           mix-blend-mode: luminosity;
-          top: 20px;
-          left: 100px;
-          width: 238px;
-          height: 46px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
         .meclogo {
-          position: relative;
-          left: 160px;
+          position: absolute;
+          top: 50%;
+          left: 50%;
           width: 92px;
           height: 81px;
+          transform: translate(-50%, -50%);
           mix-blend-mode: luminosity;
         }
       }
   
       .inner_down {
-        width: 330px;
         height: 100px;
-        background-color: #fff;
+        padding: 20px 30px;
   
         .inner_down_title {
-          padding-top: 20px;
-          margin-left: 30px;
           font-family: $ques-font-bold;
           font-size: 23px;
         }
@@ -183,7 +180,6 @@
           font-family: $ques-font-default;
           font-size: 16px;
           color: #999999;
-          margin-left: 20px;
         }
       }
     }
