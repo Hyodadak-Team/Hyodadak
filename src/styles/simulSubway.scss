@@ -1,17 +1,52 @@
 @import './palette.scss';
 
 .SubWaySimulation1 {
-    width: 1440px;
-    height: 1000px;
-    margin-left: 300px;
-    border: 1px solid black;
+    // border: 1px solid black;
     display: flex;
     justify-content: center;
 
     .SubwayDisplay1 {
         width: 500px;
         height: 100%;
-        border: 1px solid black;
+        // border: 1px solid black;
+        
+        .Subway_order {
+            width: 500px;
+            height: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .Subway_home {
+            z-index: 2;
+            width: 500px;
+            height: auto;
+        }
+
+        .Subway_kio1 {
+            position: absolute;
+            z-index: 2;
+            bottom: 63px;
+            width: 500px;
+            height: auto;
+            cursor: pointer;
+            border: 6px solid $main-color;
+        }
+
+        .Subway_kio2 {
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            width: 500px;
+            height: auto;
+        }
+
+        .Subway_num {
+            position: absolute;
+            z-index: 2;
+            bottom: 120px;
+            left: 487px;
+        }
     }
 
     .SubwaySteb1 {

@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 
 export default function SimulationBanner() {
   return (
-    <div>
-      <div className="main_box">
+    <div className="backgroundBox">
+      <div className="main_box innerBox">
         <div className="main_title">
           <div className="ques_navbar">
             <img
@@ -30,9 +30,9 @@ export default function SimulationBanner() {
           </ul>
         </div>
         <div className="main_image">
-          <img src="/img/simulation_main_image.png" alt="메인 이미지" />
+          <img src="/img/undraw_check_boxes_re_v40f 1.svg" alt="메인 이미지" />
         </div>
-      </div>{' '}
+      </div>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function SimulationMainQues() {
   return (
     <div>
-      <div className="simulation_btn">
+      <div className="simulation_btn innerBox">
         <li>
           <button type="button">전체</button>
         </li>
@@ -27,14 +27,18 @@ export default function SimulationMainQues() {
           <button type="button">기타</button>
         </li>
       </div>
-      <div className="simulation_main_box">
-        <Link to="/simulation/subway">
+      <div className="simulation_main_box innerBox">
+        <Link to="/simulation/subwayhome">
           <div className="simulation_main_inner">
             <div className="inner_up">
               <div className="successable">
                 <p>성공</p>
               </div>
-              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+              <img
+                className="sublogo"
+                src="/img/서브웨이 로고.svg"
+                alt="서브웨이 로고"
+              />
             </div>
             <div className="inner_down">
               <p className="inner_down_title">서브웨이 샌드위치</p>
@@ -48,11 +52,15 @@ export default function SimulationMainQues() {
               <div className="successable">
                 <p>성공</p>
               </div>
-              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+              <img
+                className="megalogo"
+                src="/img/로고_메가MGC커피.svg"
+                alt="메가커피 로고"
+              />
             </div>
             <div className="inner_down">
-              <p className="inner_down_title">서브웨이 샌드위치</p>
-              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
+              <p className="inner_down_title">메가 커피</p>
+              <p className="inner_down_subtitle">무인주문기</p>
             </div>
           </div>
         </Link>
@@ -62,25 +70,15 @@ export default function SimulationMainQues() {
               <div className="successable">
                 <p>성공</p>
               </div>
-              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
+              <img
+                className="meclogo"
+                src="/img/image 92.svg"
+                alt="맥도날드 로고"
+              />
             </div>
             <div className="inner_down">
-              <p className="inner_down_title">서브웨이 샌드위치</p>
-              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
-            </div>
-          </div>
-        </Link>
-        <Link to="/">
-          <div className="simulation_main_inner">
-            <div className="inner_up">
-              <div className="successable">
-                <p>성공</p>
-              </div>
-              <img src="/img/simulation_subway.png" alt="서브웨이 로고" />
-            </div>
-            <div className="inner_down">
-              <p className="inner_down_title">서브웨이 샌드위치</p>
-              <p className="inner_down_subtitle">무인주문기 · 용돈1000</p>
+              <p className="inner_down_title">맥도날드</p>
+              <p className="inner_down_subtitle">무인주문기</p>
             </div>
           </div>
         </Link>
