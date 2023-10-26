@@ -31,7 +31,7 @@ function App() {
           <Route path="/notice" element={<Notice />} />
           <Route path="/notice/article/:id" element={<NoticeArticle />} />
           <Route path="/simulation" element={<SimulationQues />} />
-          <Route path="//simulation/subway" element={<SubWay1 />} />
+          <Route path="//simulation/subwayhome" element={<SubWay1 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/main_res" element={<MainPageAnswerer />} />

@@ -2,7 +2,8 @@
 @import './palette.scss';
 
 .backgroundBox {
-  
+  width: 100%;
+  background-color: #f8f8f8;
 }
 .main_box {
   height: 362px;
@@ -143,12 +144,27 @@
           }
         }
   
-        img {
+        .sublogo {
           position: relative;
           top: 20px;
           left: 100px;
           width: 238px;
           height: 46px;
+        }
+        .megalogo {
+          position: relative;
+          mix-blend-mode: luminosity;
+          top: 20px;
+          left: 100px;
+          width: 238px;
+          height: 46px;
+        }
+        .meclogo {
+          position: relative;
+          left: 160px;
+          width: 92px;
+          height: 81px;
+          mix-blend-mode: luminosity;
         }
       }
   
@@ -159,7 +175,7 @@
   
         .inner_down_title {
           padding-top: 20px;
-          margin-left: 20px;
+          margin-left: 30px;
           font-family: $ques-font-bold;
           font-size: 23px;
         }
@@ -176,8 +192,7 @@
 
 .simulation_update {
   width: 1440px;
-  margin-top: 50px;
-  margin-left: 300px;
+  margin: 50px auto;
   color: #999999;
   text-align: center;
 }
