@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-// 키오스크 첫화면
+// 키오스크 두 번째 화면
 
 export default function SubWay2() {
   return (
