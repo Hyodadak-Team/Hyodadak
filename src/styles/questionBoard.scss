@@ -1,0 +1,28 @@
+@import './palette.scss';
+
+.question_board {
+  .board-type {
+    display: flex;
+    margin-bottom: 24px;
+
+    div {
+      margin-right: 15px;
+    }
+  }
+
+  .board-filter {
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 78px;
+    padding: 0 32px;
+
+    .toggle_section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+}

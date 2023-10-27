@@ -15,6 +15,7 @@ import QuestionDetail from './pages/QuestionDetail'
 import Join from './pages/Join'
 import MainQues from './pages/MainQues'
 import SubWay1 from './pages/SimulationSubWay/Subway1'
+import QuestionBoard from './pages/questionBoard'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -40,6 +41,7 @@ function App() {
           <Route path="/quest_detail" element={<QuestionDetail />} />
           <Route path="join" element={<Join />} />
           <Route path="/main_ques" element={<MainQues />} />
+          <Route path="/questionBoard" element={<QuestionBoard />} />
         </Route>
       </Routes>
     </div>
