@@ -128,6 +128,32 @@ div[class*='btn_gradient'] {
   }
 }
 
+.search_section {
+  width: 100%;
+  height: 50px;
+
+  .search-icon {
+    cursor: pointer;
+    position: relative;
+    bottom: 34px;
+    left: 18px;
+  }
+
+  .search-input {
+    border-style: none;
+    background-color: #f8f8f8;
+    width: 100%;
+    height: 100%;
+    font-family: $ques-font-default;
+    padding: 0 48px;
+    border-radius: 10px;
+
+    &:focus {
+      outline-color: #c6c6c6;
+    }
+  }
+}
+
 // questioner page
 .ques_navbar {
   margin-top: 50px;
