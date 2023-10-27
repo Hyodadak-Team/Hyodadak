@@ -34,6 +34,17 @@ function QuestionBoard() {
             <ToggleBtn />
           </div>
         </div>
+        <div className="search_section">
+          <input
+            className="search-input"
+            placeholder="궁금한 제목을 입력해보세요"
+          />
+          <img
+            src="/img/search-icon.svg"
+            className="search-icon"
+            alt="search-icon"
+          />
+        </div>
       </div>
     </div>
   )
