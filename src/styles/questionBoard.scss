@@ -29,4 +29,39 @@
   .search_section {
     margin: 20px 0;
   }
+
+  .board-list {
+    border: 1px solid red;
+
+    .questionBox {
+      border: 1px solid blue;
+      margin-bottom: 20px;
+      height: 208px;
+
+      &:last-child {
+        margin: 0;
+      }
+
+      div {
+        display: flex;
+      }
+
+      .edit_zone {
+        background-color: yellow;
+      }
+      .sub_zone {
+        background-color: aquamarine;
+      }
+      .title_zone {
+        background-color: antiquewhite;
+      }
+      .contents_zone {
+        background-color: skyblue;
+
+        .counts_zone {
+          background-color: #dddddd;
+        }
+      }
+    }
+  }
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { questionTypes } from '../constants/questionBoard'
+import { questionList, questionTypes } from '../constants/questionBoard'
 import RoundBtn from '../composables/Button/RoundBtn'
 import ToggleBtn from '../composables/Button/ToggleBtn'
 
@@ -44,6 +44,32 @@ function QuestionBoard() {
             className="search-icon"
             alt="search-icon"
           />
+        </div>
+        <div className="board-list">
+          {questionList.map((ques) => (
+            <div key={ques.id} className="questionBox">
+              <div className="edit_zone">
+                <p>수정</p>
+                <p>삭제</p>
+              </div>
+              <div className="sub_zone">
+                <div>{ques.point}</div>
+                <div>{ques.type}</div>
+                <div>{ques.date}</div>
+              </div>
+              <div className="title_zone">
+                <div>{ques.title}</div>
+                <div>{ques.photo}</div>
+              </div>
+              <div className="contents_zone">
+                <div>{ques.content}</div>
+                <div className="counts_zone">
+                  <div>{ques.answers}</div>
+                  <div>{ques.views}</div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
