@@ -1,9 +1,23 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { questionList, questionTypes } from '../constants/questionBoard'
 import RoundBtn from '../composables/Button/RoundBtn'
 import ToggleBtn from '../composables/Button/ToggleBtn'
+import Pagination from '../composables/Pagination'
+import setPagination from '../utils/pagination'
+import { IQuestion } from '../types/questionBoard'
 
 function QuestionBoard() {
+  const itemsPerPage = 5
+  const [currentPage, setCurrentPage] = useState(1)
+  const { sortedList, currentItems } = setPagination(
+    questionList,
+    currentPage,
+    itemsPerPage,
+  )
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber)
+  }
   return (
     <div className="innerBox ques">
       <div className="ques_navbar">
@@ -46,7 +60,7 @@ function QuestionBoard() {
           />
         </div>
         <div className="questionBox">
-          {questionList.map((ques) => (
+          {currentItems.map((ques: IQuestion) => (
             <div key={ques.id} className="question">
               <div className="question_header">
                 <div className="question_property">
@@ -82,6 +96,12 @@ function QuestionBoard() {
             </div>
           ))}
         </div>
+        <Pagination
+          itemsPerPage={itemsPerPage}
+          totalItems={sortedList.length}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   )
