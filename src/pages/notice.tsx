@@ -88,7 +88,7 @@ function Notice() {
               />
             </div>
             <div className="notice_list-section">
-              {currentItems.map((notice) => {
+              {currentItems.map((notice: INotice) => {
                 return (
                   <div className="notice_list" key={notice.id}>
                     <Link to={`/notice/article/${notice.id}`}>
