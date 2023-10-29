@@ -10,7 +10,7 @@ export default function IndexFirst() {
 
   return (
     <div className="all">
-      <div className="img_area">
+      <div className="main_img">
         <img src="/img/index.png" alt="indexImg" />
       </div>
       <div className="info_area">

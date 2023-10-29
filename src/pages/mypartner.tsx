@@ -27,7 +27,7 @@ export default function MyPartner() {
     },
   ]
   return (
-    <div className="innerBox">
+    <div className="innerBox ques">
       <div className="ques_navbar">
         <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
         <Link to="/">
