@@ -66,8 +66,19 @@ export default function MyResponse() {
           </li>
         </ul>
         <div className="list_box">
-          <div className="search_box">
-            <input type="text" />
+          {/* <div className="search_box">
+            <input type="text" placeholder="제목을 입력하세요" />
+          </div> */}
+          <div className="search_section">
+            <input
+              className="search-input res"
+              placeholder="궁금한 제목을 입력해보세요"
+            />
+            <img
+              src="/img/search-icon.svg"
+              className="search-icon"
+              alt="search-icon"
+            />
           </div>
           {quesData.map((data) => (
             <MyResponseBox data={data} />

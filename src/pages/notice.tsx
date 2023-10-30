@@ -78,7 +78,7 @@ function Notice() {
           <div className="main_section">
             <div className="search_section">
               <input
-                className="search-input"
+                className="search-input ques"
                 placeholder="궁금한 내용을 입력해보세요"
               />
               <img

@@ -253,11 +253,10 @@
     .search_box {
       position: relative;
       margin-bottom: 20px;
-      input {
+      .search-input {
         background-color: #f8f8f8;
-
         width: 100%;
-        padding: 15px 20px 15px 48px;
+
         font-size: 20px;
         border-radius: 10px;
         border: none;
