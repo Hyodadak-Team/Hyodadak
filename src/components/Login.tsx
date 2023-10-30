@@ -15,7 +15,8 @@ export default function Login() {
                 <input type="password" placeholder="비밀번호를 입력해주세요" />
               </div>
               <div className="comment_rule">
-                비밀번호는 특수기호 숫자가 반드시 포함됩니다.
+                <span className="material-symbols-outlined">error</span>
+                &nbsp;비밀번호는 특수기호 숫자가 반드시 포함됩니다.
               </div>
               <div className="btn_set login_btn">
                 <button type="button" className="member_login">
@@ -30,9 +31,9 @@ export default function Login() {
             </form>
           </div>
         </div>
-        <hr />
         <div className="login_bottom">
           <div className="login_wrap">
+            <hr />
             <div className="comment_join">효다닥이 처음이신가요?</div>
             <div className="btn_set join_btn">
               <button type="button" className="member_join">

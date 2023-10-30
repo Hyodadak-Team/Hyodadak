@@ -5,7 +5,7 @@ export default function JoinPersonalInfo() {
     <div className="all">
       <div className="container">
         <div className="info">개인정보를 입력해주세요 !</div>
-        <div className="wrap">
+        <div className="join_wrap">
           <form className="form_wrap">
             <div className="form_row">
               <div className="form_row_title">이름</div>
@@ -21,7 +21,8 @@ export default function JoinPersonalInfo() {
               </div>
             </div>
             <div className="comment_rule">
-              &apos;번호인증&apos;을 누르고 메시지를 확인하세요
+              <span className="material-symbols-outlined">error</span>
+              &nbsp;&apos;번호인증&apos;을 누르고 메시지를 확인하세요
             </div>
             <div className="form_row">
               <div className="form_row_title" />
