@@ -64,15 +64,15 @@ export default function SubWay1() {
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <p>메뉴 선택</p>
+                <li>메뉴 선택</li>
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <p>결제하기</p>
+                <li>결제하기</li>
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <p>완료</p>
+                <li>완료</li>
               </div>
             </ul>
           </div>
