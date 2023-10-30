@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default function JoinMemberInfo() {
+interface PagenationBtnType {
+  pageIndex: number
+  setPageIndex: React.Dispatch<React.SetStateAction<number>>
+}
+
+export default function JoinMemberInfo(props: PagenationBtnType) {
+  const { pageIndex, setPageIndex } = props
   return (
     <div className="all">
       <div className="container">
@@ -35,10 +41,22 @@ export default function JoinMemberInfo() {
             </div>
           </form>
           <div className="btn_set">
-            <button type="button" className="btn_before">
+            <button
+              type="button"
+              className="btn_before"
+              onClick={() => {
+                setPageIndex(pageIndex - 1)
+              }}
+            >
               이전
             </button>
-            <button type="button" className="btn_after">
+            <button
+              type="button"
+              className="btn_after"
+              onClick={() => {
+                setPageIndex(pageIndex + 1)
+              }}
+            >
               다음
             </button>
           </div>
