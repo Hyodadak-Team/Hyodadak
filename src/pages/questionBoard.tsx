@@ -50,7 +50,7 @@ function QuestionBoard() {
         </div>
         <div className="search_section">
           <input
-            className="search-input"
+            className="search-input ques"
             placeholder="궁금한 제목을 입력해보세요"
           />
           <img

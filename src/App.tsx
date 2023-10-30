@@ -21,10 +21,10 @@ import SubWay3 from './pages/SimulationSubWay/Subway3'
 import MyResponse from './pages/myresponse'
 
 function App() {
-  const [user, setUser] = useState<boolean>(true)
+  const [user, setUser] = useState<boolean>(false)
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
-    setUser(true)
+    setUser(false)
   }, [])
   return (
     <div className="App">
