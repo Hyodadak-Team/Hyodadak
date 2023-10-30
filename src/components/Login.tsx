@@ -1,6 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
+  const navigate = useNavigate()
+
+  const navigateToJoin = () => {
+    navigate('/join')
+  }
   return (
     <div className="all">
       <div className="container">
@@ -36,7 +42,11 @@ export default function Login() {
             <hr />
             <div className="comment_join">효다닥이 처음이신가요?</div>
             <div className="btn_set join_btn">
-              <button type="button" className="member_join">
+              <button
+                type="button"
+                className="member_join"
+                onClick={navigateToJoin}
+              >
                 회원가입
               </button>
             </div>
