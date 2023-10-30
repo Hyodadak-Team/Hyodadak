@@ -97,8 +97,75 @@
     }
   }
 
-  .SubwaySteb1 {
-    width: 500px;
-    height: 100%;
-  }
+    .SubwaySteb1 {
+        position: relative;
+        width: 500px;
+        background-color: #ffffff;
+        height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+        .ques_navbar {
+            padding-left: 30px;
+            font-size: 16px;
+        }
+
+        .subwaySteb {
+            margin-top: 50px;
+            ul {
+                position: relative;
+                font-family: $res-font-default;
+                color: #999999;
+
+                img {
+                    margin-left: 30px;
+                }
+                .stick{
+                    position: absolute;
+                    top: 6px;
+                    left: 10px;
+                    height: 760px;
+                }
+
+                .start {
+                    position: relative;
+                    display: flex;
+                    align-items:first baseline ;
+                    height: 670px;
+                    
+                    .start_title {
+                        margin-left: 20px;
+                        font-size: 26px;
+                        font-family:$ques-font-bold;
+                        color: black;
+                        list-style: none;
+                    }
+                    .start_content {
+                        position: absolute;
+                        font-family: $ques-font-default;
+                        border-bottom: 1px solid;
+                        left: 100px;
+                        top: 60px;
+                        list-style:decimal;
+                        color: $main-color;
+                        cursor: pointer;
+                    }
+                }
+                .other {
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 20px;
+                    margin-left: 5px;
+
+                    img {
+                        z-index: 2;
+                    }
+
+                    li {
+                        list-style: none;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
 }
+
