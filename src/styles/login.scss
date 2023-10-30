@@ -1,5 +1,5 @@
-@import url();
-
+@import './font.scss';
+@import './palette.scss';
 // .login_wrap{
 //   width: 500px;
 //   // display: flex;
@@ -12,7 +12,8 @@
     border-radius: 5px;
     border: white;
     font-size: 20px;
-    font-weight: bold;
+    font-family: 'KoPubWorld-Batang-Bold';
+    cursor: pointer;
   }
 }
 
@@ -31,8 +32,8 @@
       display: flex;
       justify-content: center;
       font-size:40px;
+      font-family: 'KoPubWorld-Batang-Medium';
     }
-
     .login_top{
       padding-top: 100px;
       padding-bottom: 50px;
@@ -48,10 +49,24 @@
               width: 410px;
               height: 50px;
               font-size: 20px;
+              padding-left: 10px;
+              font-family: 'KoPubWorld-Batang-Medium';
+            }
+            input::placeholder{
+              font-family: 'KoPubWorld-Batang-Medium';
+              color:#999999;
             }
           }
           .comment_rule{
+            text-align: left;
             padding-top:5px;
+            font-family: 'KoPubWorld-Batang-Medium';
+            font-size: 18px;
+            color:#999999;
+            .material-symbols-outlined{
+              size: 40px;
+              vertical-align: middle;
+            }
           }
 
           .login_btn{
@@ -59,7 +74,7 @@
             display: flex;
             justify-content: center;
             .member_login{
-              background-color: #FF6D6D;
+              background: $gradient-color;
               color : white;
             }
             .kakao_login{
@@ -69,19 +84,21 @@
         }
       }
     }
-    hr{
-      width : 410px;
-      margin: 0 auto;
-    }
+    
     .login_bottom{
-      padding-top: 50px;
-      display: flex;
-      justify-content: center;
+      
+      width: 500px;
+        display: flex;
+        justify-content: center;
+
       .login_wrap{
+        
         .comment_join{
+          padding-top: 50px;
           font-size: 20px;
           display: flex;
           justify-content: center;
+          font-family: 'KoPubWorld-Batang-Medium';
         
         }
         .join_btn{
