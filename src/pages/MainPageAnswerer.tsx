@@ -1,5 +1,109 @@
 import '../styles/MainPageAnswerer.scss'
-// polygon chat_icon image_icon
+import { Table } from 'antd'
+
+const dataSource = [
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '기본',
+    answerCounts: '3',
+    date: '1분전',
+  },
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '두루미',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '100',
+    answerCounts: '5',
+    date: '1분전',
+  },
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '가자미',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '200',
+    answerCounts: '7',
+    date: '1분전',
+  },
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '토끼',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '700',
+    answerCounts: '9',
+    date: '1분전',
+  },
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '호랑이',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '기본',
+    answerCounts: '2',
+    date: '1분전',
+  },
+  {
+    key: '1',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: '1분전',
+  },
+]
+
+const columns = [
+  {
+    title: '제목 + 내용',
+    dataIndex: 'title',
+    key: 'title',
+  },
+  {
+    title: '이름',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: '유형',
+    dataIndex: 'category',
+    key: 'category',
+  },
+  {
+    title: '채택',
+    dataIndex: 'isDone',
+    key: 'isDone',
+  },
+  {
+    title: '용돈',
+    dataIndex: 'money',
+    key: 'money',
+    // sorter: (a, b) => a.money - b.money,
+  },
+  {
+    title: '답변수',
+    dataIndex: 'answerCounts',
+    key: 'answerCounts',
+    // sorter: (a, b) => a.answerCounts - b.answerCounts,
+  },
+  {
+    title: '등록일',
+    dataIndex: 'date',
+    key: 'date',
+    // sorter: (a, b) => a.date - b.date,
+  },
+]
 
 export default function MainPageAnswerer() {
   return (
@@ -139,7 +243,8 @@ export default function MainPageAnswerer() {
           <p className="questionList_header_title">질문목록</p>
           <p className="questionList_header_numbers">총 20개</p>
         </div>
-        <table className="question_table">
+        <Table dataSource={dataSource} columns={columns} />
+        {/* <table className="question_table">
           <thead className="question_table_header">
             <tr>
               <th>제목 + 내용</th>
@@ -254,7 +359,7 @@ export default function MainPageAnswerer() {
               <td>1분전</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
     </div>
   )
