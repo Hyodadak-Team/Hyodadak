@@ -5,15 +5,7 @@ type MyPartnerBoxProps = {
 }
 
 export default function MyPartnerBox({
-  data: {
-    profile_img: profileImg,
-    name,
-    major,
-    intro,
-    level,
-    question_num: questionNum,
-    money,
-  },
+  data: { profileImg, name, major, intro, level, questionNum, money },
 }: MyPartnerBoxProps) {
   return (
     <div className="my_partner_comp">
