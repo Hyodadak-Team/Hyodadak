@@ -1,7 +1,7 @@
-import { INotice } from '../types/notice'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 const setPagination = (
-  noticeList: INotice[],
+  noticeList: any[],
   currentPage: number,
   itemsPerPage: number,
 ) => {

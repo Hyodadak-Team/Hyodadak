@@ -30,13 +30,15 @@
     margin: 20px 0;
   }
 
-  .board-list {
-    border: 1px solid red;
+  .questionBox {
+    margin-bottom: 35px;
 
-    .questionBox {
-      border: 1px solid blue;
+    .question {
+      border: 1px solid #dddddd;
+      border-radius: 10px;
       margin-bottom: 20px;
       height: 208px;
+      padding: 35px 30px;
 
       &:last-child {
         margin: 0;
@@ -44,22 +46,60 @@
 
       div {
         display: flex;
+        align-items: center;
+        gap: 8px;
       }
 
-      .edit_zone {
-        background-color: yellow;
-      }
-      .sub_zone {
-        background-color: aquamarine;
-      }
-      .title_zone {
-        background-color: antiquewhite;
-      }
-      .contents_zone {
-        background-color: skyblue;
+      .question_header {
+        justify-content: space-between;
 
-        .counts_zone {
-          background-color: #dddddd;
+        .question_property {
+          .question_property_point {
+            height: 22px;
+            width: 38px;
+            background-color: #bbbbbb;
+            border-radius: 3px;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: $res-font-default;
+          }
+          .question_property_type {
+            color: $main-color;
+          }
+          .question_property_date {
+            color: #999999;
+          }
+        }
+
+        .question_control {
+          color: $main-color;
+          cursor: pointer;
+          gap: 16px;
+        }
+      }
+      .question_title {
+        margin: 10px 0 20px 0;
+        p {
+          font-size: 28px;
+        }
+      }
+      .question_footer {
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .question_detail {
+          width: 80%;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+        }
+
+        .question_counts {
+          gap: 20px;
         }
       }
     }
