@@ -10,7 +10,9 @@ export default function HeadeQues() {
   return (
     <div className="header header_ques">
       <div className="innerBox flexBtw">
-        <img src="" alt="효다닥로고" />
+        <Link to="/main_ques">
+          <img src="" alt="효다닥로고" />
+        </Link>
         <ul className="flexBtw naviMenu">
           <li>
             <Link to="/questionBoard">질문게시판</Link>

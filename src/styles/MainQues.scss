@@ -24,56 +24,77 @@
   }
 }
 
-.banner_section {
+.banner_section_bg {
   width: 100%;
   height: 418px;
-  padding-bottom: 35px;
   background-color: #f8f8f8;
-  display: flex;
-  justify-content: space-around;
-  // justify-content: space-between;
-  align-items: center;
 
-  .titles {
-    .main_title {
-      font-family: $ques-font-default;
-      font-size: 40px;
-
-      span {
-        color: $main-color;
-      }
-    }
-
-    .sub_title {
-      font-family: $res-font-default;
-      font-size: 18px;
-      margin-top: 15px;
-    }
-  }
-
-  .btns {
+  .banner_section {
+    width: 100%;
+    height: 418px;
+    padding-bottom: 35px;
     display: flex;
-    text-align: center;
+    justify-content: space-around;
+    // justify-content: space-between;
+    align-items: center;
 
-    .btn_menu {
-      margin: 31px;
+    .titles {
+      .main_title {
+        font-family: $ques-font-default;
+        font-size: 40px;
 
-      .img_box {
-        width: 143px;
-        height: 143px;
-        background-color: #fff;
-        border-radius: 37px;
-        margin-bottom: 29px;
-        box-shadow: 1px 1px 5px #eee;
-
-        img {
-          transform: translateY(15px);
+        span {
+          color: $main-color;
         }
       }
 
-      p {
-        font-family: $ques-font-bold;
-        font-size: 20px;
+      .sub_title {
+        font-family: $res-font-default;
+        font-size: 18px;
+        margin-top: 15px;
+      }
+    }
+
+    .btns {
+      display: flex;
+      text-align: center;
+
+      .btn_menu {
+        margin: 31px;
+
+        .img_box {
+          width: 143px;
+          height: 143px;
+          background-color: #fff;
+          border-radius: 37px;
+          margin-bottom: 29px;
+          box-shadow: 1px 1px 5px #eee;
+          transition:
+            border 0.2s ease,
+            transform 0.2s ease;
+
+          img {
+            transform: translateY(15px);
+            transition: transform 0.2s ease;
+          }
+        }
+
+        p {
+          font-family: $ques-font-bold;
+          font-size: 20px;
+          transition: color 0.2s ease;
+        }
+
+        &:hover {
+          .img_box {
+            border: 3px solid $main-color;
+            transform: scale(1.1);
+          }
+
+          p {
+            color: $main-color;
+          }
+        }
       }
     }
   }
@@ -158,7 +179,10 @@
     &:hover {
       color: #fff;
       background-color: $main-color;
-      // 화살표 이미지 색 변화 어떻게??
+
+      img {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 }
@@ -172,15 +196,36 @@
 
   .notice_list {
     li {
-      border-bottom: 1px solid #999;
+      display: flex;
+      border-bottom: 1px solid #ddd;
       padding: 10px;
       height: 76px;
       font-family: $ques-font-default;
       font-size: 18px;
+      align-items: center;
+
+      div {
+        margin: 0;
+      }
+
+      .notice_title {
+        display: flex;
+        margin: 0 18px;
+        width: 90%;
+
+        div:nth-child(1) {
+          margin-right: 10px;
+          font-weight: bold;
+        }
+      }
+
+      .notice_date {
+        color: #999;
+      }
     }
 
     li:first-child {
-      border-top: 1px solid #999;
+      border-top: 1px solid #ddd;
     }
   }
 
@@ -206,7 +251,10 @@
     &:hover {
       color: #fff;
       background-color: $main-color;
-      // 플러스 이미지 색 변화 어떻게??
+
+      img {
+        filter: brightness(0) invert(1);
+      }
     }
   }
 }
