@@ -18,12 +18,13 @@ import SubWay1 from './pages/SimulationSubWay/Subway1'
 import QuestionBoard from './pages/questionBoard'
 import SubWay2 from './pages/SimulationSubWay/Subway2'
 import SubWay3 from './pages/SimulationSubWay/Subway3'
+import MyResponse from './pages/myresponse'
 
 function App() {
-  const [user, setUser] = useState<boolean>(false)
+  const [user, setUser] = useState<boolean>(true)
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
-    setUser(false)
+    setUser(true)
   }, [])
   return (
     <div className="App">
@@ -39,6 +40,7 @@ function App() {
           <Route path="/simulation/subway3" element={<SubWay3 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
+          <Route path="/myres" element={<MyResponse />} />
           <Route path="/main_res" element={<MainPageAnswerer />} />
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
