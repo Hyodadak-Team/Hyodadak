@@ -107,7 +107,38 @@ export default function DetailPageAnswerer() {
               1개의 댓글 보기
             </p>
           </div>
-          <div className="questionDetail_answerList_box_reply">댓글</div>
+          <div className="questionDetail_answerList_box_reply">
+            <div className="questionDetail_answerList_box_reply_list">
+              <img
+                className="questionDetail_answerList_box_reply_list_img"
+                src="/img/detail_profile_dog.svg"
+                alt="프로필이미지"
+              />
+              <div className="questionDetail_answerList_box_reply_list_text">
+                <div className="questionDetail_answerList_box_reply_list_text_info">
+                  <p>잘익은 토마토</p>
+                  <p>| 2023.04.01</p>
+                </div>
+                <p className="questionDetail_answerList_box_reply_list_text_content">
+                  안녕하세요 답변이 맘에 들어요
+                </p>
+              </div>
+            </div>
+            <form className="questionDetail_answerList_box_reply_input">
+              <img src="/img/detail_profile_dog.svg" alt="프로필 이미지" />
+              <div className="questionDetail_answerList_box_reply_input_box">
+                <textarea
+                  className="questionDetail_answerList_box_reply_input_text"
+                  placeholder="하고싶은 말을 적어보세요!"
+                />
+                <input
+                  className="questionDetail_answerList_box_reply_input_submit"
+                  type="submit"
+                  value="작성"
+                />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
