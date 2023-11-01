@@ -21,9 +21,7 @@ export default function SubWay2() {
             />
           </Link>
         </div>
-        <div className="SubwaySteb1" />
-        <div className="SubwayDisplay1" />
-        <div className="SubwaySteb1">
+        <div className="SubwaySteb2">
           <div className="ques_navbar">
             <img
               src="/img/home_icon.svg"
@@ -52,19 +50,23 @@ export default function SubWay2() {
               <div className="start">
                 <img src="/img/Ellipse 238.svg" alt="막대기" />
                 <p className="start_title">시작하기</p>
-                <li className="start_content">주문하기를 눌러주세요. </li>
+                <li className="start_content">
+                  매장에서 먹는 경우 선택해주세요.{' '}
+                </li>
+                <li className="second_content">포장할 경우 선택해주세요. </li>
+                <li className="third_content">확인을 눌러주세요. </li>
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <li>메뉴 선택</li>
+                <p>메뉴 선택</p>
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <li>결제하기</li>
+                <p>결제하기</p>
               </div>
               <div className="other">
                 <img src="/img/Ellipse 239.svg" alt="막대기" />
-                <li>완료</li>
+                <p>완료</p>
               </div>
             </ul>
           </div>

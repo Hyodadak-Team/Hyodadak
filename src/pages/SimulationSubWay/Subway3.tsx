@@ -41,7 +41,56 @@ export default function SubWay3() {
             </div>
           </div>
         </div>
-        <div className="SubwaySteb1" />
+        <div className="SubwaySteb3">
+          <div className="ques_navbar">
+            <img
+              src="/img/home_icon.svg"
+              className="icon home"
+              alt="home-icon"
+            />
+            <Link to="/">
+              <li>처음으로</li>
+            </Link>
+            <div className="divide-line" />
+            <Link to="/simulation">
+              <li>체험하기</li>
+            </Link>
+            <div className="divide-line" />
+            <Link to="/simulation/subwayhome">
+              <li>서브웨이</li>
+            </Link>
+          </div>
+          <div className="subwaySteb">
+            <ul>
+              <img
+                className="stick"
+                src="/img/Rectangle 532.svg"
+                alt="막대기"
+              />
+              <div className="other">
+                <img src="/img/Ellipse 239.svg" alt="막대기" />
+                <p>시작하기</p>
+              </div>
+              <div className="start">
+                <img src="/img/Ellipse 238.svg" alt="막대기" />
+                <p className="start_title">메뉴 선택</p>
+                <li className="start_content">
+                  메뉴 종류를 선택해주세요. (업데이트 예정)
+                </li>
+                <li className="second_content">햄 메뉴를 선택해주세요.</li>
+                <div className="option" />
+              </div>
+              <div className="other">
+                <img src="/img/Ellipse 239.svg" alt="막대기" />
+                <p>결제하기</p>
+              </div>
+              <div className="other">
+                <img src="/img/Ellipse 239.svg" alt="막대기" />
+                <p>완료</p>
+              </div>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   )
