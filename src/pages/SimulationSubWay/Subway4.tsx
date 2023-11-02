@@ -1,11 +1,25 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function SubWay3() {
+export default function SubWay4() {
   return (
     <div className="inner">
       <div className="SubWaySimulation1">
-        <div className="SubwayDisplay3">
+        <div className="SubwayDisplay4">
+          <div className="opacity_dark" />
+          <div className="Subway_choose">
+            <div className="Subway_choose_title">
+              <img src="" alt="" />
+              <p>햄</p>
+            </div>
+            <div className="Subway_choose_check">
+              <div />
+              <div />
+            </div>
+            <div className="Subway_choose_ok">
+              <p>확인</p>
+            </div>
+          </div>
           <img
             className="Subway_menu"
             src="/img/image 66.svg"
@@ -16,13 +30,11 @@ export default function SubWay3() {
             src="/img/image menu.svg"
             alt="서브웨이 3"
           />
-          <Link to="/simulation/subway4">
-            <img
-              className="Subway_ham"
-              src="/img/image ham.svg"
-              alt="서브웨이 3"
-            />
-          </Link>
+          <img
+            className="Subway_ham"
+            src="/img/image ham.svg"
+            alt="서브웨이 3"
+          />
           <img
             className="Subway_num_menu"
             src="/img/Group 1303.svg"
@@ -41,7 +53,7 @@ export default function SubWay3() {
             </div>
           </div>
         </div>
-        <div className="SubwaySteb3">
+        <div className="SubwaySteb4">
           <div className="ques_navbar">
             <img
               src="/img/home_icon.svg"
@@ -75,21 +87,20 @@ export default function SubWay3() {
                 <img src="/img/Ellipse 238.svg" alt="막대기" />
                 <p className="start_title">메뉴 선택</p>
                 <li className="start_content">
-                  메뉴 종류를 선택해주세요. (업데이트 예정)
+                  기본조합으로 주문하는 경우, 선택하세요.
                 </li>
-                <li className="second_content">햄 메뉴를 선택해주세요.</li>
+                <li className="second_content">
+                  빵 길이와 빵을 데울지 선택하세요.
+                </li>
+                <li className="third_content">
+                  만약 샌드위치 속재료를 직접 고르는 경우, 선택하세요.
+                </li>
+                <li className="forth_content">마지막으로 확인을 눌러주세요.</li>
                 <div className="option">
                   <p className="option_title">부가 기능</p>
                   <ul>
-                    <li>홈버튼</li>
-                    <p>처음 화면으로 이동할 수 있습니다.</p>
-                    <li>이전 다음 버튼</li>
-                    <p>다른 종류의 메뉴로 넘어갈 수 있습니다.</p>
-                    <li>아래 화살표 버튼</li>
-                    <p>
-                      아래로 이동해 메뉴를 더 볼 수 있습니다. 화면을
-                      쓸어내리거나 올려서 이동할 수도 있습니다.
-                    </p>
+                    <li>닫기버튼</li>
+                    <p>현재 창이 닫힙니다.</p>
                   </ul>
                 </div>
                 <div className="option" />
