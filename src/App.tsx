@@ -46,7 +46,10 @@ function App() {
           <Route path="/main_res" element={<MainPageAnswerer />} />
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/quest_detail" element={<QuestionDetail />} />
+          <Route
+            path="/quest_detail"
+            element={<QuestionDetail user={user} />}
+          />
           <Route path="join" element={<Join />} />
           <Route path="/main_ques" element={<MainQues />} />
           <Route path="/questionBoard" element={<QuestionBoard />} />
