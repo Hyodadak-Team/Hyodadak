@@ -7,19 +7,25 @@ export default function SubWay2() {
   return (
     <div className="inner">
       <div className="SubWaySimulation1">
-        <div className="SubwayDisplay1">
+        <div className="SubwayDisplay2">
           <img
             className="Subway_menu"
             src="/img/image 66.svg"
             alt="서브웨이 1"
           />
-          <Link to="/simulation/subway3">
-            <img
-              className="Subway_kio1"
-              src="/img/image 96.svg"
-              alt="키오스크 칸"
-            />
-          </Link>
+          <Link to="/simulation/subway3" />
+          <div className="Subway_total">
+            <div className="Subway_total_box">
+              <p>초기화면</p>
+              <div className="Subway_total_count">
+                <p>주문수량 0</p>
+                <p>주문금액 0</p>
+              </div>
+            </div>
+            <div className="Subway_total_pay">
+              <img src="/img/image 67.svg" alt="주문결제" />
+            </div>
+          </div>
         </div>
         <div className="SubwaySteb2">
           <div className="ques_navbar">

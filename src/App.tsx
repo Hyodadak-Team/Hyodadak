@@ -19,6 +19,7 @@ import QuestionBoard from './pages/questionBoard'
 import SubWay2 from './pages/SimulationSubWay/Subway2'
 import SubWay3 from './pages/SimulationSubWay/Subway3'
 import MyResponse from './pages/myresponse'
+import SubWay4 from './pages/SimulationSubWay/Subway4'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -38,6 +39,7 @@ function App() {
           <Route path="/simulation/subwayhome" element={<SubWay1 />} />
           <Route path="/simulation/subway2" element={<SubWay2 />} />
           <Route path="/simulation/subway3" element={<SubWay3 />} />
+          <Route path="/simulation/subway4" element={<SubWay4 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/myres" element={<MyResponse />} />
