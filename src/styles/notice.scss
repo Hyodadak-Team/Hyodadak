@@ -119,6 +119,10 @@
   .content {
     font-family: 'KoPubWorld-Batang-Light';
   }
+  span {
+    display: block;
+    word-break: keep-all;
+  }
 }
 
 .article-control {
