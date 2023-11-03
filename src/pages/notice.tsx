@@ -6,8 +6,15 @@ import noticeList from '../constants/noticeList'
 import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
 import NoticeArticle from '../components/NoticeArticle'
+import Title from '../components_ques/Title'
+
+type TitleType = {
+  data: [string, string, string, string]
+}
 
 function Notice() {
+  const currentUrl: TitleType['data'] = ['공지사항', '/notice', '', '']
+
   // notice-menu
   const [activeMenu, setActiveMenu] = useState(1)
   const handleMenuClick = (menuId: number) => {
@@ -37,19 +44,7 @@ function Notice() {
         <p className="highlight">바로가기</p>
       </div>
       <div className="innerBox ques">
-        <div className="ques_navbar">
-          <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
-          <Link to="/">
-            <li>처음으로</li>
-          </Link>
-          <div className="divide-line" />
-          <Link to="/notice">
-            <li>공지사항</li>
-          </Link>
-        </div>
-        <div className="ques_title">
-          <p className="bold">공지사항</p>
-        </div>
+        <Title data={currentUrl} />
         <div className="notice_main">
           <div className="side_section">
             {noticeMenu.map((menu: INoticeMenu) => (
