@@ -9,12 +9,33 @@ export default function SubWay4() {
           <div className="opacity_dark" />
           <div className="Subway_choose">
             <div className="Subway_choose_title">
-              <img src="" alt="" />
+              <img src="/img/subway_logo.svg" alt="서브웨이 로고" />
               <p>햄</p>
             </div>
             <div className="Subway_choose_check">
-              <div />
-              <div />
+              <div className="simple_choose">
+                <div className="simple_choose_title">
+                  <p>터치 한번으로 간편 주문</p>
+                </div>
+                <div className="simple_choose_content">
+                  <input type="checkbox" id="check_btn1" />
+                  <label htmlFor="check_btn1">
+                    <span>15cm</span>
+                  </label>
+                  <input type="checkbox" id="check_btn2" />
+                  <label htmlFor="check_btn2">
+                    <span>30cm (+6,800)</span>
+                  </label>
+                  <input type="checkbox" id="check_btn3" />
+                  <label htmlFor="check_btn3">
+                    <span>토스팅</span>
+                  </label>
+                  <img src="/img/image check.svg" alt="선택 손가락" />
+                </div>
+              </div>
+              <div className="whole_choose">
+                <img src="/img/image 모든단계.svg" alt="모든단계선택" />
+              </div>
             </div>
             <div className="Subway_choose_ok">
               <p>확인</p>
@@ -23,21 +44,6 @@ export default function SubWay4() {
           <img
             className="Subway_menu"
             src="/img/image 66.svg"
-            alt="서브웨이 3"
-          />
-          <img
-            className="Subway_kind"
-            src="/img/image menu.svg"
-            alt="서브웨이 3"
-          />
-          <img
-            className="Subway_ham"
-            src="/img/image ham.svg"
-            alt="서브웨이 3"
-          />
-          <img
-            className="Subway_num_menu"
-            src="/img/Group 1303.svg"
             alt="서브웨이 3"
           />
           <div className="Subway_total">
