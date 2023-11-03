@@ -9,9 +9,7 @@ const formatContent = (filteredNotice: INotice): JSX.Element[] => {
     const formattedLine = line.replace(/\t/g, spaces)
     return (
       <React.Fragment key={index}>
-        <span style={{ whiteSpace: 'pre' }} className="article content">
-          {formattedLine}
-        </span>
+        <span className="article content">{formattedLine}</span>
         <br />
       </React.Fragment>
     )
