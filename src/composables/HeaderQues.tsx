@@ -39,7 +39,7 @@ export default function HeadeQues() {
           </li>
         </ul>
         <Link
-          to="/CreateQuestion"
+          to="/createQuestion"
           className="btn_header_main btn_header_main_on"
         >
           <img src="/img/ques_icon.svg" alt="" />
