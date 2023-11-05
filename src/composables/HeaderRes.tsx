@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import ResAlert from '../components_res/resAlert'
+import ResAlert from '../components_res/ResAlert'
 
 export default function HeadeRes() {
   const [notice, setNotice] = useState<boolean>(false)
