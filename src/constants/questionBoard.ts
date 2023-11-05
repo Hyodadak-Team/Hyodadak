@@ -7,6 +7,13 @@ export const questionTypes = [
   { id: 6, type: '서비스이용 예약' },
   { id: 7, type: '기타' },
 ]
+
+export const questionPoints = [
+  { id: 1, type: '조금', point: 100 },
+  { id: 2, type: '기본', point: 300 },
+  { id: 3, type: '많이', point: 500 },
+]
+
 export const questionList = [
   {
     id: 1,

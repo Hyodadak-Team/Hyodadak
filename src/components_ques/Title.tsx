@@ -28,7 +28,7 @@ export default function Title({ data }: TitleType) {
         )}
       </div>
       <div className="ques_title">
-        <p>{more}</p>
+        <p>{current}</p>
       </div>
     </>
   )
