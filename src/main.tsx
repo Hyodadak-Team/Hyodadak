@@ -13,6 +13,13 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
           colorPrimary: '#88dd45',
           colorPrimaryBorder: '#71b93a',
           colorPrimaryHover: '#71b93a',
+          fontFamily: 'KoPubWorld-Batang-Medium',
+          fontSize: 20,
+        },
+        components: {
+          Form: {
+            labelFontSize: 26,
+          },
         },
       }}
     >

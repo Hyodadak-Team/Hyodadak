@@ -1,0 +1,64 @@
+@import './palette.scss';
+
+.form_label {
+  margin-bottom: 50px;
+}
+.form_value {
+  padding: 24px 16px;
+}
+
+.form_notice {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  p {
+    color: #999999;
+    font-family: 'KoPubWorld-Batang-Light' !important;
+    font-size: 20px;
+  }
+}
+
+.form_selectBox {
+  height: 50px;
+  margin-top: 14px;
+}
+
+.form_image {
+  display: flex;
+  align-items: flex-start;
+}
+
+.button_section {
+  margin-top: 110px;
+  margin-bottom: 44px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+
+  .form_button {
+    .ant-btn {
+      border: 2px solid $main-color;
+      border-radius: 5px;
+      height: 58px;
+      width: 156px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        color: $main-color;
+      }
+    }
+
+    &.submit {
+      .ant-btn {
+        background-color: $main-color !important;
+
+        p {
+          color: white;
+        }
+      }
+    }
+  }
+}

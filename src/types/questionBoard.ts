@@ -10,3 +10,11 @@ export interface IQuestion {
   views: number
   isAdopted: boolean
 }
+
+export type TQuestionField = {
+  point?: number
+  type?: string
+  title?: string
+  photo?: string
+  content?: string
+}
