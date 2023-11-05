@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { questionList, questionTypes } from '../constants/questionBoard'
 import RoundBtn from '../composables/Button/RoundBtn'
@@ -6,6 +5,11 @@ import ToggleBtn from '../composables/Button/ToggleBtn'
 import Pagination from '../composables/Pagination'
 import setPagination from '../utils/pagination'
 import { IQuestion } from '../types/questionBoard'
+import Title from '../components_ques/Title'
+
+type TitleType = {
+  data: [string, string, string, string]
+}
 
 function QuestionBoard() {
   const itemsPerPage = 5
@@ -18,21 +22,12 @@ function QuestionBoard() {
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
+
+  const currentUrl: TitleType['data'] = ['질문하기', '/questionBoard', '', '']
+
   return (
     <div className="innerBox ques">
-      <div className="ques_navbar">
-        <img src="/img/home_icon.svg" className="icon home" alt="home-icon" />
-        <Link to="/">
-          <li>처음으로</li>
-        </Link>
-        <div className="divide-line" />
-        <Link to="/questionBoard">
-          <li>질문하기</li>
-        </Link>
-      </div>
-      <div className="ques_title">
-        <p className="bold">질문하기</p>
-      </div>
+      <Title data={currentUrl} />
       <div className="question_board">
         <div className="board-type">
           {questionTypes.map((ques) => (
