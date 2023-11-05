@@ -8,9 +8,7 @@ type MyPresponseProps = {
 }
 export default function MyResponseBox({ data }: MyPresponseProps) {
   const { title, type, writer, createTime, money, content } = data
-  const contentDate = new Date(createTime)
-
-  const difference: string = timeDifference(contentDate)
+  const difference: string = timeDifference(createTime)
   return (
     <Link to="detail주소바꾸자" className="question_box">
       <p className="pink_txt">
