@@ -74,5 +74,20 @@
     .blank {
       width: 50%;
     }
+    .btn_notice_box {
+      position: relative;
+      button {
+        all: unset;
+        .btn_notice {
+          cursor: pointer;
+        }
+      }
+
+      .alertBox {
+        &.hidden {
+          display: none;
+        }
+      }
+    }
   }
 }

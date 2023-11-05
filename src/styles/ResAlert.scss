@@ -1,0 +1,79 @@
+@import './reset.scss';
+@import './font.scss';
+@import './palette.scss';
+
+.resAlert {
+  width: 370px;
+  background-color: #ffffff;
+  box-shadow: 0px 3px 15px 0px rgba($color: #000000, $alpha: 0.2);
+  position: absolute;
+  left: -172.5px;
+  z-index: 999;
+
+  .resAlert_box {
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    width: 100%;
+    height: 125px;
+    border-top: none;
+    .resAlert_box_title {
+      font-family: $res-font-black;
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    .resAlert_box_detail {
+      font-size: 14px;
+      width: 240px;
+    }
+    .resAlert_box_footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      height: 30px;
+      .resAlert_box_footer_time {
+        font-size: 12px;
+        color: #abb5be;
+      }
+      .resAlert_box_footer_btn {
+        display: flex;
+        border: 1px solid $main-color;
+        border-radius: 5px;
+
+        p {
+          cursor: pointer;
+          width: 60px;
+          height: 30px;
+          font-family: $res-font-black;
+          font-size: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .resAlert_box_footer_btn_refuse {
+          border-right: none;
+          color: $main-color;
+        }
+        .resAlert_box_footer_btn_accept {
+          color: #ffffff;
+          background-color: $main-color;
+        }
+      }
+      .resAlert_box_footer_btn-done {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 30px;
+        background-color: #bbbbbb;
+        color: #ffffff;
+        border-radius: 5px;
+        font-family: $res-font-black;
+        font-size: 16px;
+      }
+    }
+  }
+  .resAlert_box:first-child {
+    border-top: 1px solid #dee2e6;
+  }
+}
