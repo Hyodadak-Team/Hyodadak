@@ -631,6 +631,85 @@
     }
   }
 
+  .SubwayDisplay13 {
+    position: relative;
+    width: 500px;
+
+    p {
+      font-family: $res-font-default;
+    }
+
+    .Subway_menu {
+      position: absolute;
+      width: 500px;
+    }
+
+    .Subway_total {
+      position: absolute;
+      background-color: #000000;
+      height: 310px;
+      width: 500px;
+      bottom: 24px;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        align-items: center;
+        padding: 0 16px;
+        justify-content: space-between;
+
+        p {
+          margin-left: 10px;
+          color: white;
+        }
+
+        .Subway_total_count {
+          display: flex;
+          gap: 12px;
+
+          .counts_section,
+          .price_section {
+            display: flex;
+            align-items: center;
+
+            .counts,
+            .price {
+              color: #feeb00;
+              font-size: 25px;
+            }
+          }
+        }
+      }
+      .Subway_total_menus {
+        background: skyblue;
+        width: 100%;
+        border: 1px solid red;
+        position: absolute;
+
+        top: 54px;
+        p {
+          color: white;
+        }
+
+        div {
+          display: flex;
+        }
+      }
+      .Subway_total_pay {
+        img {
+          position: absolute;
+          height: calc(310px - 52px);
+          right: 0;
+          bottom: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   .SubwaySteb1 {
     position: relative;
     width: 500px;
@@ -1022,6 +1101,89 @@
   }
 
   .SubwaySteb12 {
+    position: relative;
+    width: 500px;
+    background-color: #ffffff;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+    .ques_navbar {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .subwaySteb {
+      padding-top: 50px;
+      ul {
+        position: relative;
+        font-family: $res-font-default;
+        color: #999999;
+
+        img {
+          margin-left: 30px;
+        }
+        .stick {
+          position: absolute;
+          top: 6px;
+          left: 10px;
+          height: 690px;
+        }
+
+        .start {
+          position: relative;
+          display: flex;
+          align-items: first baseline;
+          height: 620px;
+
+          .start_title {
+            margin-left: 20px;
+            font-size: 26px;
+            font-family: $ques-font-bold;
+            color: black;
+            list-style: none;
+          }
+
+          li {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+          }
+
+          .start_content {
+            left: 100px;
+            top: 60px;
+          }
+          .second_content {
+            left: 100px;
+            top: 110px;
+          }
+          .third_content {
+            left: 100px;
+            top: 160px;
+          }
+        }
+        .other {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          margin-left: 5px;
+
+          img {
+            z-index: 2;
+          }
+
+          p {
+            font-family: $res-font-default;
+            list-style: none;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .SubwaySteb13 {
     position: relative;
     width: 500px;
     background-color: #ffffff;
