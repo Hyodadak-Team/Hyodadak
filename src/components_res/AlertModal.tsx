@@ -1,8 +1,8 @@
-import '../styles/ResAlert.scss'
+import '../styles/AlertModal.scss'
 
 export default function ResAlert() {
   return (
-    <div className="resAlert res ">
+    <div className="resAlert">
       <div className="resAlert_box">
         <p className="resAlert_box_title">거북이님의 파트너 요청이 왔습니다</p>
         <p className="resAlert_box_detail">

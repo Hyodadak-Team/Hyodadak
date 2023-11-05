@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import ResAlert from '../components_res/ResAlert'
+import AlertModal from '../components_res/AlertModal'
 
 export default function HeadeRes() {
   const [notice, setNotice] = useState<boolean>(false)
@@ -36,7 +36,7 @@ export default function HeadeRes() {
                 />
               </button>
               <div ref={noticeRef} className="alertBox hidden">
-                <ResAlert />
+                <AlertModal />
               </div>
             </div>
           </li>

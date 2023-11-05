@@ -59,6 +59,31 @@
     .blank {
       width: 17%;
     }
+
+    .btn_notice_box {
+      position: relative;
+      button {
+        all: unset;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        img {
+          margin-right: 7px;
+        }
+      }
+      button:hover {
+        & p {
+          color: $main-color;
+        }
+      }
+
+      .alertBox {
+        &.hidden {
+          display: none;
+        }
+      }
+    }
+
     .btn_header_main {
       font-size: 18px;
       img {
