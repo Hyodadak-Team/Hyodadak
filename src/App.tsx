@@ -23,16 +23,20 @@ import SubWay4 from './pages/SimulationSubWay/Subway4'
 import CreateQuestion from './pages/createQuestion'
 import SubWay12 from './pages/SimulationSubWay/Subway12'
 import Subway13 from './pages/SimulationSubWay/Subway13'
+import Chat from './pages/chat'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
+  const [chat, setChat] = useState<boolean>(true)
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
     setUser(false)
+    setChat(true)
   }, [])
   return (
     <div className="App">
       {user ? <HeaderRes /> : <HeaderQues />}
+      {chat && <Chat />}
       <Routes>
         <Route>
           <Route path="/" element={<Index />} />
