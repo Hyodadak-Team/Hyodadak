@@ -400,6 +400,237 @@
     }
   }
 
+  .SubwayDisplay12 {
+    position: relative;
+    width: 500px;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+    background-color: #007218;
+
+    p {
+      font-family: $res-font-default;
+    }
+
+    // line
+    .green_line {
+      height: 4px;
+      background-color: #128b2e;
+      margin: 12px 0;
+
+      &.bold {
+        height: 2px;
+      }
+    }
+
+    .yellow_line_light {
+      height: 2px;
+      background-color: #e2d39c;
+      margin: 12px 0;
+    }
+
+    // btn
+    .count_btn {
+      border: 2px solid #128b2e;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      cursor: pointer;
+
+      p {
+        color: #ffc20e;
+        font-size: 26px;
+      }
+    }
+
+    .Subway_menu {
+      position: absolute;
+      width: 500px;
+    }
+
+    .opacity_dark {
+      position: absolute;
+      z-index: 3;
+      opacity: 0.5;
+      background-color: #202020;
+      width: 500px;
+      height: calc(100vh - 60px);
+    }
+
+    .Subway_choose {
+      background-color: #ffffff;
+      z-index: 4;
+      position: inherit;
+      left: 20px;
+      top: 150px;
+      width: 460px;
+
+      .Subway_choose_title {
+        background-color: #009224;
+        margin-bottom: 15px;
+        height: 70px;
+        img {
+          background-color: #009224;
+          float: left;
+          margin: 15px 30px;
+        }
+        p {
+          padding-top: 18px;
+          font-size: 22px;
+          color: white;
+          font-family: $res-font-bold;
+        }
+      }
+      .Subway_choose_check {
+        width: 420px;
+        margin-bottom: 15px;
+        margin: 0 auto;
+
+        .explanation {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 90px;
+        }
+
+        .Subway_choose_menu {
+          display: flex;
+          gap: 18px;
+          margin: 7px 0;
+
+          p {
+            font-family: 'Pretendard-Light';
+          }
+
+          .Subway_choose_menu_kind {
+            width: 150px;
+            height: 35px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              color: white;
+            }
+
+            &.default {
+              background-color: #128b2e;
+            }
+            &.option {
+              background-color: #99d303;
+            }
+            &.request {
+              margin-top: 20px;
+              background-color: #c2c2c2;
+            }
+          }
+          .Subway_choose_menu_detail {
+            align-self: center;
+            width: 100%;
+            word-break: keep-all;
+          }
+        }
+
+        .Subway_calculate {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+
+          .Subway_calculate_counts {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+          }
+          .Subway_calculate_amount {
+            display: flex;
+            gap: 14px;
+
+            p {
+              align-self: center;
+            }
+
+            .total_amount {
+              color: #128b2e;
+              font-size: 32px;
+            }
+          }
+        }
+      }
+
+      .Subway_choose_button {
+        display: flex;
+        .Subway_choose {
+          height: 70px;
+          cursor: pointer;
+
+          p {
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+            color: black;
+            font-family: $res-font-bold;
+          }
+
+          &.ok {
+            background-color: #ffc20e;
+            border: 4px solid #ff5628;
+          }
+
+          &.cancel {
+            background-color: #a7a7a7;
+          }
+        }
+      }
+    }
+
+    .Subway_menu {
+      position: absolute;
+      width: 500px;
+    }
+    .Subway_total {
+      position: absolute;
+      background-color: #000000;
+      height: 310px;
+      width: 500px;
+      bottom: 0;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-left: 10px;
+          color: yellow;
+        }
+
+        .Subway_total_count {
+          margin-left: 220px;
+          display: flex;
+          p {
+            margin-left: 25px;
+          }
+        }
+      }
+      .Subway_total_pay {
+        height: calc(310px - 50px);
+        img {
+          position: absolute;
+          height: calc(310px - 52px);
+          right: 0;
+          bottom: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
   .SubwaySteb1 {
     position: relative;
     width: 500px;
@@ -768,6 +999,89 @@
                 margin-left: 20px;
               }
             }
+          }
+        }
+        .other {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          margin-left: 5px;
+
+          img {
+            z-index: 2;
+          }
+
+          p {
+            font-family: $res-font-default;
+            list-style: none;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+
+  .SubwaySteb12 {
+    position: relative;
+    width: 500px;
+    background-color: #ffffff;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+    .ques_navbar {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .subwaySteb {
+      padding-top: 50px;
+      ul {
+        position: relative;
+        font-family: $res-font-default;
+        color: #999999;
+
+        img {
+          margin-left: 30px;
+        }
+        .stick {
+          position: absolute;
+          top: 6px;
+          left: 10px;
+          height: 690px;
+        }
+
+        .start {
+          position: relative;
+          display: flex;
+          align-items: first baseline;
+          height: 620px;
+
+          .start_title {
+            margin-left: 20px;
+            font-size: 26px;
+            font-family: $ques-font-bold;
+            color: black;
+            list-style: none;
+          }
+
+          li {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+          }
+
+          .start_content {
+            left: 100px;
+            top: 60px;
+          }
+          .second_content {
+            left: 100px;
+            top: 110px;
+          }
+          .third_content {
+            left: 100px;
+            top: 160px;
           }
         }
         .other {
