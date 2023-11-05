@@ -20,6 +20,7 @@ import SubWay2 from './pages/SimulationSubWay/Subway2'
 import SubWay3 from './pages/SimulationSubWay/Subway3'
 import MyResponse from './pages/myresponse'
 import SubWay4 from './pages/SimulationSubWay/Subway4'
+import CreateQuestion from './pages/createQuestion'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -53,6 +54,7 @@ function App() {
           <Route path="join" element={<Join />} />
           <Route path="/main_ques" element={<MainQues />} />
           <Route path="/questionBoard" element={<QuestionBoard />} />
+          <Route path="/createQuestion" element={<CreateQuestion />} />
         </Route>
       </Routes>
     </div>
