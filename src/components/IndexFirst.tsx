@@ -1,5 +1,18 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from 'swiper/modules'
+import { Swiper, SwiperSlide } from 'swiper/react'
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination'
+import 'swiper/css/scrollbar'
+import 'swiper/css/autoplay'
 
 export default function IndexFirst() {
   const navigate = useNavigate()
@@ -11,7 +24,7 @@ export default function IndexFirst() {
   return (
     <div className="all">
       <div className="main_img">
-        <img src="/img/index.png" alt="indexImg" />
+        <img src="/img/index.svg" alt="indexImg" />
       </div>
       <div className="info_area">
         <div className="info_container">
@@ -30,12 +43,38 @@ export default function IndexFirst() {
           </div>
         </div>
         <div className="button_container">
-          <button type="button" onClick={navigateToLogin}>
+          <button
+            type="button"
+            className="login-page"
+            onClick={navigateToLogin}
+          >
             로그인하고 서비스 이용하기
           </button>
         </div>
         <div className="img_container">
-          <img src="/img/phone.png" alt="phoneImg" />
+          <img src="/img/phone_cut.svg" alt="phoneImg" />
+          <Swiper
+            modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+            className="banner"
+            spaceBetween={50}
+            slidesPerView={1}
+            navigation
+            pagination={{ clickable: true }}
+            autoplay={{ delay: 5000 }}
+          >
+            <SwiperSlide>
+              <img src="/img/info1.svg" alt="info1" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/img/info2.svg" alt="info2" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/img/info3.svg" alt="info3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="/img/info4.svg" alt="info4" />
+            </SwiperSlide>
+          </Swiper>
         </div>
       </div>
     </div>

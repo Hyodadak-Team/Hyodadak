@@ -1,11 +1,12 @@
 @import './palette.scss';
 
-.all {
-  height: 1080px;
 
+.all {
+  height: 900px;
 
   display: flex;
   .main_img {
+    width: 35%;
     overflow: hidden;
 
     img {
@@ -13,12 +14,14 @@
     }
   }
   .info_area {
-    padding-top: 100px;
-    padding-left: 100px;
+    width: 65%;
+    padding-top: 50px;
+    padding-left: 50px;
     overflow: hidden;
   
     .info_container {
       text-align: left;
+
       .first_info {
         color: $main-color;
         font-size: 25px;
@@ -42,7 +45,10 @@
     .button_container {
       padding-top: 20px;
       text-align: left;
+      padding-bottom: 120px;
+      //cursor: pointer;
       button {
+        cursor: pointer;
         width: 295px;
         height: 50px;
         background-color: $main-color;
@@ -52,12 +58,37 @@
         font-family: $ques-font-bold;
         border: white;
       }
+      .login-page{
+        cursor: pointer;
+      }
     }
     .img_container {
-      padding-top: 200px;
+      left: -150px;
+      transform: rotate(25deg);
+      //padding-top: 150px;
       overflow: hidden;
+      position: relative;
       img {
         object-fit: cover;
+        z-index: 1;
+        width: 400px;
+      }
+      .swiper{
+        top: -700px;
+        width: 450px;
+        height: 500px;
+        left: -10px;
+        z-index: 10;
+        object-fit: cover;
+        .swiper-slide{
+          width: 450px;
+        }
+        .swiper-button-prev{
+          display: none;
+        }
+        .swiper-button-next{
+          display: none;
+        }
       }
     }
   }
