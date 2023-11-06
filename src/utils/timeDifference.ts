@@ -1,4 +1,5 @@
-const timeDifference = (previous: Date): string => {
+const timeDifference = (prev: string): string => {
+  const previous = new Date(prev)
   const current = new Date()
   const millisecondsPerMinute: number = 60 * 1000
   const millisecondsPerHour: number = millisecondsPerMinute * 60

@@ -31,15 +31,38 @@ export default function SubWay4() {
                     <span>토스팅</span>
                   </label>
                   <img src="/img/image check.svg" alt="선택 손가락" />
+                  <div className="basic">
+                    <p>기본조합</p>
+                    <div className="basic_option">
+                      <div className="bread">
+                        <p>빵</p>
+                        <p>화이트 토스팅</p>
+                      </div>
+                      <div className="cheeze">
+                        <p>치즈</p>
+                        <p>아메리카 치즈</p>
+                      </div>
+                      <div className="vegi">
+                        <p>야채</p>
+                        <p>양상추 토마토 오이 피망 양파 피클 올리브 할라피뇨</p>
+                      </div>
+                      <div className="souce">
+                        <p>소스/시즈닝</p>
+                        <p>마요네즈 사우스 웨스트 치폴레</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="whole_choose">
                 <img src="/img/image 모든단계.svg" alt="모든단계선택" />
               </div>
             </div>
-            <div className="Subway_choose_ok">
-              <p>확인</p>
-            </div>
+            <Link to="/simulation/subway5">
+              <div className="Subway_choose_ok">
+                <p>확인</p>
+              </div>
+            </Link>
           </div>
           <img
             className="Subway_menu"

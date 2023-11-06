@@ -42,33 +42,83 @@
     height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
     background-color: #007218;
 
-    .Subway_kio1 {
+    .opacity_dark {
       position: absolute;
-      bottom: 63px;
+      z-index: 3;
+      opacity: 0.5;
+      background-color: #202020;
       width: 500px;
-      cursor: pointer;
-      border: 6px solid $main-color;
+      height: calc(100vh - 60px);
     }
+
     .Subway_menu {
       position: absolute;
       width: 500px;
     }
-    .Subway_kind {
-      position: absolute;
-      width: 500px;
-      top: 27px;
-      border: 6px solid $main-color;
-    }
-    .Subway_ham {
-      position: absolute;
-      top: 110px;
-      left: 60px;
-      cursor: pointer;
-    }
-    .Subway_num_menu {
-      position: absolute;
-      left: -40px;
-      top: 20px;
+    .Subway_choose {
+      background-color: #ffffff;
+      z-index: 4;
+      position: inherit;
+      left: 20px;
+      top: 270px;
+      width: 460px;
+
+      .Subway_choose_title {
+        background-color: #009224;
+        margin-bottom: 15px;
+        height: 70px;
+        img {
+          background-color: #009224;
+          float: left;
+          margin: 15px 30px;
+        }
+        p {
+          padding-top: 18px;
+          font-size: 22px;
+          color: white;
+          font-family: $res-font-bold;
+        }
+      }
+      .Subway_choose_check {
+        width: 420px;
+        margin-bottom: 15px;
+        margin: 0 auto;
+
+        .Subway_choose_takeout {
+          display: flex;
+          justify-content: space-between;
+          gap: 18px;
+          margin: 7px 0;
+
+          p {
+            font-family: 'Pretendard-Light';
+          }
+          img {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .Subway_choose_button {
+        margin-left: -20px;
+        .Subway_choose {
+          text-align: start;
+          height: 70px;
+          cursor: pointer;
+
+          p {
+            text-align: center;
+            padding: 20px;
+            font-size: 22px;
+            color: black;
+            font-family: $res-font-bold;
+          }
+
+          &.ok {
+            background-color: #ffc20e;
+          }
+        }
+      }
     }
     .Subway_total {
       position: absolute;
@@ -244,7 +294,9 @@
 
               + label {
                 cursor: pointer;
+                margin: auto 30px;
                 span {
+                  font-size: 20px;
                   vertical-align: middle;
                   padding-left: 5px;
                 }
@@ -274,6 +326,7 @@
               + label {
                 cursor: pointer;
                 span {
+                  font-size: 20px;
                   vertical-align: middle;
                   padding-left: 5px;
                 }
@@ -303,6 +356,7 @@
               + label {
                 cursor: pointer;
                 span {
+                  font-size: 20px;
                   vertical-align: middle;
                   padding-left: 5px;
                 }
@@ -395,6 +449,367 @@
           right: 0;
           bottom: 0;
           cursor: pointer;
+        }
+      }
+    }
+  }
+  .SubwayDisplay5 {
+    position: relative;
+    width: 500px;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+    background-color: #d9d9d9;
+
+    .Subway_choose_bread_header {
+      position: absolute;
+      width: 500px;
+      height: 60px;
+      background-color: #009224;
+      z-index: 2;
+
+      img {
+        background-color: #009224;
+        margin: 15px 30px;
+        float: left;
+      }
+      .Subway_choose_bread_header_first {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: white;
+      }
+      .Subway_choose_bread_header_second {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: #c5fd3d;
+      }
+    }
+    .white_btn1 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      top: 240px;
+      left: 46px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn2 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      top: 240px;
+      left: 258px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn3 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      top: 240px;
+      left: 147px;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn4 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      top: 240px;
+      left: 359px;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+
+    .Subway_choose_bread {
+      position: absolute;
+      width: 500px;
+    }
+    .Subway_whitebread {
+      position: absolute;
+      top: 368px;
+      left: 120px;
+      cursor: pointer;
+    }
+
+    .Subway_pamasanbread {
+      position: absolute;
+      top: 365px;
+      left: 260px;
+      cursor: pointer;
+    }
+
+    .Subway_honeybread {
+      position: absolute;
+      top: 520px;
+      left: 260px;
+      cursor: pointer;
+    }
+
+    .Subway_wheatbread {
+      position: absolute;
+      top: 520px;
+      left: 130px;
+      cursor: pointer;
+    }
+
+    .Subway_total {
+      position: absolute;
+      background-color: #d9d9d9;
+      height: 200px;
+      width: 500px;
+      bottom: 0;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          margin-left: 10px;
+          color: yellow;
+        }
+        img {
+          cursor: pointer;
+        }
+      }
+      .Subway_choose {
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        .Subway_choose_menu {
+          display: flex;
+          gap: 18px;
+          margin: 7px 0;
+
+          p {
+            font-family: 'Pretendard-Light';
+          }
+
+          .Subway_choose_menu_kind {
+            width: 80px;
+            height: 35px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              color: white;
+              font-size: 16px;
+            }
+
+            &.default {
+              background-color: #2d2f37;
+            }
+            &.option {
+              background-color: #2d2f37;
+            }
+            &.request {
+              margin-top: 20px;
+              background-color: #c2c2c2;
+            }
+          }
+          .Subway_choose_menu_detail {
+            align-self: center;
+            width: 100%;
+            word-break: keep-all;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            div {
+              text-align: center;
+              margin-right: 5px;
+              width: 80px;
+              height: 35px;
+              border: 2px solid #a7a7a7;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .SubwayDisplay6 {
+    position: relative;
+    width: 500px;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+    background-color: #d9d9d9;
+
+    .Subway_choose_bread_header {
+      position: absolute;
+      width: 500px;
+      height: 60px;
+      background-color: #009224;
+      z-index: 2;
+
+      img {
+        margin: 15px 30px;
+        float: left;
+      }
+      .Subway_choose_bread_header_first {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: white;
+      }
+      .Subway_choose_bread_header_second {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: #c5fd3d;
+      }
+    }
+
+    .Subway_choose_cheeze {
+      position: absolute;
+      width: 500px;
+    }
+    .Subway_sured {
+      height: 110px;
+      position: absolute;
+      top: 280px;
+      left: 80px;
+      cursor: pointer;
+    }
+
+    .Subway_american {
+      height: 110px;
+      position: absolute;
+      top: 280px;
+      left: 206px;
+      cursor: pointer;
+    }
+
+    .Subway_mozza {
+      height: 110px;
+      position: absolute;
+      top: 280px;
+      left: 330px;
+      cursor: pointer;
+    }
+
+    .Subway_notchoose {
+      height: 102px;
+      position: absolute;
+      top: 440px;
+      left: 87px;
+      cursor: pointer;
+    }
+
+    .Subway_total {
+      position: absolute;
+      background-color: #d9d9d9;
+      height: 300px;
+      width: 500px;
+      bottom: 0;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          margin-left: 10px;
+          color: yellow;
+        }
+        img {
+          cursor: pointer;
+        }
+      }
+      .Subway_choose {
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        .Subway_choose_menu {
+          display: flex;
+          gap: 18px;
+          margin: 7px 0;
+
+          p {
+            font-family: 'Pretendard-Light';
+          }
+
+          .Subway_choose_menu_kind {
+            width: 80px;
+            height: 35px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              color: white;
+              font-size: 16px;
+            }
+
+            &.default {
+              background-color: #2d2f37;
+            }
+            &.option {
+              background-color: #2d2f37;
+            }
+            &.request {
+              margin-top: 20px;
+              background-color: #c2c2c2;
+            }
+          }
+          .Subway_choose_menu_detail {
+            align-self: center;
+            width: 100%;
+            word-break: keep-all;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            div {
+              text-align: center;
+              padding: 5px;
+              margin-right: 5px;
+              height: 35px;
+              border: 2px solid #a7a7a7;
+              border-radius: 3px;
+            }
+          }
         }
       }
     }
@@ -1076,6 +1491,225 @@
                 width: 350px;
                 color: #555555;
                 margin-left: 20px;
+              }
+            }
+          }
+        }
+        .other {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          margin-left: 5px;
+
+          img {
+            z-index: 2;
+          }
+
+          p {
+            font-family: $res-font-default;
+            list-style: none;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+  .SubwaySteb5 {
+    position: relative;
+    width: 500px;
+    background-color: #ffffff;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+    .ques_navbar {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .subwaySteb {
+      padding-top: 50px;
+      ul {
+        position: relative;
+        font-family: $res-font-default;
+        color: #999999;
+
+        img {
+          margin-left: 30px;
+        }
+        .stick {
+          position: absolute;
+          top: 6px;
+          left: 10px;
+          height: 690px;
+        }
+
+        .start {
+          position: relative;
+          display: flex;
+          align-items: first baseline;
+          height: 620px;
+
+          .start_title {
+            margin-left: 20px;
+            font-size: 26px;
+            font-family: $ques-font-bold;
+            color: black;
+            list-style: none;
+          }
+
+          .start_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 60px;
+          }
+          .second_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 110px;
+          }
+          .third_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 160px;
+          }
+          .option {
+            position: absolute;
+            top: 280px;
+            left: 70px;
+
+            .option_title {
+              font-size: 20px;
+              font-family: $ques-font-default;
+              color: #000000;
+              margin-bottom: 10px;
+            }
+            ul {
+              li {
+                list-style: inside;
+                color: #555555;
+                margin-top: 15px;
+              }
+              p {
+                width: 350px;
+                color: #555555;
+                margin-left: 20px;
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+        .other {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          margin-left: 5px;
+
+          img {
+            z-index: 2;
+          }
+
+          p {
+            font-family: $res-font-default;
+            list-style: none;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+  .SubwaySteb6 {
+    position: relative;
+    width: 500px;
+    background-color: #ffffff;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+    .ques_navbar {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .subwaySteb {
+      padding-top: 50px;
+      ul {
+        position: relative;
+        font-family: $res-font-default;
+        color: #999999;
+
+        img {
+          margin-left: 30px;
+        }
+        .stick {
+          position: absolute;
+          top: 6px;
+          left: 10px;
+          height: 690px;
+        }
+
+        .start {
+          position: relative;
+          display: flex;
+          align-items: first baseline;
+          height: 620px;
+
+          .start_title {
+            margin-left: 20px;
+            font-size: 26px;
+            font-family: $ques-font-bold;
+            color: black;
+            list-style: none;
+          }
+
+          .start_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 60px;
+          }
+          .second_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 110px;
+          }
+          .option {
+            position: absolute;
+            top: 400px;
+            left: 70px;
+
+            .option_title {
+              font-size: 20px;
+              font-family: $ques-font-default;
+              color: #000000;
+              margin-bottom: 10px;
+            }
+            ul {
+              li {
+                list-style: inside;
+                color: #555555;
+                margin-top: 15px;
+              }
+              p {
+                width: 350px;
+                color: #555555;
+                margin-left: 20px;
+                margin-top: 5px;
               }
             }
           }

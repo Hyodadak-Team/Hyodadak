@@ -1,15 +1,35 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/QuestionDetail.scss'
+import PartnerRequest from '../components_ques/PartnerRequest'
 
 interface QuestionDetailProps {
   user: boolean
 }
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const { user } = props
+  const partnerReqBox = useRef<HTMLDivElement>(null)
+  const partnerReqBoxClick = () => {
+    // if (
+    //   partnerReqBox.current?.classList.value ===
+    //   'questionDetail_answerList_box_profile_partnerRequest'
+    // ) {
+    //   partnerReqBox.current.classList.value =
+    //     'questionDetail_answerList_box_profile_partnerRequest hide'
+    // }
+    // 추후 Redux 상태관리를 통해 모달창 열고 닫기
+    if (
+      partnerReqBox.current?.classList.value ===
+      'questionDetail_answerList_box_profile_partnerRequest hide'
+    ) {
+      partnerReqBox.current.classList.value =
+        'questionDetail_answerList_box_profile_partnerRequest'
+    }
+  }
   return (
     <div>
       {user ? (
-        // user가 true인 경우 -> 답변자
+        // user가 true인 경우 -> res
         <div className="innerBox res">
           <div className="questionDetail_header">
             <div className="questionDetail_header_property">
@@ -53,6 +73,26 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
               />
               <p className="questionDetail_detail_property_answerCount">3</p>
             </div>
+          </div>
+          <div className="questionDetail_answer">
+            <form>
+              <textarea
+                className="questionDetail_answer_input"
+                placeholder="답변을 상세히 기입해주세요"
+              />
+              <div className="questionDetail_answer_btn">
+                <img
+                  className="questionDetail_answer_btn_img"
+                  src="/img/detail_img_icon.svg"
+                  alt="이미지 업로드"
+                />
+                <input
+                  className="questionDetail_answer_btn_submit"
+                  type="submit"
+                  value="답변하기"
+                />
+              </div>
+            </form>
           </div>
           <div className="questionDetail_answerList">
             <div className="questionDetail_answerList_box">
@@ -154,7 +194,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
           </div>
         </div>
       ) : (
-        // user가 false인 경우 -> 질문자
+        // user가 false인 경우 -> ques
         <div className="innerBox ques">
           <div className="questionDetail_header">
             <div className="ques_navbar">
@@ -253,9 +293,17 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 </div>
                 <div className="questionDetail_answerList_box_profile_right">
                   {/* 사용자가 게시글의 주인인 경우 조건 추가 해서 렌더링 */}
-                  <p className="questionDetail_answerList_box_profile_right_request">
-                    파트너 요청하기
-                  </p>
+                  <button type="button" onClick={partnerReqBoxClick}>
+                    <p className="questionDetail_answerList_box_profile_right_request">
+                      파트너 요청하기
+                    </p>
+                  </button>
+                  <div
+                    ref={partnerReqBox}
+                    className="questionDetail_answerList_box_profile_partnerRequest hide"
+                  >
+                    <PartnerRequest />
+                  </div>
                   <p className="questionDetail_answerList_box_profile_right_select">
                     채택하기
                   </p>
