@@ -1,14 +1,12 @@
 @import './reset.scss';
 @import './font.scss';
 @import './palette.scss';
-.innerBox {
-  .partnerAnswer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 370px;
-    background-color: #f8f8f8;
 
+.partnerAnswer {
+  background-color: #f8f8f8;
+  height: 370px;
+  padding: 40px 0px;
+  .partnerAnswer_inner {
     .partnerAnswer_text {
       height: 26px;
       display: flex;
@@ -95,6 +93,8 @@
       }
     }
   }
+}
+.innerBox {
   .search {
     display: flex;
     justify-content: space-between;
