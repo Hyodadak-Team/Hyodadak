@@ -814,6 +814,185 @@
       }
     }
   }
+  .SubwayDisplay7 {
+    position: relative;
+    width: 500px;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+    background-color: #d9d9d9;
+
+    .Subway_choose_bread_header {
+      position: absolute;
+      width: 500px;
+      height: 60px;
+      background-color: #009224;
+      z-index: 2;
+
+      img {
+        margin: 15px 30px;
+        float: left;
+      }
+      .Subway_choose_bread_header_first {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: white;
+      }
+      .Subway_choose_bread_header_second {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: #c5fd3d;
+      }
+    }
+
+    .Subway_choose_begi {
+      position: absolute;
+      width: 500px;
+    }
+
+    .Subway_choose_allbegi {
+      position: absolute;
+      top: 213px;
+      left: 230px;
+      border: 4px solid $main-color;
+      width: 230px;
+      height: 40px;
+      display: flex;
+      justify-content: space-around;
+
+      .Subway_allbegi {
+        width: 106px;
+        cursor: pointer;
+      }
+      .Subway_notallbegi {
+        width: 106px;
+        cursor: pointer;
+      }
+    }
+    .Subway_Lactuca {
+      height: 110px;
+      position: absolute;
+      top: 295px;
+      left: 80px;
+      cursor: pointer;
+    }
+
+    .Subway_cucumber {
+      height: 110px;
+      position: absolute;
+      top: 295px;
+      left: 330px;
+      cursor: pointer;
+    }
+
+    .Subway_tomato {
+      height: 110px;
+      position: absolute;
+      top: 295px;
+      left: 200px;
+      cursor: pointer;
+    }
+
+    .Subway_pimang {
+      width: 98px;
+      height: 112px;
+      position: absolute;
+      top: 448px;
+      left: 80px;
+      cursor: pointer;
+    }
+    .Subway_yangpa {
+      width: 98px;
+      height: 112px;
+      position: absolute;
+      top: 447px;
+      left: 202px;
+      cursor: pointer;
+    }
+
+    .Subway_total {
+      position: absolute;
+      background-color: #d9d9d9;
+      height: 280px;
+      width: 500px;
+      bottom: 0;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+          margin-left: 10px;
+          color: yellow;
+        }
+        img {
+          cursor: pointer;
+        }
+      }
+      .Subway_choose {
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        .Subway_choose_menu {
+          display: flex;
+          gap: 18px;
+          margin: 7px 0;
+
+          p {
+            font-family: 'Pretendard-Light';
+          }
+
+          .Subway_choose_menu_kind {
+            width: 80px;
+            height: 35px;
+            border-radius: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+              color: white;
+              font-size: 16px;
+            }
+
+            &.default {
+              background-color: #2d2f37;
+            }
+            &.option {
+              background-color: #2d2f37;
+            }
+            &.request {
+              margin-top: 20px;
+              background-color: #c2c2c2;
+            }
+          }
+          .Subway_choose_menu_detail {
+            align-self: center;
+            width: 100%;
+            word-break: keep-all;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .Subway_choose_menu_detail_begi {
+              font-size: 14px;
+            }
+            div {
+              text-align: center;
+              padding: 5px;
+              margin-right: 5px;
+              height: 35px;
+              border: 2px solid #a7a7a7;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
 
   .SubwayDisplay12 {
     position: relative;
@@ -1691,6 +1870,121 @@
           .option {
             position: absolute;
             top: 400px;
+            left: 70px;
+
+            .option_title {
+              font-size: 20px;
+              font-family: $ques-font-default;
+              color: #000000;
+              margin-bottom: 10px;
+            }
+            ul {
+              li {
+                list-style: inside;
+                color: #555555;
+                margin-top: 15px;
+              }
+              p {
+                width: 350px;
+                color: #555555;
+                margin-left: 20px;
+                margin-top: 5px;
+              }
+            }
+          }
+        }
+        .other {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+          margin-left: 5px;
+
+          img {
+            z-index: 2;
+          }
+
+          p {
+            font-family: $res-font-default;
+            list-style: none;
+            margin-left: 20px;
+          }
+        }
+      }
+    }
+  }
+  .SubwaySteb7 {
+    position: relative;
+    width: 500px;
+    background-color: #ffffff;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+
+    .ques_navbar {
+      padding-left: 30px;
+      font-size: 16px;
+    }
+
+    .subwaySteb {
+      padding-top: 50px;
+      ul {
+        position: relative;
+        font-family: $res-font-default;
+        color: #999999;
+
+        img {
+          margin-left: 30px;
+        }
+        .stick {
+          position: absolute;
+          top: 6px;
+          left: 10px;
+          height: 690px;
+        }
+
+        .start {
+          position: relative;
+          display: flex;
+          align-items: first baseline;
+          height: 620px;
+
+          .start_title {
+            margin-left: 20px;
+            font-size: 26px;
+            font-family: $ques-font-bold;
+            color: black;
+            list-style: none;
+          }
+
+          .start_content {
+            position: absolute;
+            color: $main-color;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 60px;
+            border-bottom: 1px solid;
+          }
+          .second_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 110px;
+          }
+          .third_content {
+            position: absolute;
+            color: #000000;
+            font-family: $ques-font-default;
+            list-style: decimal;
+            cursor: pointer;
+            left: 100px;
+            top: 160px;
+          }
+          .option {
+            position: absolute;
+            top: 350px;
             left: 70px;
 
             .option_title {
