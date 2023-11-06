@@ -1,4 +1,4 @@
-import '../styles/PartnerQuestion.scss'
+import '../styles/partnerQuestion.scss'
 
 export default function PartnerQuestion() {
   return (

@@ -56,7 +56,7 @@ export default function IndexFirst() {
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             className="banner"
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={1}
             navigation
             pagination={{ clickable: true }}

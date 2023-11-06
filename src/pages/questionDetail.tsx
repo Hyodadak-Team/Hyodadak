@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import '../styles/QuestionDetail.scss'
+import '../styles/questionDetail.scss'
 import PartnerRequest from '../components_ques/PartnerRequest'
 
 interface QuestionDetailProps {

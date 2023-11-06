@@ -1,4 +1,4 @@
-import '../styles/AlertModal.scss'
+import '../styles/alertModal.scss'
 
 interface AlertModalProps {
   user: boolean
