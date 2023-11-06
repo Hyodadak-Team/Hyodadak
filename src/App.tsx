@@ -24,6 +24,7 @@ import CreateQuestion from './pages/createQuestion'
 import SubWay12 from './pages/SimulationSubWay/Subway12'
 import Subway13 from './pages/SimulationSubWay/Subway13'
 import Chat from './pages/chat'
+import SubWay5 from './pages/SimulationSubWay/Subway5'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -49,6 +50,7 @@ function App() {
           <Route path="/simulation/subway4" element={<SubWay4 />} />
           <Route path="/simulation/subway12" element={<SubWay12 />} />
           <Route path="/simulation/subway13" element={<Subway13 />} />
+          <Route path="/simulation/subway5" element={<SubWay5 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/myres" element={<MyResponse />} />

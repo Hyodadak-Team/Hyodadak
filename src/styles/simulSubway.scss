@@ -403,6 +403,191 @@
       }
     }
   }
+  .SubwayDisplay5 {
+    position: relative;
+    width: 500px;
+    height: calc(100vh - 60px); // TODO : 100vh로 변경 필요  (헤더 삭제)
+    background-color: #007218;
+
+    .Subway_choose_bread_header {
+      position: absolute;
+      width: 500px;
+      height: 60px;
+      background-color: #009224;
+      z-index: 2;
+
+      img {
+        width: 33px;
+      }
+      .Subway_choose_bread_header_first {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: white;
+      }
+      .Subway_choose_bread_header_second {
+        font-family: $res-font-default;
+        font-size: 20px;
+        color: #c5fd3d;
+      }
+    }
+    .white_btn1 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      top: 240px;
+      left: 46px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn1:checked {
+      background-color: #007218;
+    }
+    .white_btn2:checked {
+      background-color: #007218;
+    }
+    .white_btn3:checked {
+      background-color: #007218;
+    }
+    .white_btn4:checked {
+      background-color: #007218;
+    }
+
+    .white_btn2 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      top: 240px;
+      left: 258px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn3 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      top: 240px;
+      left: 147px;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+    .white_btn4 {
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      width: 95px;
+      height: 43px;
+      border-radius: 5px;
+      background-color: white;
+      border: 2px solid #d7d7d7;
+      top: 240px;
+      left: 359px;
+      p {
+        color: black;
+        font-family: $res-font-default;
+        text-align: center;
+        padding-top: 10px;
+      }
+    }
+
+    .Subway_choose_bread {
+      position: absolute;
+      width: 500px;
+    }
+    .Subway_whitebread {
+      position: absolute;
+      top: 368px;
+      left: 130px;
+      cursor: pointer;
+    }
+
+    .Subway_pamasanbread {
+      position: absolute;
+      top: 365px;
+      left: 260px;
+      cursor: pointer;
+    }
+
+    .Subway_honeybread {
+      position: absolute;
+      top: 520px;
+      left: 260px;
+      cursor: pointer;
+    }
+
+    .Subway_wheatbread {
+      position: absolute;
+      top: 520px;
+      left: 130px;
+      cursor: pointer;
+    }
+
+    .Subway_total {
+      position: absolute;
+      background-color: #000000;
+      height: 310px;
+      width: 500px;
+      bottom: 0;
+
+      .Subway_total_box {
+        position: absolute;
+        width: 500px;
+        height: 50px;
+        background-color: #292b31;
+        display: flex;
+        align-items: center;
+
+        p {
+          margin-left: 10px;
+          color: yellow;
+        }
+
+        .Subway_total_count {
+          margin-left: 220px;
+          display: flex;
+          p {
+            margin-left: 25px;
+          }
+        }
+      }
+      .Subway_total_pay {
+        height: calc(310px - 50px);
+        img {
+          position: absolute;
+          height: calc(310px - 52px);
+          right: 0;
+          bottom: 0;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 
   .SubwayDisplay12 {
     position: relative;
@@ -1103,8 +1288,7 @@
       }
     }
   }
-
-  .SubwaySteb12 {
+  .SubwaySteb5 {
     position: relative;
     width: 500px;
     background-color: #ffffff;

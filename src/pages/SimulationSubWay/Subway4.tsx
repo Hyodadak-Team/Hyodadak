@@ -58,9 +58,11 @@ export default function SubWay4() {
                 <img src="/img/image 모든단계.svg" alt="모든단계선택" />
               </div>
             </div>
-            <div className="Subway_choose_ok">
-              <p>확인</p>
-            </div>
+            <Link to="/simulation/subway5">
+              <div className="Subway_choose_ok">
+                <p>확인</p>
+              </div>
+            </Link>
           </div>
           <img
             className="Subway_menu"
