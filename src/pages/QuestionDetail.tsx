@@ -54,6 +54,26 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
               <p className="questionDetail_detail_property_answerCount">3</p>
             </div>
           </div>
+          <div className="questionDetail_answer">
+            <form>
+              <textarea
+                className="questionDetail_answer_input"
+                placeholder="답변을 상세히 기입해주세요"
+              />
+              <div className="questionDetail_answer_btn">
+                <img
+                  className="questionDetail_answer_btn_img"
+                  src="/img/detail_img_icon.svg"
+                  alt="이미지 업로드"
+                />
+                <input
+                  className="questionDetail_answer_btn_submit"
+                  type="submit"
+                  value="답변하기"
+                />
+              </div>
+            </form>
+          </div>
           <div className="questionDetail_answerList">
             <div className="questionDetail_answerList_box">
               <div className="questionDetail_answerList_box_profile">
