@@ -35,7 +35,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      {user ? <HeaderRes /> : <HeaderQues />}
+      {user ? <HeaderRes user={user} /> : <HeaderQues user={user} />}
       {chat && <Chat />}
       <Routes>
         <Route>

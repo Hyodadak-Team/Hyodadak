@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import AlertModal from '../components_res/AlertModal'
 
-export default function HeadeRes() {
+interface HeaderResProps {
+  user: boolean
+}
+
+export default function HeadeRes(props: HeaderResProps) {
+  const { user } = props
   const [notice, setNotice] = useState<boolean>(false)
   const [register, setRegister] = useState<boolean>(false)
   const noticeRef = useRef<HTMLDivElement>(null)
@@ -36,7 +41,7 @@ export default function HeadeRes() {
                 />
               </button>
               <div ref={noticeRef} className="alertBox hidden">
-                <AlertModal />
+                <AlertModal user={user} />
               </div>
             </div>
           </li>

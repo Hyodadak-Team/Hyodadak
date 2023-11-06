@@ -9,7 +9,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
   return (
     <div>
       {user ? (
-        // user가 true인 경우 -> 답변자
+        // user가 true인 경우 -> res
         <div className="innerBox res">
           <div className="questionDetail_header">
             <div className="questionDetail_header_property">
@@ -154,7 +154,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
           </div>
         </div>
       ) : (
-        // user가 false인 경우 -> 질문자
+        // user가 false인 경우 -> ques
         <div className="innerBox ques">
           <div className="questionDetail_header">
             <div className="ques_navbar">
