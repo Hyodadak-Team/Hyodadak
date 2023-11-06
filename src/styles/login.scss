@@ -19,24 +19,21 @@
 
 
 .all{
-  // height: 1080px;
-  // width: 1440px;
-
   display: flex;
   justify-content: center;
   
   .container{
     
     .info{
-      padding-top: 200px;
+      padding-top: 100px;
       display: flex;
       justify-content: center;
       font-size:40px;
       font-family: 'KoPubWorld-Batang-Medium';
     }
     .login_top{
-      padding-top: 100px;
-      padding-bottom: 50px;
+      padding-top: 25px;
+      padding-bottom: 25px;
       .login_wrap{
         width: 500px;
         display: flex;

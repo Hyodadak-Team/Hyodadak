@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import '../styles/PartnerRequest.scss'
+import '../styles/partnerRequest.scss'
 
 export default function PartnerRequest() {
   return (

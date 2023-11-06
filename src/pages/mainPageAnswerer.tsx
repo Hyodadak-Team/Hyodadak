@@ -1,4 +1,4 @@
-import '../styles/MainPageAnswerer.scss'
+import '../styles/mainPageAnswerer.scss'
 import { Table } from 'antd'
 
 const dataSource = [
