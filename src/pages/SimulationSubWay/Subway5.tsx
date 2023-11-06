@@ -14,6 +14,7 @@ export default function SubWay5() {
               - 빵 선택
             </span>
           </div>
+          {/* X 닫기 버튼 아이콘 */}
           <div className="white_btn1">
             <p>15CM</p>
           </div>
@@ -51,18 +52,25 @@ export default function SubWay5() {
             src="/img/image wheatBread.svg"
             alt="화이트"
           />
-          {/* <div className="Subway_total">
+          <div className="Subway_total">
             <div className="Subway_total_box">
-              <p>초기화면</p>
-              <div className="Subway_total_count">
-                <p>주문수량 0</p>
-                <p>주문금액 0</p>
+              <p>0</p>
+              <img src="/img/image putorder.svg" alt="주문 담기" />
+              {/* 클릭시 밑에 div로 체크된 정보들 입력되게 */}
+            </div>
+            <div className="Subway_choose">
+              <div className="Subway_choose_menu">
+                <div className="Subway_choose_menu_kind default">
+                  <p>빵</p>
+                </div>
+                <div className="Subway_choose_menu_detail">
+                  <div>15cm</div>
+                  <div>토스팅</div>
+                  <div>화이트</div>
+                </div>
               </div>
             </div>
-            <div className="Subway_total_pay">
-              <img src="/img/image 67.svg" alt="주문결제" />
-            </div>
-          </div> */}
+          </div>
         </div>
         <div className="SubwaySteb5">
           <div className="ques_navbar">

@@ -13,7 +13,24 @@ export default function SubWay2() {
             src="/img/image 66.svg"
             alt="서브웨이 1"
           />
-          <Link to="/simulation/subway3" />
+          <div className="opacity_dark" />
+          <div className="Subway_choose">
+            <div className="Subway_choose_title">
+              <img src="/img/subway_logo.svg" alt="서브웨이 로고" />
+              <p>선택</p>
+            </div>
+            <div className="Subway_choose_check">
+              <div className="Subway_choose_takeout">
+                <img src="/img/image takein.svg" alt="방문" />
+                <img src="/img/image  takeout.svg" alt="포장" />
+              </div>
+              <div className="Subway_choose_button">
+                <div className="Subway_choose ok">
+                  <p>확인</p>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="Subway_total">
             <div className="Subway_total_box">
               <p>초기화면</p>
