@@ -30,8 +30,8 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
     <div>
       {user ? (
         // user가 true인 경우 -> res
-        <div className="innerBox res">
-          <div className="questionDetail_header">
+        <div className="res">
+          <div className="questionDetail_header innerBox ">
             <div className="questionDetail_header_property">
               <p className="questionDetail_header_property_point">100</p>
               <p className="questionDetail_header_property_category">
@@ -46,7 +46,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
               </p>
             </div>
           </div>
-          <div className="questionDetail_detail">
+          <div className="questionDetail_detail innerBox ">
             <img
               className="questionDetail_detail_img"
               src="/img/detail_ktx_img.svg"
@@ -75,7 +75,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
             </div>
           </div>
           <div className="questionDetail_answer">
-            <form>
+            <form className="innerBox">
               <textarea
                 className="questionDetail_answer_input"
                 placeholder="답변을 상세히 기입해주세요"
@@ -94,7 +94,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
               </div>
             </form>
           </div>
-          <div className="questionDetail_answerList">
+          <div className="questionDetail_answerList innerBox ">
             <div className="questionDetail_answerList_box">
               <div className="questionDetail_answerList_box_profile">
                 <div className="questionDetail_answerList_box_profile_left">
