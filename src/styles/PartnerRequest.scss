@@ -1,3 +1,51 @@
 @import './reset.scss';
 @import './font.scss';
 @import './palette.scss';
+
+.partner_request {
+  .partner_request_box {
+    width: 700px;
+    height: 480px;
+    padding: 40px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    box-shadow: 0 3px 15px 0 rgba($color: #000000, $alpha: 0.2);
+    .partner_request_box_header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 45px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 620px;
+      .partner_request_box_input {
+        height: 230px;
+        padding: 25px 15px;
+        font-size: 20px;
+        font-family: $ques-font-default;
+        border: 1px solid #ced4da;
+        border-radius: 4px;
+        resize: none;
+        margin-bottom: 30px;
+      }
+      .partner_request_box_input::placeholder {
+        color: #999999;
+      }
+      .partner_request_box_input:focus {
+        outline-color: #ff6d6d;
+      }
+      .partner_request_box_btn_submit {
+        cursor: pointer;
+        height: 60px;
+        background-color: $main-color;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        font-family: $ques-font-bold;
+        color: #ffffff;
+      }
+    }
+  }
+}

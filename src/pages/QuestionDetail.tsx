@@ -1,11 +1,31 @@
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/QuestionDetail.scss'
+import PartnerRequest from '../components_ques/PartnerRequest'
 
 interface QuestionDetailProps {
   user: boolean
 }
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const { user } = props
+  const partnerReqBox = useRef<HTMLDivElement>(null)
+  const partnerReqBoxClick = () => {
+    // if (
+    //   partnerReqBox.current?.classList.value ===
+    //   'questionDetail_answerList_box_profile_partnerRequest'
+    // ) {
+    //   partnerReqBox.current.classList.value =
+    //     'questionDetail_answerList_box_profile_partnerRequest hide'
+    // }
+    // 추후 Redux 상태관리를 통해 모달창 열고 닫기
+    if (
+      partnerReqBox.current?.classList.value ===
+      'questionDetail_answerList_box_profile_partnerRequest hide'
+    ) {
+      partnerReqBox.current.classList.value =
+        'questionDetail_answerList_box_profile_partnerRequest'
+    }
+  }
   return (
     <div>
       {user ? (
@@ -273,9 +293,17 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 </div>
                 <div className="questionDetail_answerList_box_profile_right">
                   {/* 사용자가 게시글의 주인인 경우 조건 추가 해서 렌더링 */}
-                  <p className="questionDetail_answerList_box_profile_right_request">
-                    파트너 요청하기
-                  </p>
+                  <button type="button" onClick={partnerReqBoxClick}>
+                    <p className="questionDetail_answerList_box_profile_right_request">
+                      파트너 요청하기
+                    </p>
+                  </button>
+                  <div
+                    ref={partnerReqBox}
+                    className="questionDetail_answerList_box_profile_partnerRequest hide"
+                  >
+                    <PartnerRequest />
+                  </div>
                   <p className="questionDetail_answerList_box_profile_right_select">
                     채택하기
                   </p>
