@@ -1,21 +1,31 @@
-import React, { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import JoinSelect from '../components/JoinSelect'
 import JoinMemberInfo from '../components/JoinMemberInfo'
 import JoinPersonalInfo from '../components/JoinPersonalInfo'
 
-// useState로 상태값 변경해서 props로 자식 컴포넌트로 넘겨주는 식으로 구현하면 될듯
 export default function Join() {
-  const [pageIndex, setPageIndex] = useState(0)
+  const [joinState, setJoinState] = useState({
+    pageIndex: 0,
+    certificate: false,
+    user_id: '',
+    user_password: '',
+    user_type: '',
+    user_tel: '',
+    user_name: '',
+  })
+  useEffect(() => {
+    console.log(joinState)
+  }, [joinState])
   let page = null
-  if (pageIndex === 0) {
-    page = <JoinSelect pageIndex={pageIndex} setPageIndex={setPageIndex} />
-  } else if (pageIndex === 1) {
+  if (joinState.pageIndex === 0) {
+    page = <JoinSelect joinState={joinState} setJoinState={setJoinState} />
+  } else if (joinState.pageIndex === 1) {
     page = (
-      <JoinPersonalInfo pageIndex={pageIndex} setPageIndex={setPageIndex} />
+      <JoinPersonalInfo joinState={joinState} setJoinState={setJoinState} />
     )
-  } else if (pageIndex === 2) {
-    page = <JoinMemberInfo pageIndex={pageIndex} setPageIndex={setPageIndex} />
+  } else if (joinState.pageIndex === 2) {
+    page = <JoinMemberInfo joinState={joinState} setJoinState={setJoinState} />
   }
   return page
 }

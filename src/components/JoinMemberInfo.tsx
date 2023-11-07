@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-interface PagenationBtnType {
-  pageIndex: number
-  setPageIndex: React.Dispatch<React.SetStateAction<number>>
+interface Type {
+  joinState: object
+  setJoinState: React.Dispatch<React.SetStateAction<void>>
 }
 
-export default function JoinMemberInfo(props: PagenationBtnType) {
-  const { pageIndex, setPageIndex } = props
+export default function JoinMemberInfo(props: Type) {
+  const { joinState, setJoinState } = props
+  const userId = useRef(null)
+  const userPw = useRef(null)
   return (
     <div className="all">
       <div className="container">
@@ -16,14 +18,18 @@ export default function JoinMemberInfo(props: PagenationBtnType) {
             <div className="form_row">
               <div className="form_row_title">아이디</div>
               <div className="form_row_content include_btn">
-                <input placeholder="아이디를 입력해주세요" />
+                <input placeholder="아이디를 입력해주세요" ref={userId} />
                 <button type="button">중복체크</button>
               </div>
             </div>
             <div className="form_row">
               <div className="form_row_title">비밀번호</div>
               <div className="form_row_content">
-                <input type="password" placeholder="비밀번호를 입력해주세요" />
+                <input
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  ref={userPw}
+                />
               </div>
             </div>
             <div className="comment_rule">
@@ -45,7 +51,12 @@ export default function JoinMemberInfo(props: PagenationBtnType) {
               type="button"
               className="btn_before"
               onClick={() => {
-                setPageIndex(pageIndex - 1)
+                setJoinState({
+                  ...joinState,
+                  pageIndex: joinState.pageIndex - 1,
+                  user_name: '',
+                  user_tel: '',
+                })
               }}
             >
               이전
@@ -54,7 +65,12 @@ export default function JoinMemberInfo(props: PagenationBtnType) {
               type="button"
               className="btn_after"
               onClick={() => {
-                setPageIndex(pageIndex + 1)
+                setJoinState({
+                  ...joinState,
+                  pageIndex: joinState.pageIndex + 1,
+                  user_id: userId.current.value,
+                  user_password: userPw.current.value,
+                })
               }}
             >
               다음
