@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useRef } from 'react'
 
-interface PagenationBtnType {
-  pageIndex: number
-  setPageIndex: React.Dispatch<React.SetStateAction<number>>
+interface Type {
+  joinState: object
+  setJoinState: React.Dispatch<React.SetStateAction<void>>
 }
-export default function JoinPersonalInfo(props: PagenationBtnType) {
-  const { pageIndex, setPageIndex } = props
+export default function JoinPersonalInfo(props: Type) {
+  const { joinState, setJoinState } = props
+  const userName = useRef(null)
+  const userTel = useRef(null)
   return (
     <div className="all">
       <div className="container">
@@ -15,13 +17,13 @@ export default function JoinPersonalInfo(props: PagenationBtnType) {
             <div className="form_row">
               <div className="form_row_title">이름</div>
               <div className="form_row_content">
-                <input placeholder="이름을 입력해주세요" />
+                <input placeholder="이름을 입력해주세요" ref={userName} />
               </div>
             </div>
             <div className="form_row">
               <div className="form_row_title">전화번호</div>
               <div className="form_row_content include_btn">
-                <input placeholder="전화번호를 입력해주세요" />
+                <input placeholder="전화번호를 입력해주세요" ref={userTel} />
                 <button type="button">번호인증</button>
               </div>
             </div>
@@ -41,7 +43,11 @@ export default function JoinPersonalInfo(props: PagenationBtnType) {
               type="button"
               className="btn_before"
               onClick={() => {
-                setPageIndex(pageIndex - 1)
+                setJoinState({
+                  ...joinState,
+                  pageIndex: joinState.pageIndex - 1,
+                  user_type: '',
+                })
               }}
             >
               이전
@@ -50,7 +56,12 @@ export default function JoinPersonalInfo(props: PagenationBtnType) {
               type="button"
               className="btn_after"
               onClick={() => {
-                setPageIndex(pageIndex + 1)
+                setJoinState({
+                  ...joinState,
+                  pageIndex: joinState.pageIndex + 1,
+                  user_name: userName.current.value,
+                  user_tel: userTel.current.value,
+                })
               }}
             >
               다음

@@ -1,11 +1,11 @@
 import React from 'react'
 
-interface PagenationBtnType {
-  pageIndex: number
-  setPageIndex: React.Dispatch<React.SetStateAction<number>>
+interface Type {
+  joinState: object
+  setJoinState: React.Dispatch<React.SetStateAction<void>>
 }
-export default function JoinSelect(props: PagenationBtnType) {
-  const { pageIndex, setPageIndex } = props
+export default function JoinSelect(props: Type) {
+  const { joinState, setJoinState } = props
   return (
     <div className="all">
       <div className="container">
@@ -15,8 +15,11 @@ export default function JoinSelect(props: PagenationBtnType) {
             role="presentation"
             className="select_questioner"
             onClick={() => {
-              setPageIndex(pageIndex + 1)
-              console.log(pageIndex)
+              setJoinState({
+                ...joinState,
+                pageIndex: joinState.pageIndex + 1,
+                user_type: 'questioner',
+              })
             }}
           >
             <div className="img_area">
@@ -31,8 +34,11 @@ export default function JoinSelect(props: PagenationBtnType) {
             role="presentation"
             className="select_respondent"
             onClick={() => {
-              setPageIndex(pageIndex + 1)
-              console.log(pageIndex)
+              setJoinState({
+                ...joinState,
+                pageIndex: joinState.pageIndex + 1,
+                user_type: 'respondent',
+              })
             }}
           >
             <div className="img_area">
