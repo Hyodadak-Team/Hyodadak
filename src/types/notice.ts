@@ -5,11 +5,11 @@ export interface INoticeMenu {
   isActive: boolean
 }
 export interface INotice {
-  id: number
-  type: string
+  idx: number
+  category: string
   title: string
-  date: string
-  content: string
+  createTime: string
+  contents: string
 }
 
 export interface IPaginationProps {

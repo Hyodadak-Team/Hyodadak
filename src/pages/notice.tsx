@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
-import noticeList from '../constants/noticeList'
+// import noticeList from '../constants/noticeList'
 import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
 import NoticeArticle from '../components/NoticeArticle'
@@ -23,19 +24,48 @@ function Notice() {
 
   // notice-pagination
   const itemsPerPage = 7
+  const [noticeList, setNoticeList] = useState([])
   const [currentPage, setCurrentPage] = useState(1)
-  const { sortedList, currentItems } = setPagination(
-    noticeList,
-    currentPage,
-    itemsPerPage,
-  )
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
 
   // notice-article
   const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
-
+  // test axios
+  const getAllNotices = () => {
+    axios
+      .get('http://localhost:4000/notice/all')
+      .then(function (response) {
+        console.log(response.data)
+        setNoticeList(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+  }
+  const initData = () => {
+    axios
+      .post('http://localhost:4000/notice/init')
+      .then(function (response) {
+        console.log(response)
+        if (response.status === 200) {
+          alert('초기 데이터 셋 성공')
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+        alert('초기 데이터 셋 실패')
+      })
+  }
+  useEffect(() => {
+    getAllNotices()
+  }, [])
+  const { sortedList, currentItems } = setPagination(
+    noticeList,
+    currentPage,
+    itemsPerPage,
+  )
   return (
     <>
       <div className="shortcut_bar">
@@ -69,6 +99,9 @@ function Notice() {
                 <p>{menu.content}</p>
               </div>
             ))}
+            <button type="button" onClick={initData}>
+              공지사항 초기 데이터
+            </button>
           </div>
           <div className="main_section">
             <div className="search_section">
@@ -83,10 +116,11 @@ function Notice() {
               />
             </div>
             <div className="notice_list-section">
+              {console.log(currentItems)}
               {currentItems.map((notice: INotice) => {
                 return (
-                  <div className="notice_list" key={notice.id}>
-                    <Link to={`/notice/article/${notice.id}`}>
+                  <div className="notice_list" key={notice.idx}>
+                    <Link to={`/notice/article/${notice.idx}`}>
                       <div
                         className="notice_box"
                         onClick={() => {
@@ -100,9 +134,9 @@ function Notice() {
                         role="button"
                         tabIndex={0}
                       >
-                        <div>{notice.id}</div>
+                        <div>{notice.idx}</div>
                         <div className="notice-title">
-                          <div>[{notice.type}]</div>
+                          <div>[{notice.category}]</div>
                           <div>{notice.title}</div>
                         </div>
                         <div>{notice.date}</div>
