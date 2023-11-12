@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import '../styles/mainPageAnswerer.scss'
 import { Table } from 'antd'
 
@@ -13,7 +14,7 @@ const dataSource = [
     date: '1분전',
   },
   {
-    key: '1',
+    key: '2',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
     name: '두루미',
     category: '무인주문기',
@@ -23,7 +24,7 @@ const dataSource = [
     date: '1분전',
   },
   {
-    key: '1',
+    key: '3',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
     name: '가자미',
     category: '무인주문기',
@@ -33,7 +34,7 @@ const dataSource = [
     date: '1분전',
   },
   {
-    key: '1',
+    key: '4',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
     name: '토끼',
     category: '무인주문기',
@@ -43,7 +44,7 @@ const dataSource = [
     date: '1분전',
   },
   {
-    key: '1',
+    key: '5',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
     name: '호랑이',
     category: '무인주문기',
@@ -53,7 +54,7 @@ const dataSource = [
     date: '1분전',
   },
   {
-    key: '1',
+    key: '6',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
     name: '거북이',
     category: '무인주문기',
@@ -69,6 +70,7 @@ const columns = [
     title: '제목 + 내용',
     dataIndex: 'title',
     key: 'title',
+    render: (text: string) => <Link to="/quest_detail/abc123">{text}</Link>,
   },
   {
     title: '이름',
