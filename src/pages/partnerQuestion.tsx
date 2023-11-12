@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import '../styles/partnerQuestion.scss'
+import timeDifference from '../utils/timeDifference'
 
 export default function PartnerQuestion() {
+  const time: string = timeDifference('2023-11-11') // 나중에 글 생성 시점으로 바꿀 것
   return (
     <div className="background">
       <div className="innerBox res">
@@ -54,7 +56,7 @@ export default function PartnerQuestion() {
                       거북이 · 무인자판기
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
 
@@ -90,7 +92,7 @@ export default function PartnerQuestion() {
                       티코 · 이동수단
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
@@ -125,7 +127,7 @@ export default function PartnerQuestion() {
                       달력 · 이동수단
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
@@ -156,7 +158,7 @@ export default function PartnerQuestion() {
                       냠냠 · 상품구매
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
