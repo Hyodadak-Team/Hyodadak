@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import '../styles/mainPageAnswerer.scss'
 import { Table } from 'antd'
+import PartnerAnswerBox from '../components_res/PartnerAnswerBox'
+import PARTNER_ANSWER_DATA from '../constants/mainPageAnswererData'
 
-const dataSource = [
+const datasource = [
   {
     key: '1',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
@@ -117,90 +119,10 @@ export default function MainPageAnswerer() {
             <p className="partnerAnswer_plus">더보기 +</p>
           </div>
           <div className="partnerAnswer_postBox">
-            <div className="partnerAnswer_post">
-              <div className="partnerAnswer_post_property">
-                <p className="partnerAnswer_post_property_point">100</p>
-                <p className="partnerAnswer_post_property_category">
-                  거북이 · 무인자판기
-                </p>
-              </div>
-              <p className="partnerAnswer_post_title">KTX 시간 바꾸고 싶어요</p>
-              <p className="partnerAnswer_post_detail">
-                KTX 타고 가려고 하는데 시간을 잘못 예약했어요.. 시간이 얼마
-                안남았는데 바꾸고 싶어요 가능할까요? 오프라인으로 얘기할 수 있는
-                곳이 문을 닫아..
-              </p>
-              <div className="partnerAnswer_post_footer">
-                <p className="partnerAnswer_post_footer_time">1분전</p>
-                <div className="partnerAnswer_post_footer_chatBtn">
-                  <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                  <p>채팅하기</p>
-                </div>
-              </div>
-            </div>
-            <div className="partnerAnswer_post">
-              <div className="partnerAnswer_post_property">
-                <p className="partnerAnswer_post_property_point">100</p>
-                <p className="partnerAnswer_post_property_category">
-                  거북이 · 무인자판기
-                </p>
-              </div>
-              <p className="partnerAnswer_post_title">KTX 시간 바꾸고 싶어요</p>
-              <p className="partnerAnswer_post_detail">
-                KTX 타고 가려고 하는데 시간을 잘못 예약했어요.. 시간이 얼마
-                안남았는데 바꾸고 싶어요 가능할까요? 오프라인으로 얘기할 수 있는
-                곳이 문을 닫아..
-              </p>
-              <div className="partnerAnswer_post_footer">
-                <p className="partnerAnswer_post_footer_time">1분전</p>
-                <div className="partnerAnswer_post_footer_chatBtn">
-                  <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                  <p>채팅하기</p>
-                </div>
-              </div>
-            </div>
-            <div className="partnerAnswer_post">
-              <div className="partnerAnswer_post_property">
-                <p className="partnerAnswer_post_property_point">100</p>
-                <p className="partnerAnswer_post_property_category">
-                  거북이 · 무인자판기
-                </p>
-              </div>
-              <p className="partnerAnswer_post_title">KTX 시간 바꾸고 싶어요</p>
-              <p className="partnerAnswer_post_detail">
-                KTX 타고 가려고 하는데 시간을 잘못 예약했어요.. 시간이 얼마
-                안남았는데 바꾸고 싶어요 가능할까요? 오프라인으로 얘기할 수 있는
-                곳이 문을 닫아..
-              </p>
-              <div className="partnerAnswer_post_footer">
-                <p className="partnerAnswer_post_footer_time">1분전</p>
-                <div className="partnerAnswer_post_footer_chatBtn">
-                  <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                  <p>채팅하기</p>
-                </div>
-              </div>
-            </div>
-            <div className="partnerAnswer_post">
-              <div className="partnerAnswer_post_property">
-                <p className="partnerAnswer_post_property_point">100</p>
-                <p className="partnerAnswer_post_property_category">
-                  거북이 · 무인자판기
-                </p>
-              </div>
-              <p className="partnerAnswer_post_title">KTX 시간 바꾸고 싶어요</p>
-              <p className="partnerAnswer_post_detail">
-                KTX 타고 가려고 하는데 시간을 잘못 예약했어요.. 시간이 얼마
-                안남았는데 바꾸고 싶어요 가능할까요? 오프라인으로 얘기할 수 있는
-                곳이 문을 닫아..
-              </p>
-              <div className="partnerAnswer_post_footer">
-                <p className="partnerAnswer_post_footer_time">1분전</p>
-                <div className="partnerAnswer_post_footer_chatBtn">
-                  <img src="/img/main_chat_icon.svg" alt="채팅하기" />
-                  <p>채팅하기</p>
-                </div>
-              </div>
-            </div>
+            {/* data => 파트너 질문 최신순 4개로 가져오기 */}
+            {PARTNER_ANSWER_DATA.map((data) => (
+              <PartnerAnswerBox data={data} key={data.key} />
+            ))}
           </div>
         </div>
       </div>
@@ -248,123 +170,7 @@ export default function MainPageAnswerer() {
             <p className="questionList_header_title">질문목록</p>
             <p className="questionList_header_numbers">총 20개</p>
           </div>
-          <Table dataSource={dataSource} columns={columns} />
-          {/* <table className="question_table">
-      <thead className="question_table_header">
-        <tr>
-          <th>제목 + 내용</th>
-          <th>이름</th>
-          <th>유형</th>
-          <th>채택</th>
-          <th>
-            용돈
-            <img src="/img/main_polygon_icon.svg" alt="화살표" />
-          </th>
-          <th>
-            답변수
-            <img src="/img/main_polygon_icon.svg" alt="화살표" />
-          </th>
-          <th>
-            등록일
-            <img src="/img/main_polygon_icon.svg" alt="화살표" />
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <div className="question_table_body_title">
-              <span className="question_table_body_title_content">
-                서브웨이 어떻게 먹어요?
-              </span>
-              <span>
-                {' '}
-                / 너무 복잡해서 못먹겠다 혹....
-                <img src="/img/main_image_icon.svg" alt="이미지" />
-              </span>
-            </div>
-          </td>
-          <td>거북이</td>
-          <td>무인주문기</td>
-          <td>완료</td>
-          <td>기본</td>
-          <td>0</td>
-          <td>1분전</td>
-        </tr>
-        <tr>
-          <td>
-            <div className="question_table_body_title">
-              <span className="question_table_body_title_content">
-                서브웨이 어떻게 먹어요?
-              </span>
-              <span> / 너무 복잡해서 못먹겠다 혹....</span>
-            </div>
-          </td>
-          <td>거북이</td>
-          <td>무인주문기</td>
-          <td>완료</td>
-          <td>기본</td>
-          <td>0</td>
-          <td>1분전</td>
-        </tr>
-        <tr>
-          <td>
-            <div className="question_table_body_title">
-              <span className="question_table_body_title_content">
-                서브웨이 어떻게 먹어요?
-              </span>
-              <span>
-                {' '}
-                / 너무 복잡해서 못먹겠다 혹....
-                <img src="/img/main_image_icon.svg" alt="이미지" />
-              </span>
-            </div>
-          </td>
-          <td>거북이</td>
-          <td>무인주문기</td>
-          <td>완료</td>
-          <td>기본</td>
-          <td>0</td>
-          <td>1분전</td>
-        </tr>
-        <tr>
-          <td>
-            <div className="question_table_body_title">
-              <span className="question_table_body_title_content">
-                서브웨이 어떻게 먹어요?
-              </span>
-              <span> / 너무 복잡해서 못먹겠다 혹....</span>
-            </div>
-          </td>
-          <td>거북이</td>
-          <td>무인주문기</td>
-          <td>완료</td>
-          <td>기본</td>
-          <td>0</td>
-          <td>1분전</td>
-        </tr>
-        <tr>
-          <td>
-            <div className="question_table_body_title">
-              <span className="question_table_body_title_content">
-                서브웨이 어떻게 먹어요?
-              </span>
-              <span>
-                {' '}
-                / 너무 복잡해서 못먹겠다 혹....
-                <img src="/img/main_image_icon.svg" alt="이미지" />
-              </span>
-            </div>
-          </td>
-          <td>거북이</td>
-          <td>무인주문기</td>
-          <td>완료</td>
-          <td>기본</td>
-          <td>0</td>
-          <td>1분전</td>
-        </tr>
-      </tbody>
-    </table> */}
+          <Table dataSource={datasource} columns={columns} />
         </div>
       </div>
     </div>
