@@ -1,19 +1,22 @@
+import { Link } from 'react-router-dom'
 import '../styles/partnerQuestion.scss'
+import timeDifference from '../utils/timeDifference'
 
 export default function PartnerQuestion() {
+  const time: string = timeDifference('2023-11-11') // 나중에 글 생성 시점으로 바꿀 것
   return (
     <div className="background">
       <div className="innerBox res">
         <div className="subHeader">
           <p className="subHeader_title">파트너 질문보기</p>
-          <div className="subHeader_management">
+          <Link to="/mypartner" className="subHeader_management">
             <p className="subHeader_management_text">파트너 관리 </p>
             <img
               className="subHeader_management_icon"
               src="/img/right_icon.svg"
               alt="이동하기"
             />
-          </div>
+          </Link>
         </div>
         <div className="questionBoard">
           <div className="questionBoard_sidebar">
@@ -44,19 +47,23 @@ export default function PartnerQuestion() {
           <div className="questionBoard_main">
             <div className="questionBoard_main_box">
               <div className="questionBoard_main_box_head">
-                <div className="questionBoard_main_box_head_text">
+                <Link
+                  to="/quest_detail/abc123"
+                  className="questionBoard_main_box_head_text"
+                >
                   <div className="questionBoard_main_box_head_property">
                     <p className="questionBoard_main_box_head_property_category">
                       거북이 · 무인자판기
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
+
                   <div className="questionBoard_main_box_head_title">
                     <p>서브웨이 어떻게 먹어요...</p>
                   </div>
-                </div>
+                </Link>
                 <div className="questionBoard_main_box_head_btn">
                   <img src="/img/main_chat_icon.svg" alt="채팅하기" />
                   <p>채팅하기</p>
@@ -73,7 +80,10 @@ export default function PartnerQuestion() {
             </div>
             <div className="questionBoard_main_box">
               <div className="questionBoard_main_box_head">
-                <div className="questionBoard_main_box_head_text">
+                <Link
+                  to="/quest_detail/abc123"
+                  className="questionBoard_main_box_head_text"
+                >
                   <div className="questionBoard_main_box_head_property">
                     <p className="questionBoard_main_box_head_property_point">
                       100
@@ -82,13 +92,13 @@ export default function PartnerQuestion() {
                       티코 · 이동수단
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
                     <p>KTX 시간 바꾸고 싶어요</p>
                   </div>
-                </div>
+                </Link>
                 <div className="questionBoard_main_box_head_btn-complete">
                   <p>채택완료</p>
                 </div>
@@ -105,7 +115,10 @@ export default function PartnerQuestion() {
             </div>
             <div className="questionBoard_main_box">
               <div className="questionBoard_main_box_head">
-                <div className="questionBoard_main_box_head_text">
+                <Link
+                  to="/quest_detail/abc123"
+                  className="questionBoard_main_box_head_text"
+                >
                   <div className="questionBoard_main_box_head_property">
                     <p className="questionBoard_main_box_head_property_point">
                       100
@@ -114,13 +127,13 @@ export default function PartnerQuestion() {
                       달력 · 이동수단
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
                     <p>따릉이 대여했는데 반납이 안돼요</p>
                   </div>
-                </div>
+                </Link>
                 <div className="questionBoard_main_box_head_btn">
                   <img src="/img/main_chat_icon.svg" alt="채팅하기" />
                   <p>채팅하기</p>
@@ -136,19 +149,22 @@ export default function PartnerQuestion() {
             </div>
             <div className="questionBoard_main_box">
               <div className="questionBoard_main_box_head">
-                <div className="questionBoard_main_box_head_text">
+                <Link
+                  to="/quest_detail/abc123"
+                  className="questionBoard_main_box_head_text"
+                >
                   <div className="questionBoard_main_box_head_property">
                     <p className="questionBoard_main_box_head_property_category">
                       냠냠 · 상품구매
                     </p>
                     <p className="questionBoard_main_box_head_property_time">
-                      2분전
+                      {time}
                     </p>
                   </div>
                   <div className="questionBoard_main_box_head_title">
                     <p>이거 혹시 보이스 피싱인가요?</p>
                   </div>
-                </div>
+                </Link>
                 <div className="questionBoard_main_box_head_btn">
                   <img src="/img/main_chat_icon.svg" alt="채팅하기" />
                   <p>채팅하기</p>
