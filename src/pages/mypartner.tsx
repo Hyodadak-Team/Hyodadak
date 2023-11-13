@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Table } from 'antd'
+import { ConfigProvider, Table } from 'antd'
 import type { ColumnsType } from 'antd/es/table'
 import MyPartnerBox from '../components_ques/MyPartnerBox'
 import { IPartnerInfo } from '../types/mypage'
@@ -115,9 +115,22 @@ export default function mypartner() {
       </div>
     </div>
   ) : (
-    <div className="innerBox res">
-      <div className="res_title">파트너관리</div>
-      <Table columns={columns} dataSource={dataSource} pagination={false} />
-    </div>
+    <ConfigProvider
+      theme={{
+        token: {
+          fontFamily: 'Pretendard-Medium',
+        },
+      }}
+    >
+      <div className="innerBox res">
+        <div className="res_title">파트너관리</div>
+        <Table
+          columns={columns}
+          dataSource={dataSource}
+          pagination={false}
+          className="myresponse_table"
+        />
+      </div>
+    </ConfigProvider>
   )
 }
