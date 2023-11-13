@@ -120,30 +120,30 @@
       margin-bottom: 20px;
       border: 2px solid #eeeeee;
       border-radius: 20px;
-  
+
       .inner_up {
         position: relative;
         height: 140px;
         border-radius: 16px 16px 0 0;
         background-color: #eeeeee;
-  
+
         .successable {
           position: absolute;
           top: 16px;
-          left: 350px;
-          width: 58px;
-          height: 26px;
-          background-color: $main-color;
+          right: 30px;
+          width: 100px;
+          height: 32px;
+          background-color: #999999;
           border-radius: 10px;
           color: #fff;
-  
+
           p {
             top: 2px;
             text-align: center;
             font-size: 16px;
           }
         }
-  
+
         .sublogo {
           position: absolute;
           top: 50%;
@@ -167,11 +167,11 @@
           mix-blend-mode: luminosity;
         }
       }
-  
+
       .inner_down {
         height: 100px;
         padding: 20px 30px;
-  
+
         .inner_down_title {
           font-family: $ques-font-bold;
           font-size: 23px;
