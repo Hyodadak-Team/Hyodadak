@@ -85,7 +85,7 @@ export default function MyResponse() {
             />
           </div>
           {quesData.map((data) => (
-            <MyResponseBox data={data} />
+            <MyResponseBox data={data} key={data.object_id} />
           ))}
         </div>
       </div>
