@@ -3,8 +3,19 @@ import '../styles/mainPageAnswerer.scss'
 import { Table } from 'antd'
 import PartnerAnswerBox from '../components_res/PartnerAnswerBox'
 import PARTNER_ANSWER_DATA from '../constants/mainPageAnswererData'
+import timeDifference from '../utils/timeDifference'
 
-const datasource = [
+interface DataSourceType {
+  key: string
+  title: string
+  name: string
+  category: string
+  isDone: string
+  money: string
+  answerCounts: string
+  date: string
+}
+const postData: Array<DataSourceType> = [
   {
     key: '1',
     title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
@@ -13,7 +24,7 @@ const datasource = [
     isDone: '완료',
     money: '기본',
     answerCounts: '3',
-    date: '1분전',
+    date: timeDifference('2023-11-11'),
   },
   {
     key: '2',
@@ -23,7 +34,7 @@ const datasource = [
     isDone: '완료',
     money: '100',
     answerCounts: '5',
-    date: '1분전',
+    date: timeDifference('2023-11-12'),
   },
   {
     key: '3',
@@ -33,7 +44,7 @@ const datasource = [
     isDone: '완료',
     money: '200',
     answerCounts: '7',
-    date: '1분전',
+    date: timeDifference('2023-11-13'),
   },
   {
     key: '4',
@@ -43,7 +54,7 @@ const datasource = [
     isDone: '완료',
     money: '700',
     answerCounts: '9',
-    date: '1분전',
+    date: timeDifference('2023-11-11'),
   },
   {
     key: '5',
@@ -53,7 +64,7 @@ const datasource = [
     isDone: '완료',
     money: '기본',
     answerCounts: '2',
-    date: '1분전',
+    date: timeDifference('2023-11-11'),
   },
   {
     key: '6',
@@ -63,7 +74,87 @@ const datasource = [
     isDone: '완료',
     money: '50',
     answerCounts: '4',
-    date: '1분전',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '7',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이1',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '8',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이2',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '9',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이3',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '10',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이4',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '11',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이5',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '12',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이6',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '13',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이7',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
+  },
+  {
+    key: '14',
+    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
+    name: '거북이8',
+    category: '무인주문기',
+    isDone: '완료',
+    money: '50',
+    answerCounts: '4',
+    date: timeDifference('2023-11-11'),
   },
 ]
 
@@ -99,6 +190,7 @@ const columns = [
     title: '답변수',
     dataIndex: 'answerCounts',
     key: 'answerCounts',
+
     // sorter: (a, b) => a.answerCounts - b.answerCounts,
   },
   {
@@ -170,7 +262,17 @@ export default function MainPageAnswerer() {
             <p className="questionList_header_title">질문목록</p>
             <p className="questionList_header_numbers">총 20개</p>
           </div>
-          <Table dataSource={datasource} columns={columns} />
+          <Table
+            dataSource={postData}
+            columns={columns}
+            pagination={{
+              defaultPageSize: 5,
+              pageSize: 5,
+              position: ['bottomCenter'],
+              hideOnSinglePage: true,
+              size: 'small',
+            }}
+          />
         </div>
       </div>
     </div>
