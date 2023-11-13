@@ -42,6 +42,7 @@ export default function mypartner() {
 
   const dataSource = [
     {
+      object_id: 1,
       partner: '기믄정',
       questionNum: 3,
       selectionRate: 100,
@@ -49,6 +50,7 @@ export default function mypartner() {
       money: 2000,
     },
     {
+      object_id: 2,
       partner: '냠냠',
       questionNum: 3,
       selectionRate: 100,
@@ -126,7 +128,10 @@ export default function mypartner() {
         <div className="res_title">파트너관리</div>
         <Table
           columns={columns}
-          dataSource={dataSource}
+          dataSource={dataSource.map((data) => ({
+            ...data,
+            key: data.object_id,
+          }))}
           pagination={false}
           className="myresponse_table"
         />
