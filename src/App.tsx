@@ -31,6 +31,7 @@ import Subway16 from './pages/SimulationSubWay/Subway16'
 import Subway17 from './pages/SimulationSubWay/Subway17'
 import Subway18 from './pages/SimulationSubWay/Subway18'
 import Subway19 from './pages/SimulationSubWay/Subway19'
+import SearchPartner from './pages/searchPartner'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -77,6 +78,7 @@ function App() {
           <Route path="/main_ques" element={<MainQues />} />
           <Route path="/questionBoard" element={<QuestionBoard />} />
           <Route path="/createQuestion" element={<CreateQuestion />} />
+          <Route path="/searchPartner" element={<SearchPartner />} />
         </Route>
       </Routes>
     </div>
