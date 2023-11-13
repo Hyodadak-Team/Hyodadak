@@ -49,7 +49,7 @@ function CreateQuestion() {
             label="제목을 입력해주세요"
             name="title"
             className="form_label"
-            rules={[{ required: true, message: 'Please input your title!' }]}
+            rules={[{ required: true, message: '제목을 입력해주세요!' }]}
           >
             <Input placeholder="제목을 입력해주세요" className="form_value" />
           </Form.Item>
@@ -57,7 +57,7 @@ function CreateQuestion() {
             label="내용을 작성해주세요"
             name="content"
             className="form_label"
-            rules={[{ required: true, message: 'Please input your content!' }]}
+            rules={[{ required: true, message: '내용을 작성해주세요!' }]}
           >
             <TextArea
               rows={6}
@@ -93,7 +93,7 @@ function CreateQuestion() {
             label="유형을 설정해주세요"
             name="type"
             className="form_label"
-            rules={[{ required: true, message: 'Please select your type!' }]}
+            rules={[{ required: true, message: '유형을 설정해주세요!' }]}
           >
             <Select
               placeholder="어떤 유형에 해당하는 질문인가요?"
@@ -109,7 +109,7 @@ function CreateQuestion() {
           <Form.Item<TQuestionField>
             label="용돈을 설정해주세요"
             name="point"
-            rules={[{ required: true, message: 'Please select your point!' }]}
+            rules={[{ required: true, message: '용돈을 설정해주세요!' }]}
           >
             <Select placeholder="기본" className="form_selectBox">
               {questionPoints.map((ques) => (
