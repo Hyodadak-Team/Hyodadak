@@ -1,5 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay, Pagination } from 'swiper/modules'
+import MainAnsBox from '../components_ques/MainAnsBox'
+import { AnswerInfo } from '../types/mainQues'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/autoplay'
 
 interface Notice {
   id: number
@@ -26,6 +33,25 @@ const initialNotices: Notice[] = [
     type: '[공지]',
     title: '효다닥 서비스 접속 정상화 안내',
     date: '22.12.10',
+  },
+]
+
+// 답변 데이터 중 답변자, 제목 가져오기
+const dataJson: AnswerInfo[] = [
+  {
+    respondent: '차은우',
+    title: '1-서브웨이 어떻게 먹어요...',
+    url: '/quest_detail/abc123',
+  },
+  {
+    respondent: '서강준',
+    title: '2-서브웨이 어떻게 먹어요...',
+    url: '/quest_detail/abc123',
+  },
+  {
+    respondent: '박보검',
+    title: '3-서브웨이 어떻게 먹어요...',
+    url: '/quest_detail/abc123',
   },
 ]
 
@@ -62,9 +88,9 @@ export default function MainQues() {
     <>
       <Link to="/simulation">
         <div className="shortcut_bar">
-          <p>새로운 체험이 업데이트 되었습니다.</p>
-          <div />
-          <p className="highlight">바로가기</p>
+          <p>
+            새로운 체험이 업데이트 되었습니다. <span>바로가기</span>
+          </p>
         </div>
       </Link>
 
@@ -84,22 +110,32 @@ export default function MainQues() {
             </div>
             <div className="btns">
               <div className="btn_menu">
-                <div className="img_box">
-                  <img src="/img/main_ques_question.svg" alt="질문하기" />
-                </div>
-                <p>질문하기</p>
+                <Link to="/createQuestion">
+                  <div className="img_box">
+                    <img src="/img/main_ques_question.svg" alt="질문하기" />
+                  </div>
+                  <p>질문하기</p>
+                </Link>
+              </div>
+              {/* '내 질문보기' 링크는 질문게시판에서 '내 질문보기' 선택된 상태의 페이지?? */}
+              <div className="btn_menu">
+                <Link to="/questionBoard">
+                  <div className="img_box">
+                    <img src="/img/main_ques_answer.svg" alt="내 질문보기" />
+                  </div>
+                  <p>내 질문보기</p>
+                </Link>
               </div>
               <div className="btn_menu">
-                <div className="img_box">
-                  <img src="/img/main_ques_answer.svg" alt="내 질문보기" />
-                </div>
-                <p>내 질문보기</p>
-              </div>
-              <div className="btn_menu">
-                <div className="img_box">
-                  <img src="/img/main_ques_partner.svg" alt="파트너 둘러보기" />
-                </div>
-                <p>파트너 둘러보기</p>
+                <Link to="/findpartner">
+                  <div className="img_box">
+                    <img
+                      src="/img/main_ques_partner.svg"
+                      alt="파트너 둘러보기"
+                    />
+                  </div>
+                  <p>파트너 둘러보기</p>
+                </Link>
               </div>
             </div>
           </div>
@@ -108,23 +144,20 @@ export default function MainQues() {
 
       <div className="innerBox">
         <div className="swiper_section">
-          {/* swiper로 구현 예정 */}
-          <div className="swiper">
-            <div className="response_name">
-              {/* 이름, 제목 DB로 받아와야 */}
-              <img src="/img/bell_icon.svg" alt="알림icon" />
-              <span>차은우</span>님의 답변을 확인해보세요
-            </div>
-            <div className="reponse_title">Q 서브웨이 어떻게 먹어요...</div>
-            <div className="dots">
-              <img src="/img/dot_icon.png" alt="스와이퍼icon" />
-              <img src="/img/dot_gray_icon.png" alt="스와이퍼icon" />
-              <img src="/img/dot_gray_icon.png" alt="스와이퍼icon" />
-            </div>
-          </div>
-          <button type="button">
-            답변 확인하기 <img src="/img/right-icon.svg" alt="다음icon" />
-          </button>
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            spaceBetween={0}
+            slidesPerView={1}
+            pagination={{ clickable: true }}
+            loop
+            autoplay={{ delay: 5000 }}
+          >
+            {dataJson.map((el) => (
+              <SwiperSlide>
+                <MainAnsBox data={el} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         <div className="notice_section">
@@ -132,24 +165,27 @@ export default function MainQues() {
           <div className="notice_list">
             <ul>
               {initialNotices.map((notice) => (
-                <li key={notice.id}>
-                  <div>{notice.id}</div>
-                  <div className="notice_title">
-                    <div>{notice.type}</div>
-                    <div>{notice.title}</div>
-                  </div>
-                  <div className="notice_date">{notice.date}</div>
-                </li>
+                <Link to={`/notice/article/${notice.id}`}>
+                  <li key={notice.id}>
+                    <div>{notice.id}</div>
+                    <div className="notice_title">
+                      <div>{notice.type}</div>
+                      <div>{notice.title}</div>
+                    </div>
+                    <div className="notice_date">{notice.date}</div>
+                  </li>
+                </Link>
               ))}
             </ul>
           </div>
-
-          <Link to="/notice">
-            <button type="button">
-              <img src="/img/plus-icon.svg" alt="더보기icon" />
-              더보기
-            </button>
-          </Link>
+          <div className="notice_more">
+            <Link to="/notice">
+              <button type="button">
+                <img src="/img/plus-icon.svg" alt="더보기icon" />
+                더보기
+              </button>
+            </Link>
+          </div>
           {/* <button type="button" onClick={loadMoreNotices}>
             <img src="/img/plus-icon.svg" alt="더보기icon" />
             더보기
