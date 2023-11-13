@@ -1,0 +1,82 @@
+@import './palette.scss';
+
+.fin_modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  width: 523px;
+  height: 283px;
+  background-color: #fff;
+  border: 1px solid #dddddd;
+  box-shadow: 0px 0px 10px 0px #99999970;
+
+  img {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 25px;
+    cursor: pointer;
+  }
+
+  .fin_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-family: $ques-font-default;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .fin_title {
+      font-family: $ques-font-bold;
+      font-size: 30px;
+      margin-top: 35px;
+      margin-bottom: 15px;
+    }
+
+    .fin_btns {
+      display: flex;
+      margin-top: 30px;
+      margin-bottom: 30px;
+
+      .fin_btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 231px;
+        height: 58px;
+        border-radius: 5px;
+        color: #fff;
+        font-family: $ques-font-bold;
+        font-size: 20px;
+        cursor: pointer;
+        margin: 5px;
+      }
+
+      .subColor {
+        background-color: #999999;
+
+        &:hover {
+          color: #999999;
+          background-color: #fff;
+          border: 3px solid #999999;
+        }
+      }
+
+      .mainColor {
+        background-color: $main-color;
+
+        &:hover {
+          color: $main-color;
+          background-color: #fff;
+          border: 3px solid $main-color;
+        }
+      }
+    }
+  }
+}
