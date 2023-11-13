@@ -127,7 +127,7 @@ export default function MainQues() {
                 </Link>
               </div>
               <div className="btn_menu">
-                <Link to="/findpartner">
+                <Link to="/searchPartner">
                   <div className="img_box">
                     <img
                       src="/img/main_ques_partner.svg"

@@ -1,0 +1,108 @@
+@import './palette.scss';
+
+.banner_bg {
+  width: 100%;
+  height: 363px;
+  background-color: #f8f8f8;
+
+  .ques_navbar {
+    margin: 0;
+    padding-top: 50px;
+  }
+
+  .banner {
+    display: flex;
+    justify-content: space-between;
+
+    .banner_text {
+      .banner_title {
+        font-family: $ques-font-bold;
+        font-size: 40px;
+        margin-top: 30px;
+      }
+
+      .banner_subtitle {
+        font-family: $ques-font-default;
+        font-size: 20px;
+        margin-bottom: 45px;
+      }
+
+      li {
+        list-style-type: disc;
+        list-style-position: inside;
+        font-family: $res-font-default;
+        font-size: 18px;
+        color: #777777;
+        margin: 13px 0;
+      }
+    }
+
+    .banner_img {
+      margin-right: 70px;
+      transform: translateY(-20px);
+    }
+  }
+}
+
+.partner_list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); // 2열
+  margin-top: 25px;
+  margin-bottom: 50px;
+
+  .PartnerBox_comp {
+    display: flex;
+    width: 600px;
+    height: 155px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    align-items: center;
+    cursor: pointer;
+    margin: 10px 0;
+
+    img {
+      height: 67px;
+      margin: 0 29px;
+      transform: translateY(-15px);
+    }
+
+    .info_content {
+      .name {
+        font-family: $ques-font-bold;
+        font-size: 28px;
+        margin-right: 10px;
+      }
+
+      .category {
+        font-family: $ques-font-bold;
+        font-size: 16px;
+        color: #999999;
+      }
+
+      .expl {
+        font-family: $ques-font-default;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      .level {
+        font-family: $res-font-bold;
+        font-size: 20px;
+        color: $main-color;
+        margin-right: 20px;
+      }
+
+      .answer,
+      .point {
+        font-family: $res-font-default;
+        font-size: 18px;
+        color: #999999;
+        margin-right: 20px;
+      }
+    }
+
+    &:hover {
+      background-color: #dddddd;
+    }
+  }
+}
