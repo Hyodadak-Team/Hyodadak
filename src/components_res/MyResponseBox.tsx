@@ -10,8 +10,8 @@ export default function MyResponseBox({ data }: MyPresponseProps) {
   const { title, type, writer, createTime, money, content } = data
   const difference: string = timeDifference(createTime)
   return (
-    <>
-      <Link to="detail주소바꾸자" className="question_box">
+    <div className="question_box">
+      <Link to="detail주소바꾸자">
         <p className="pink_txt">
           {money && <span className="money">{money}</span>}
           {writer} · {type}
@@ -21,6 +21,6 @@ export default function MyResponseBox({ data }: MyPresponseProps) {
         <p className="content">{content}</p>
       </Link>
       <GradientBtn icon="chat" path="chat" content="채팅하기" />
-    </>
+    </div>
   )
 }
