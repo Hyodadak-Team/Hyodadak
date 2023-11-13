@@ -52,7 +52,7 @@ export default function IndexFirst() {
           </button>
         </div>
         <div className="img_container">
-          <img src="/img/phone_cut.svg" alt="phoneImg" />
+          <img className="phone_img" src="/img/phone_cut.svg" alt="phoneImg" />
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             className="banner"
