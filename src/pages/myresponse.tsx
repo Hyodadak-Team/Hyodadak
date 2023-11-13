@@ -5,6 +5,7 @@ import MyResponseBox from '../components_res/MyResponseBox'
 export default function MyResponse() {
   const [quesData, setQuesData] = useState([
     {
+      object_id: 1,
       title: '서브웨이 어떻게 먹어요...',
       type: '무인자판기',
       writer: '거북이',
@@ -14,6 +15,7 @@ export default function MyResponse() {
         '너무 복잡해서 못 먹것다 논현역 근처에 사시는 분 안계신가요? 너무 복잡해요.. 메뉴 선택하다가 사람들 눈치보여서 그냥 나왔어요.. \n 제발 도와주세요. 저 서브웨이 못 먹은지 3달 됐단 말이에요...',
     },
     {
+      object_id: 2,
       title: '서브웨이 어떻게 먹어요...',
       type: '무인자판기',
       writer: '거북이',
@@ -29,6 +31,7 @@ export default function MyResponse() {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
     setQuesData([
       {
+        object_id: 1,
         title: '서브웨이 어떻게 먹어요...',
         type: '무인자판기',
         writer: '거북이',
@@ -38,6 +41,7 @@ export default function MyResponse() {
           '너무 복잡해서 못 먹것다 논현역 근처에 사시는 분 안계신가요? 너무 복잡해요.. 메뉴 선택하다가 사람들 눈치보여서 그냥 나왔어요.. \n 제발 도와주세요. 저 서브웨이 못 먹은지 3달 됐단 말이에요...',
       },
       {
+        object_id: 2,
         title: '서브웨이 어떻게 먹어요...',
         type: '무인자판기',
         writer: '거북이',
