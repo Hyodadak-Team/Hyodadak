@@ -17,7 +17,7 @@
     font-family: $ques-font-default;
     color: #fff;
 
-    &.highlight {
+    span {
       color: #fff848;
       text-decoration: underline;
     }
@@ -34,8 +34,8 @@
     height: 418px;
     padding-bottom: 35px;
     display: flex;
-    justify-content: space-around;
-    // justify-content: space-between;
+    // justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 
     .titles {
@@ -101,87 +101,90 @@
 }
 
 .swiper_section {
-  position: relative;
   width: 100%;
   height: 147px;
   background-color: #fff;
   border-radius: 30px;
   box-shadow: 1px 1px 5px #eee;
   transform: translateY(-74px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
 
-  .swiper {
-    height: 107px;
-    width: 90%; // 100%
-    // margin-left: 48px;
-    // margin-right: 48px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: 20px;
-
-    .response_name {
-      font-family: $res-font-default;
-      font-size: 18px;
-      color: $main-color;
-
-      span {
-        font-weight: bold;
-        text-decoration: underline;
-      }
-
-      img {
-        height: 17px;
-        margin-right: 7px;
-        transform: translateY(2px);
-      }
-    }
-
-    .reponse_title {
-      font-family: $ques-font-bold;
-      font-size: 28px;
-      margin-top: 5px;
-    }
-
-    .dots {
-      img {
-        height: 10px;
-        align-items: center;
-        margin: 7px;
-        transform: translateX(600px);
-        cursor: pointer;
-      }
-    }
+  .swiper-pagination-bullet-active {
+    background-color: $main-color;
   }
 
-  button {
-    position: absolute;
-    right: 38px;
-    width: 200px;
-    height: 58px;
-    font-size: 20px;
-    font-family: $ques-font-default;
-    color: $main-color;
-    background-color: #fff;
-    border-radius: 50px;
-    border: 2px solid $main-color;
-    line-height: 20px;
-    cursor: pointer;
+  .ansBox_comp {
+    display: flex;
 
-    img {
-      height: 20px;
-      margin-left: 3px;
-      transform: translateY(4px);
+    // 상하좌우 배치 - 1 ; margin, padding 사용
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 50px;
+    padding: 35px 0;
+
+    // // 상하좌우 배치 - 2 ; position 사용
+    // position: relative;
+
+    .ansBox_content {
+      // position: absolute;
+      // top: 37px;
+      // left: 50px;
+
+      .answer_name {
+        font-family: $res-font-default;
+        font-size: 18px;
+        color: $main-color;
+
+        span {
+          font-weight: bold;
+          // text-decoration: underline;
+          border-bottom: 2px solid $main-color;
+        }
+
+        img {
+          height: 17px;
+          margin-right: 7px;
+          transform: translateY(2px);
+        }
+      }
+
+      .answer_title {
+        font-family: $ques-font-bold;
+        font-size: 28px;
+        margin-top: 13px;
+      }
     }
 
-    &:hover {
-      color: #fff;
-      background-color: $main-color;
+    .ansBox_btn {
+      // position: absolute;
+      // top: 45px;
+      // right: 50px;
 
-      img {
-        filter: brightness(0) invert(1);
+      button {
+        width: 200px;
+        height: 58px;
+        font-size: 20px;
+        font-family: $ques-font-default;
+        color: $main-color;
+        background-color: #fff;
+        border-radius: 50px;
+        border: 2px solid $main-color;
+        line-height: 20px;
+        cursor: pointer;
+
+        img {
+          height: 20px;
+          margin-left: 3px;
+          transform: translateY(4px);
+        }
+
+        &:hover {
+          color: #fff;
+          background-color: $main-color;
+
+          img {
+            filter: brightness(0) invert(1);
+          }
+        }
       }
     }
   }
@@ -229,31 +232,35 @@
     }
   }
 
-  button {
-    width: 124px;
-    height: 47px;
-    font-size: 20px;
-    font-family: $ques-font-default;
-    color: $main-color;
-    background-color: #fff;
-    border-radius: 50px;
-    border: 2px solid $main-color;
-    cursor: pointer;
-    margin-top: 35px;
-    margin-bottom: 70px;
+  .notice_more {
+    text-align: center;
 
-    img {
-      height: 20px;
-      margin-right: 10px;
-      transform: translateY(4px);
-    }
-
-    &:hover {
-      color: #fff;
-      background-color: $main-color;
+    button {
+      width: 124px;
+      height: 47px;
+      font-size: 20px;
+      font-family: $ques-font-default;
+      color: $main-color;
+      background-color: #fff;
+      border-radius: 50px;
+      border: 2px solid $main-color;
+      cursor: pointer;
+      margin-top: 35px;
+      margin-bottom: 70px;
 
       img {
-        filter: brightness(0) invert(1);
+        height: 20px;
+        margin-right: 10px;
+        transform: translateY(4px);
+      }
+
+      &:hover {
+        color: #fff;
+        background-color: $main-color;
+
+        img {
+          filter: brightness(0) invert(1);
+        }
       }
     }
   }
