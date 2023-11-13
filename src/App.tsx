@@ -27,6 +27,10 @@ import Chat from './pages/chat'
 import SubWay5 from './pages/SimulationSubWay/Subway5'
 import SubWay6 from './pages/SimulationSubWay/Subway6'
 import SubWay7 from './pages/SimulationSubWay/Subway7'
+import Subway16 from './pages/SimulationSubWay/Subway16'
+import Subway17 from './pages/SimulationSubWay/Subway17'
+import Subway18 from './pages/SimulationSubWay/Subway18'
+import Subway19 from './pages/SimulationSubWay/Subway19'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -55,6 +59,10 @@ function App() {
           <Route path="/simulation/subway5" element={<SubWay5 />} />
           <Route path="/simulation/subway6" element={<SubWay6 />} />
           <Route path="/simulation/subway7" element={<SubWay7 />} />
+          <Route path="/simulation/subway16" element={<Subway16 />} />
+          <Route path="/simulation/subway17" element={<Subway17 />} />
+          <Route path="/simulation/subway18" element={<Subway18 />} />
+          <Route path="/simulation/subway19" element={<Subway19 />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/mypartner" element={<MyPartner />} />
           <Route path="/myres" element={<MyResponse />} />
