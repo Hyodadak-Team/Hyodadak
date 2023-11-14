@@ -58,6 +58,7 @@ function Notice() {
         alert('초기 데이터 셋 실패')
       })
   }
+
   useEffect(() => {
     getAllNotices()
   }, [])
@@ -116,11 +117,10 @@ function Notice() {
               />
             </div>
             <div className="notice_list-section">
-              {console.log(currentItems)}
               {currentItems.map((notice: INotice) => {
                 return (
                   <div className="notice_list" key={notice.idx}>
-                    <Link to={`/notice/article/${notice.idx}`}>
+                    <Link to="/notice/article" state={{ notice }}>
                       <div
                         className="notice_box"
                         onClick={() => {
@@ -139,7 +139,7 @@ function Notice() {
                           <div>[{notice.category}]</div>
                           <div>{notice.title}</div>
                         </div>
-                        <div>{notice.date}</div>
+                        <div>{notice.createTime}</div>
                       </div>
                     </Link>
                     <div className="divide-list" />

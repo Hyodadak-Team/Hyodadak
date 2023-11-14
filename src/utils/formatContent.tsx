@@ -3,7 +3,7 @@ import React from 'react'
 import { INotice } from '../types/notice'
 
 const formatContent = (filteredNotice: INotice): JSX.Element[] => {
-  const noticeContent = filteredNotice.content
+  const noticeContent = filteredNotice.contents
   const convertedContent = noticeContent.split('\n').map((line, index) => {
     const spaces = ' '.repeat(8)
     const formattedLine = line.replace(/\t/g, spaces)

@@ -1,3 +1,5 @@
+import { ObjectId } from 'mongoose'
+
 export interface INoticeMenu {
   id: number
   range: string
@@ -5,6 +7,7 @@ export interface INoticeMenu {
   isActive: boolean
 }
 export interface INotice {
+  _id: ObjectId
   idx: number
   category: string
   title: string
