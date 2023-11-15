@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
-// import noticeList from '../constants/noticeList'
 import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
 import NoticeArticle from '../components/NoticeArticle'
@@ -37,6 +36,7 @@ function Notice() {
 
   // notice-article
   const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
+
   // test axios
   const getAllNotices = () => {
     axios
@@ -129,7 +129,7 @@ function Notice() {
               {currentItems.map((notice: INotice) => {
                 return (
                   <div className="notice_list" key={notice.idx}>
-                    <Link to="/notice/article" state={{ notice }}>
+                    <Link to="/notice/article" state={{ notice, noticeList }}>
                       <div
                         className="notice_box"
                         onClick={() => {
