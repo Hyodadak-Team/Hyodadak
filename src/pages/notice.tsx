@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -8,10 +9,14 @@ import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
 import NoticeArticle from '../components/NoticeArticle'
 import Title from '../components_ques/Title'
+import openNewTab from '../utils/openNewTab'
 
 type TitleType = {
   data: [string, string, string, string]
 }
+
+const DIGITAL_LEARNING_CENTER_URL =
+  'https://www.xn--2z1bw8k1pjz5ccumkb.kr/main.do'
 
 function Notice() {
   const currentUrl: TitleType['data'] = ['공지사항', '/notice', '', '']
@@ -67,13 +72,17 @@ function Notice() {
     currentPage,
     itemsPerPage,
   )
+
   return (
     <>
-      <div className="shortcut_bar">
+      <button
+        className="shortcut_bar"
+        onClick={() => openNewTab(DIGITAL_LEARNING_CENTER_URL)}
+      >
         <p>디지털 배움터</p>
         <div />
         <p className="highlight">바로가기</p>
-      </div>
+      </button>
       <div className="innerBox ques">
         <Title data={currentUrl} />
         <div className="notice_main">
