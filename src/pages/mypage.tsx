@@ -10,7 +10,7 @@ export default function Mypage() {
     money: 1000,
     questionNum: 4,
     partnerNum: 5,
-    type: 'res',
+    type: 'ques',
     level: 2,
     major: ['무인자판기', '이동수단', '기타'],
     intro:
@@ -26,7 +26,7 @@ export default function Mypage() {
       money: 1000,
       questionNum: 4,
       partnerNum: 5,
-      type: 'res',
+      type: 'ques',
       level: 2,
       major: ['무인자판기', '이동수단', '기타'],
       intro:
@@ -76,8 +76,13 @@ export default function Mypage() {
                   defaultValue={name}
                   onChange={(e) => setModifiyInput(e.target.value)}
                   data-testid="modify-input"
+                  className="modify_input"
                 />
-                <button type="button" onClick={() => modifyValue(modifiyInput)}>
+                <button
+                  type="button"
+                  onClick={() => modifyValue(modifiyInput)}
+                  className="modify_button"
+                >
                   저장
                 </button>
               </>
