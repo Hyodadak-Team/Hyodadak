@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Title from '../components_ques/Title'
 import ManagementBox from '../components_res/ManagementBox'
@@ -106,7 +106,7 @@ export default function Mypage() {
           </li>
           <li>
             <p>채택질문 : {questionNum}개</p>
-            <Link to="/questionboard/mine">내 질문 보기</Link>
+            <Link to="/questionboard">내 질문 보기</Link>
           </li>
           <li>
             <p>파트너 수 : {partnerNum}명</p>
