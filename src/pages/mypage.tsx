@@ -1,16 +1,19 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Title from '../components_ques/Title'
 import ManagementBox from '../components_res/ManagementBox'
+import ProfileModal from '../components/PropfileModal'
 
 export default function Mypage() {
+  const [open, setOpen] = useState(false)
   const [userData, setUserData] = useState({
     profileImg: '',
     name: '박지원',
     money: 1000,
     questionNum: 4,
     partnerNum: 5,
-    type: 'ques',
+    type: 'res',
     level: 2,
     major: ['무인자판기', '이동수단', '기타'],
     intro:
@@ -26,7 +29,7 @@ export default function Mypage() {
       money: 1000,
       questionNum: 4,
       partnerNum: 5,
-      type: 'ques',
+      type: 'res',
       level: 2,
       major: ['무인자판기', '이동수단', '기타'],
       intro:
@@ -51,12 +54,16 @@ export default function Mypage() {
     intro,
   } = userData
 
+  const showModal = () => {
+    setOpen(true)
+  }
+
   return type === 'ques' ? (
     <div className="innerBox ques">
       <Title data={['내 정보', '/notice', '', '']} />
       <main className="mypage_ques">
         <div className="profile">
-          <div className="imgBox">
+          <div className="imgBox imgBox_ques">
             {profileImg ? (
               <img src="" alt="프로필 이미지" />
             ) : (
@@ -66,7 +73,10 @@ export default function Mypage() {
                 alt="프로필 이미지"
               />
             )}
-            <Link to="#/">프로필 수정</Link>
+            <button className="edit_btn" type="button" onClick={showModal}>
+              프로필 수정
+            </button>
+            <ProfileModal type="ques profile" open={open} setOpen={setOpen} />
           </div>
 
           <div className="nameBox">
@@ -134,12 +144,13 @@ export default function Mypage() {
                   alt="프로필 이미지"
                 />
               )}
-              <div className="btn_edit">
+              <button type="button" className="btn_edit" onClick={showModal}>
                 <div>
                   <img src="/img/edit_icon.svg" alt="" />
                 </div>
-              </div>
+              </button>
             </div>
+            <ProfileModal type="res profile" open={open} setOpen={setOpen} />
           </div>
           <div className="my_info_text">
             <h3>
