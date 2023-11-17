@@ -86,7 +86,8 @@
     padding: 30px 25px;
     display: flex;
     position: relative;
-
+    min-height: 233px;
+    height: 30vh;
     span.pink {
       color: $main-color;
       font-family: $res-font-bold;
@@ -168,6 +169,7 @@
     border-radius: 10px;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
+    height: 40vh;
     .manageTextBox {
       div p:first-child {
         font-size: 18px;
