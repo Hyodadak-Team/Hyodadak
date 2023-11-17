@@ -87,6 +87,11 @@ a {
   justify-content: space-between;
 }
 
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}
+
 .btn_main {
   color: white;
   background-color: $main-color;

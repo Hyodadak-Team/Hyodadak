@@ -6,6 +6,7 @@ import timeDifference from '../utils/timeDifference'
 export default function ChatList() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [selectedPartner, setSelectedPartner] = useState<any>({})
+  const [visible, setVisible] = useState(false) // 나중에 partnerList의 status를 업데이트 해야함
   const [user, setUser] = useState({ name: '박성재', type: 'res' })
   const [chatLog, setChatLog] = useState([
     {
@@ -85,9 +86,19 @@ export default function ChatList() {
       {Object.keys(selectedPartner).length !== 0 ? (
         <>
           <div className="chat_header">
-            <a href="/#" onClick={() => setSelectedPartner({})}>
+            <div
+              role="button"
+              tabIndex={0}
+              aria-label="Previous"
+              onKeyDown={(e): void => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  setSelectedPartner({})
+                }
+              }}
+              onClick={() => setSelectedPartner({})}
+            >
               <img src="/img/prev-icon.svg" alt="" />
-            </a>
+            </div>
             <p>{selectedPartner.name}</p>
             <Link className="content_link" to="/게시물detail">
               {selectedPartner.contentTitle}
@@ -95,7 +106,19 @@ export default function ChatList() {
           </div>
           {user.type === 'res' ? (
             <div className="request_btn request_btn_res flexBox">
-              <span>종료요청</span>|<span> 나가기</span>
+              <span
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e): void => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    setVisible(true)
+                  }
+                }}
+                onClick={() => setVisible(true)}
+              >
+                종료요청
+              </span>
+              |<span> 나가기</span>
             </div>
           ) : (
             <div className="request_btn flexBox">
@@ -111,6 +134,10 @@ export default function ChatList() {
               )
             })}
           </ul>
+          {visible && (
+            <span className="end_chat flexCenter">채팅이 종료되었습니다.</span>
+          )}
+
           <input type="text" placeholder="입력후 Enter키를 눌러주세요" />
         </>
       ) : (
