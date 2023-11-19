@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -130,7 +131,7 @@ function Notice() {
             <div className="notice_list-section">
               {currentItems.map((notice: INotice) => {
                 return (
-                  <div className="notice_list" key={notice.idx}>
+                  <div className="notice_list" key={notice._id}>
                     <Link to="/notice/article" state={{ notice, noticeList }}>
                       <div
                         className="notice_box"
