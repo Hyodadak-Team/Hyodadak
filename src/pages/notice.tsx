@@ -9,6 +9,7 @@ import Pagination from '../composables/Pagination'
 import NoticeArticle from '../components/NoticeArticle'
 import Title from '../components_ques/Title'
 import openNewTab from '../utils/openNewTab'
+import formatDate from '../utils/formateDate'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -148,7 +149,8 @@ function Notice() {
                           <div>[{notice.category}]</div>
                           <div>{notice.title}</div>
                         </div>
-                        <div>{notice.createTime}</div>
+                        <div>{formatDate(notice.createTime)}</div>
+                        {/* <div>{notice.createTime}</div> */}
                       </div>
                     </Link>
                     <div className="divide-list" />

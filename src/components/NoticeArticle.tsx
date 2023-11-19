@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import formatContent from '../utils/formatContent'
 import RoundBtn from '../composables/Button/RoundBtn'
+import formatDate from '../utils/formateDate'
 
 function NoticeArticle() {
   const location = useLocation()
@@ -36,7 +37,7 @@ function NoticeArticle() {
         <p className="article title bold">
           [{filteredNotice.category}] {filteredNotice.title}
         </p>
-        <p className="article date">{filteredNotice.createTime}</p>
+        <p className="article date">{formatDate(filteredNotice.createTime)}</p>
       </div>
       <div className="divide-list" />
       <div className="article-content">{convertedContent}</div>
