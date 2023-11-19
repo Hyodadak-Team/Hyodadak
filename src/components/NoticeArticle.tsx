@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import formatContent from '../utils/formatContent'
 import RoundBtn from '../composables/Button/RoundBtn'
 import formatDate from '../utils/formateDate'
+import formatCategory from '../utils/formatCategory'
 
 function NoticeArticle() {
   const location = useLocation()
@@ -35,7 +36,7 @@ function NoticeArticle() {
       </div>
       <div className="ques_title">
         <p className="article title bold">
-          [{filteredNotice.category}] {filteredNotice.title}
+          [{formatCategory(filteredNotice.category)}] {filteredNotice.title}
         </p>
         <p className="article date">{formatDate(filteredNotice.createTime)}</p>
       </div>
@@ -54,7 +55,7 @@ function NoticeArticle() {
               }}
             >
               <p>
-                [{prevNotice.category}] {prevNotice.title}
+                [{formatCategory(prevNotice.category)}] {prevNotice.title}
               </p>
             </Link>
           ) : (
@@ -72,7 +73,7 @@ function NoticeArticle() {
               }}
             >
               <p>
-                [{nextNotice.category}] {nextNotice.title}
+                [{formatCategory(nextNotice.category)}] {nextNotice.title}
               </p>
             </Link>
           ) : (

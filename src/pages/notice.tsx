@@ -10,6 +10,7 @@ import NoticeArticle from '../components/NoticeArticle'
 import Title from '../components_ques/Title'
 import openNewTab from '../utils/openNewTab'
 import formatDate from '../utils/formateDate'
+import formatCategory from '../utils/formatCategory'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -146,11 +147,10 @@ function Notice() {
                       >
                         <div>{notice.idx}</div>
                         <div className="notice-title">
-                          <div>[{notice.category}]</div>
+                          <div>[{formatCategory(notice.category)}]</div>
                           <div>{notice.title}</div>
                         </div>
                         <div>{formatDate(notice.createTime)}</div>
-                        {/* <div>{notice.createTime}</div> */}
                       </div>
                     </Link>
                     <div className="divide-list" />
