@@ -23,16 +23,43 @@ const DIGITAL_LEARNING_CENTER_URL =
 function Notice() {
   const currentUrl: TitleType['data'] = ['공지사항', '/notice', '', '']
 
-  // notice-menu
   const [activeMenu, setActiveMenu] = useState(1)
+  const [noticeList, setNoticeList] = useState<INotice[]>([])
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 7
+
+  // notice-menu
+  const setActiveList = (menuId: number, list: INotice[]) => {
+    const copyList = list.slice()
+    let filteredList: INotice[] = []
+
+    if (menuId === 1) {
+      return copyList
+    }
+
+    if (menuId === 2) {
+      filteredList = copyList.filter(
+        (notice: INotice) => notice.category === 'notification',
+      )
+      console.log(filteredList)
+    }
+
+    if (menuId === 3) {
+      filteredList = copyList.filter(
+        (notice: INotice) => notice.category === 'event',
+      )
+      console.log(filteredList)
+    }
+    return filteredList
+  }
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
+    const filteredList = setActiveList(menuId, noticeList)
+    setNoticeList(filteredList)
   }
 
   // notice-pagination
-  const itemsPerPage = 7
-  const [noticeList, setNoticeList] = useState([])
-  const [currentPage, setCurrentPage] = useState(1)
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
