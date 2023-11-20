@@ -26,35 +26,34 @@ function Notice() {
   const [activeMenu, setActiveMenu] = useState(1)
   const [noticeList, setNoticeList] = useState<INotice[]>([])
   const [currentPage, setCurrentPage] = useState(1)
+  const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
   const itemsPerPage = 7
 
   // notice-menu
   const setActiveList = (menuId: number, list: INotice[]) => {
-    const copyList = list.slice()
     let filteredList: INotice[] = []
 
     if (menuId === 1) {
-      return copyList
+      return list
     }
 
-    if (menuId === 2) {
-      filteredList = copyList.filter(
-        (notice: INotice) => notice.category === 'notification',
-      )
-      console.log(filteredList)
-    }
+    filteredList = list.filter((notice: INotice) => {
+      if (menuId === 2) {
+        return notice.category === 'notification'
+      }
+      if (menuId === 3) {
+        return notice.category === 'event'
+      }
+      return true
+    })
 
-    if (menuId === 3) {
-      filteredList = copyList.filter(
-        (notice: INotice) => notice.category === 'event',
-      )
-      console.log(filteredList)
-    }
     return filteredList
   }
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
-    const filteredList = setActiveList(menuId, noticeList)
+
+    // 이미 초기 데이터가 있는 경우
+    const filteredList = setActiveList(menuId, originalNoticeList)
     setNoticeList(filteredList)
   }
 
@@ -70,18 +69,18 @@ function Notice() {
   // test axios
   const getAllNotices = () => {
     axios
-      .get('http://localhost:4000/notice/all')
-      .then(function (response) {
-        console.log(response.data)
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
+      .then((response) => {
+        setOriginalNoticeList(response.data)
         setNoticeList(response.data)
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error)
       })
   }
   const initData = () => {
     axios
-      .post('http://localhost:4000/notice/init')
+      .post(`${import.meta.env.VITE_SERVER_API_URL}/notice/init`)
       .then(function (response) {
         console.log(response)
         if (response.status === 200) {
@@ -97,6 +96,7 @@ function Notice() {
   useEffect(() => {
     getAllNotices()
   }, [])
+
   const { sortedList, currentItems } = setPagination(
     noticeList,
     currentPage,
