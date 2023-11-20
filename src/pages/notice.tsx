@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
@@ -27,6 +27,7 @@ function Notice() {
   const [noticeList, setNoticeList] = useState<INotice[]>([])
   const [currentPage, setCurrentPage] = useState(1)
   const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
+  const [searchItem, setSearchItem] = useState('')
   const itemsPerPage = 7
 
   // notice-menu
@@ -103,6 +104,16 @@ function Notice() {
     itemsPerPage,
   )
 
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchItem(e.currentTarget.value)
+  }
+  const searchContent = () => {
+    const filteredList = originalNoticeList.filter((notice: INotice) =>
+      notice.title.includes(searchItem),
+    )
+    setNoticeList(filteredList)
+  }
+
   return (
     <>
       <button
@@ -148,12 +159,26 @@ function Notice() {
               <input
                 className="search-input ques"
                 placeholder="궁금한 내용을 입력해보세요"
+                value={searchItem}
+                onChange={searchHandler}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    searchContent()
+                  }
+                }}
               />
-              <img
-                src="/img/search-icon.svg"
+              <button
+                onClick={searchContent}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    searchContent()
+                  }
+                }}
+                tabIndex={0}
                 className="search-icon"
-                alt="search-icon"
-              />
+              >
+                <img src="/img/search-icon.svg" alt="search-icon" />
+              </button>
             </div>
             <div className="notice_list-section">
               {currentItems.map((notice: INotice) => {
