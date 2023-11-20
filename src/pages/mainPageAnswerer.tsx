@@ -12,7 +12,7 @@ interface DataSourceType {
   category: string
   isDone: string
   money: string
-  answerCounts: string
+  answerCounts: number
   date: string
 }
 const postData: Array<DataSourceType> = [
@@ -23,8 +23,8 @@ const postData: Array<DataSourceType> = [
     category: '무인주문기',
     isDone: '완료',
     money: '기본',
-    answerCounts: '3',
-    date: timeDifference('2023-11-11'),
+    answerCounts: 3,
+    date: '2023-11-11',
   },
   {
     key: '2',
@@ -33,8 +33,8 @@ const postData: Array<DataSourceType> = [
     category: '무인주문기',
     isDone: '완료',
     money: '100',
-    answerCounts: '5',
-    date: timeDifference('2023-11-12'),
+    answerCounts: 5,
+    date: '2023-11-12',
   },
   {
     key: '3',
@@ -43,8 +43,8 @@ const postData: Array<DataSourceType> = [
     category: '무인주문기',
     isDone: '완료',
     money: '200',
-    answerCounts: '7',
-    date: timeDifference('2023-11-13'),
+    answerCounts: 7,
+    date: '2023-11-13',
   },
   {
     key: '4',
@@ -53,8 +53,8 @@ const postData: Array<DataSourceType> = [
     category: '무인주문기',
     isDone: '완료',
     money: '700',
-    answerCounts: '9',
-    date: timeDifference('2023-11-11'),
+    answerCounts: 9,
+    date: '2023-11-11',
   },
   {
     key: '5',
@@ -63,8 +63,8 @@ const postData: Array<DataSourceType> = [
     category: '무인주문기',
     isDone: '완료',
     money: '기본',
-    answerCounts: '2',
-    date: timeDifference('2023-11-11'),
+    answerCounts: 2,
+    date: '2023-11-11',
   },
   {
     key: '6',
@@ -72,9 +72,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '7',
@@ -82,9 +82,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이1',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '8',
@@ -92,9 +92,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이2',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '9',
@@ -102,9 +102,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이3',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '10',
@@ -112,9 +112,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이4',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '11',
@@ -122,9 +122,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이5',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '12',
@@ -132,9 +132,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이6',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '13',
@@ -142,9 +142,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이7',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
   {
     key: '14',
@@ -152,9 +152,9 @@ const postData: Array<DataSourceType> = [
     name: '거북이8',
     category: '무인주문기',
     isDone: '완료',
-    money: '50',
-    answerCounts: '4',
-    date: timeDifference('2023-11-11'),
+    money: '80',
+    answerCounts: 4,
+    date: '2023-11-11',
   },
 ]
 
@@ -184,20 +184,36 @@ const columns = [
     title: '용돈',
     dataIndex: 'money',
     key: 'money',
-    // sorter: (a, b) => a.money - b.money,
+    sorter: (a: DataSourceType, b: DataSourceType) => {
+      let first: string = a.money
+      let second: string = b.money
+      if (first === '기본') {
+        first = '50'
+      }
+      if (second === '기본') {
+        second = '50'
+      }
+      return Number(first) - Number(second)
+    },
   },
   {
     title: '답변수',
     dataIndex: 'answerCounts',
     key: 'answerCounts',
 
-    // sorter: (a, b) => a.answerCounts - b.answerCounts,
+    sorter: (a: DataSourceType, b: DataSourceType) =>
+      a.answerCounts - b.answerCounts,
   },
   {
     title: '등록일',
     dataIndex: 'date',
     key: 'date',
-    // sorter: (a, b) => a.date - b.date,
+    render: (text: string) => timeDifference(text),
+    sorter: (a: DataSourceType, b: DataSourceType) => {
+      const first = new Date(a.date)
+      const second = new Date(b.date)
+      return first.getTime() - second.getTime()
+    },
   },
 ]
 
@@ -208,7 +224,9 @@ export default function MainPageAnswerer() {
         <div className="partnerAnswer_inner innerBox res">
           <div className="partnerAnswer_text">
             <p className="partnerAnswer_title">파트너 질문</p>
-            <p className="partnerAnswer_plus">더보기 +</p>
+            <Link to="/partner_ques" className="partnerAnswer_plus">
+              더보기 +
+            </Link>
           </div>
           <div className="partnerAnswer_postBox">
             {/* data => 파트너 질문 최신순 4개로 가져오기 */}
