@@ -224,7 +224,9 @@ export default function MainPageAnswerer() {
         <div className="partnerAnswer_inner innerBox res">
           <div className="partnerAnswer_text">
             <p className="partnerAnswer_title">파트너 질문</p>
-            <p className="partnerAnswer_plus">더보기 +</p>
+            <Link to="/partner_ques" className="partnerAnswer_plus">
+              더보기 +
+            </Link>
           </div>
           <div className="partnerAnswer_postBox">
             {/* data => 파트너 질문 최신순 4개로 가져오기 */}
