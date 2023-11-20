@@ -15,8 +15,8 @@
   }
   .info_area {
     width: 65%;
-    padding-top: 150px;
-    padding-left: 150px;
+    padding-top: 4%;
+    padding-left: 4%;
     overflow: hidden;
   
     .info_container {
@@ -65,8 +65,8 @@
       }
     }
     .img_container {
-      top : -100px;
-      left: -150px;
+      bottom: 150px;
+      right : 150px;
       transform: rotate(25deg);
       //padding-top: 150px;
       overflow: hidden;
@@ -74,19 +74,19 @@
       .phone_img {
         object-fit: cover;
         z-index: 1;
-        width: 500px;
+        width: 35%;
       }
       .swiper{
-        top: -950px;
-        width: 400px;
+        bottom : 700px;
+        width: 300px;
         height: 600px;
-        left: 0px;
         z-index: 2;
         .swiper-slide{
           display: flex;
           justify-content: center;
           width: 400px;
           img{
+            width: 380px;
             margin: auto;
             object-fit: cover;
 
