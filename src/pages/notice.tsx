@@ -12,6 +12,7 @@ import Title from '../components_ques/Title'
 import openNewTab from '../utils/openNewTab'
 import formatDate from '../utils/formateDate'
 import formatCategory from '../utils/formatCategory'
+import setActiveList from '../utils/setActiveList'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -28,28 +29,10 @@ function Notice() {
   const [currentPage, setCurrentPage] = useState(1)
   const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
   const [searchItem, setSearchItem] = useState('')
+  const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
   const itemsPerPage = 7
 
   // notice-menu
-  const setActiveList = (menuId: number, list: INotice[]) => {
-    let filteredList: INotice[] = []
-
-    if (menuId === 1) {
-      return list
-    }
-
-    filteredList = list.filter((notice: INotice) => {
-      if (menuId === 2) {
-        return notice.category === 'notification'
-      }
-      if (menuId === 3) {
-        return notice.category === 'event'
-      }
-      return true
-    })
-
-    return filteredList
-  }
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
 
@@ -59,13 +42,26 @@ function Notice() {
   }
 
   // notice-pagination
-
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber)
   }
 
-  // notice-article
-  const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
+  const { sortedList, currentItems } = setPagination(
+    noticeList,
+    currentPage,
+    itemsPerPage,
+  )
+
+  // notice-search
+  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchItem(e.currentTarget.value)
+  }
+  const searchContent = () => {
+    const filteredList = originalNoticeList.filter((notice: INotice) =>
+      notice.title.includes(searchItem),
+    )
+    setNoticeList(filteredList)
+  }
 
   // test axios
   const getAllNotices = () => {
@@ -97,22 +93,6 @@ function Notice() {
   useEffect(() => {
     getAllNotices()
   }, [])
-
-  const { sortedList, currentItems } = setPagination(
-    noticeList,
-    currentPage,
-    itemsPerPage,
-  )
-
-  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchItem(e.currentTarget.value)
-  }
-  const searchContent = () => {
-    const filteredList = originalNoticeList.filter((notice: INotice) =>
-      notice.title.includes(searchItem),
-    )
-    setNoticeList(filteredList)
-  }
 
   return (
     <>
