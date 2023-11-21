@@ -1,4 +1,7 @@
+// import React, { useRef, useCallback } from 'react'
 import React, { useRef } from 'react'
+import axios from 'axios'
+// import { useNavigate } from 'react-router-dom'
 
 interface Type {
   joinState: object
@@ -9,6 +12,40 @@ export default function JoinMemberInfo(props: Type) {
   const { joinState, setJoinState } = props
   const userId = useRef(null)
   const userPw = useRef(null)
+  // const navigate = useNavigate()
+
+  // const onSubmit = useCallback(async () => {
+  //   try {
+  //     await axios
+  //       .post('http://localhost:4000/join', {
+  //         joinState: joinState,
+  //       })
+  //       .then((res) => {
+  //         console.log('response:', res)
+  //         if (res.status === 200) {
+  //           navigate('/Login')
+  //         }
+  //       })
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }, [joinState])
+
+  const initData = () => {
+    axios
+      .post('http://localhost:4000/join/init')
+      .then(function (response) {
+        console.log(response)
+        if (response.status === 200) {
+          alert('초기 데이터 셋 성공')
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+        alert('초기 데이터 셋 실패')
+      })
+  }
+
   return (
     <div className="all">
       <div className="container">
@@ -71,9 +108,11 @@ export default function JoinMemberInfo(props: Type) {
                   user_id: userId.current.value,
                   user_password: userPw.current.value,
                 })
+                // onSubmit(),
+                initData()
               }}
             >
-              다음
+              회원가입 완료
             </button>
           </div>
         </div>
