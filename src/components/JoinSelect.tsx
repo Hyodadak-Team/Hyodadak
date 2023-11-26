@@ -6,6 +6,7 @@ interface Type {
 }
 export default function JoinSelect(props: Type) {
   const { joinState, setJoinState } = props
+
   return (
     <div className="all">
       <div className="container">
