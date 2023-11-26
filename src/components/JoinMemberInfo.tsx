@@ -1,5 +1,5 @@
-// import React, { useRef, useCallback } from 'react'
-import React, { useRef } from 'react'
+import React, { useRef, useCallback } from 'react'
+// import React, { useRef } from 'react'
 import axios from 'axios'
 // import { useNavigate } from 'react-router-dom'
 
@@ -14,37 +14,38 @@ export default function JoinMemberInfo(props: Type) {
   const userPw = useRef(null)
   // const navigate = useNavigate()
 
-  // const onSubmit = useCallback(async () => {
-  //   try {
-  //     await axios
-  //       .post('http://localhost:4000/join', {
-  //         joinState: joinState,
-  //       })
-  //       .then((res) => {
-  //         console.log('response:', res)
-  //         if (res.status === 200) {
-  //           navigate('/Login')
-  //         }
-  //       })
-  //   } catch (err) {
-  //     console.error(err)
-  //   }
-  // }, [joinState])
-
-  const initData = () => {
-    axios
-      .post('http://localhost:4000/join/init')
-      .then(function (response) {
-        console.log(response)
-        if (response.status === 200) {
-          alert('초기 데이터 셋 성공')
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-        alert('초기 데이터 셋 실패')
-      })
-  }
+  const onSubmit = useCallback(async () => {
+    try {
+      await axios
+        .post('http://localhost:4000/join', {
+          joinState,
+        })
+        .then((res) => {
+          // eslint-disable-next-line react-hooks/exhaustive-deps
+          console.log('response:', res)
+          if (res.status === 200) {
+            // navigate('/Login')
+          }
+        })
+    } catch (err) {
+      console.error(err)
+    }
+  }, [joinState])
+  console.log(joinState)
+  // const initData = () => {
+  //   axios
+  //     .post('http://localhost:4000/join/init')
+  //     .then(function (response) {
+  //       console.log(response)
+  //       if (response.status === 200) {
+  //         alert('초기 데이터 셋 성공')
+  //       }
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error)
+  //       alert('초기 데이터 셋 실패')
+  //     })
+  // }
 
   return (
     <div className="all">
@@ -108,8 +109,8 @@ export default function JoinMemberInfo(props: Type) {
                   user_id: userId.current.value,
                   user_password: userPw.current.value,
                 })
-                // onSubmit(),
-                initData()
+                onSubmit()
+                // initData()
               }}
             >
               회원가입 완료
