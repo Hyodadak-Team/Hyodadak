@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+// import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate()
@@ -7,6 +8,18 @@ export default function Login() {
   const navigateToJoin = () => {
     navigate('/join')
   }
+  // const sendData = async () => {
+  //   axios
+  //     .post('http://localhost:4000/login', {
+  //       id: id,
+  //       password: password,
+  //     })
+  //     .then((result) => {
+  //       console.log(result)
+  //       window.localStorage.setItem('token', result.data.token)
+  //       navigate('/')
+  //     })
+  // }
   return (
     <div className="all">
       <div className="container">
@@ -25,7 +38,11 @@ export default function Login() {
                 &nbsp;비밀번호는 특수기호 숫자가 반드시 포함됩니다.
               </div>
               <div className="btn_set login_btn">
-                <button type="button" className="member_login">
+                <button
+                  type="button"
+                  className="member_login"
+                  // onClick={sendData}
+                >
                   로그인
                 </button>
               </div>

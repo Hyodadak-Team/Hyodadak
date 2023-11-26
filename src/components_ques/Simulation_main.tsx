@@ -32,7 +32,7 @@ export default function SimulationMainQues() {
           <div className="simulation_main_inner">
             <div className="inner_up">
               <div className="successable">
-                <p>성공</p>
+                <p>출시 예정</p>
               </div>
               <img
                 className="sublogo"
@@ -50,7 +50,7 @@ export default function SimulationMainQues() {
           <div className="simulation_main_inner">
             <div className="inner_up">
               <div className="successable">
-                <p>성공</p>
+                <p>출시 예정</p>
               </div>
               <img
                 className="megalogo"
@@ -68,7 +68,7 @@ export default function SimulationMainQues() {
           <div className="simulation_main_inner">
             <div className="inner_up">
               <div className="successable">
-                <p>성공</p>
+                <p>출시 예정</p>
               </div>
               <img
                 className="meclogo"
