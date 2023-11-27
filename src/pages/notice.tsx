@@ -178,7 +178,9 @@ function Notice() {
               </button>
             </div>
             <div className="notice_list-section">
-              {currentItems.map((notice: INotice) => {
+              {currentItems.map((notice: INotice, index) => {
+                const adjustedIndex =
+                  (currentPage - 1) * itemsPerPage + index + 1
                 return (
                   <div className="notice_list" key={notice._id}>
                     <Link to="/notice/article" state={{ notice, noticeList }}>
@@ -195,7 +197,7 @@ function Notice() {
                         role="button"
                         tabIndex={0}
                       >
-                        <div>{notice.idx}</div>
+                        <div>{adjustedIndex}</div>
                         <div className="notice-title">
                           <div>[{formatCategory(notice.category)}]</div>
                           <div>{notice.title}</div>
