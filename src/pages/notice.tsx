@@ -35,6 +35,7 @@ function Notice() {
   // notice-menu
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
+    sessionStorage.setItem('noticeMenuId', menuId.toString())
 
     // 이미 초기 데이터가 있는 경우
     const filteredList = setActiveList(menuId, originalNoticeList)
@@ -89,10 +90,26 @@ function Notice() {
         alert('초기 데이터 셋 실패')
       })
   }
+  const getSessionStorageId = (initList: INotice[]) => {
+    const storeMenuId = sessionStorage.getItem('noticeMenuId')
+
+    if (storeMenuId) {
+      const storedMenuIdNumber = parseInt(storeMenuId, 10)
+      setActiveMenu(storedMenuIdNumber)
+
+      // 이미 초기 데이터가 있는 경우
+      const filteredList = setActiveList(storedMenuIdNumber, initList)
+      setNoticeList(filteredList)
+    }
+  }
 
   useEffect(() => {
     getAllNotices()
   }, [])
+
+  useEffect(() => {
+    getSessionStorageId(originalNoticeList)
+  }, [originalNoticeList])
 
   return (
     <>
@@ -161,10 +178,15 @@ function Notice() {
               </button>
             </div>
             <div className="notice_list-section">
-              {currentItems.map((notice: INotice) => {
+              {currentItems.map((notice: INotice, index) => {
+                const adjustedIndex =
+                  (currentPage - 1) * itemsPerPage + index + 1
                 return (
                   <div className="notice_list" key={notice._id}>
-                    <Link to="/notice/article" state={{ notice, noticeList }}>
+                    <Link
+                      to={`/notice/article/${notice.idx}`}
+                      state={{ notice, noticeList }}
+                    >
                       <div
                         className="notice_box"
                         onClick={() => {
@@ -178,7 +200,7 @@ function Notice() {
                         role="button"
                         tabIndex={0}
                       >
-                        <div>{notice.idx}</div>
+                        <div>{adjustedIndex}</div>
                         <div className="notice-title">
                           <div>[{formatCategory(notice.category)}]</div>
                           <div>{notice.title}</div>
