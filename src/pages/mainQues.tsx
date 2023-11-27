@@ -141,7 +141,7 @@ export default function MainQues() {
           <p>공지사항</p>
           <div className="notice_list">
             <ul>
-              {currentItems.map((notice, index) => {
+              {currentItems.map((notice: INotice, index) => {
                 const adjustedIndex =
                   (currentPage - 1) * itemsPerPage + index + 1
                 return (

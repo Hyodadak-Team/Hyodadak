@@ -183,7 +183,10 @@ function Notice() {
                   (currentPage - 1) * itemsPerPage + index + 1
                 return (
                   <div className="notice_list" key={notice._id}>
-                    <Link to="/notice/article" state={{ notice, noticeList }}>
+                    <Link
+                      to={`/notice/article/${notice.idx}`}
+                      state={{ notice, noticeList }}
+                    >
                       <div
                         className="notice_box"
                         onClick={() => {
