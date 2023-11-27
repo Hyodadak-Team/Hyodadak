@@ -1,9 +1,12 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/mainPageAnswerer.scss'
 import { Table } from 'antd'
+import type { ColumnsType } from 'antd/es/table'
 import PartnerAnswerBox from '../components_res/PartnerAnswerBox'
 import PARTNER_ANSWER_DATA from '../constants/mainPageAnswererData'
 import timeDifference from '../utils/timeDifference'
+import { getAllBoard } from '../apis/board'
 
 interface DataSourceType {
   key: string
@@ -11,213 +14,125 @@ interface DataSourceType {
   name: string
   category: string
   isDone: string
-  money: string
+  money: number // data - string으로 바꿔야함
   answerCounts: number
   date: string
 }
-const postData: Array<DataSourceType> = [
-  {
-    key: '1',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '기본',
-    answerCounts: 3,
-    date: '2023-11-11',
-  },
-  {
-    key: '2',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '두루미',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '100',
-    answerCounts: 5,
-    date: '2023-11-12',
-  },
-  {
-    key: '3',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '가자미',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '200',
-    answerCounts: 7,
-    date: '2023-11-13',
-  },
-  {
-    key: '4',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '토끼',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '700',
-    answerCounts: 9,
-    date: '2023-11-11',
-  },
-  {
-    key: '5',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '호랑이',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '기본',
-    answerCounts: 2,
-    date: '2023-11-11',
-  },
-  {
-    key: '6',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '7',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이1',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '8',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이2',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '9',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이3',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '10',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이4',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '11',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이5',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '12',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이6',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '13',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이7',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-  {
-    key: '14',
-    title: '서브웨이 어떻게 먹어요? / 너무 복잡해서 못먹겠다 혹....',
-    name: '거북이8',
-    category: '무인주문기',
-    isDone: '완료',
-    money: '80',
-    answerCounts: 4,
-    date: '2023-11-11',
-  },
-]
 
-const columns = [
-  {
-    title: '제목 + 내용',
-    dataIndex: 'title',
-    key: 'title',
-    render: (text: string) => <Link to="/quest_detail/abc123">{text}</Link>,
-  },
-  {
-    title: '이름',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
-    title: '유형',
-    dataIndex: 'category',
-    key: 'category',
-  },
-  {
-    title: '채택',
-    dataIndex: 'isDone',
-    key: 'isDone',
-  },
-  {
-    title: '용돈',
-    dataIndex: 'money',
-    key: 'money',
-    sorter: (a: DataSourceType, b: DataSourceType) => {
-      let first: string = a.money
-      let second: string = b.money
-      if (first === '기본') {
-        first = '50'
-      }
-      if (second === '기본') {
-        second = '50'
-      }
-      return Number(first) - Number(second)
-    },
-  },
-  {
-    title: '답변수',
-    dataIndex: 'answerCounts',
-    key: 'answerCounts',
-
-    sorter: (a: DataSourceType, b: DataSourceType) =>
-      a.answerCounts - b.answerCounts,
-  },
-  {
-    title: '등록일',
-    dataIndex: 'date',
-    key: 'date',
-    render: (text: string) => timeDifference(text),
-    sorter: (a: DataSourceType, b: DataSourceType) => {
-      const first = new Date(a.date)
-      const second = new Date(b.date)
-      return first.getTime() - second.getTime()
-    },
-  },
-]
+interface PostDataType {
+  answers: Array<string>
+  board_access: string
+  board_category: Array<string>
+  board_contents: string
+  board_img: Array<string>
+  board_point: number
+  board_title: string
+  create_time: string
+  selected_answer: string
+  status: string
+  views: number
+  writer_id: string
+  _id: string
+}
 
 export default function MainPageAnswerer() {
+  const [post, setPost] = useState<Array<PostDataType>>([])
+  const getAllPost = async () => {
+    try {
+      const res = await getAllBoard()
+      setPost(() => res)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  console.log(post)
+  const postData: Array<DataSourceType> = post?.map(
+    (data: PostDataType): DataSourceType => {
+      return {
+        // eslint-disable-next-line no-underscore-dangle
+        key: data._id,
+        name: data.writer_id,
+        title: data.board_title,
+        category: data.board_category[0],
+        isDone: data.selected_answer ? '완료' : '미완료',
+        money: data.board_point,
+        answerCounts: data.answers.length,
+        date: data.create_time,
+      }
+    },
+  )
+
+  const columns: ColumnsType<DataSourceType> = [
+    {
+      title: '제목 + 내용',
+      dataIndex: 'title',
+      key: 'title',
+      render: (text: string) => <Link to="/quest_detail/abc123">{text}</Link>,
+      align: 'center',
+    },
+    {
+      title: '이름',
+      dataIndex: 'name',
+      key: 'name',
+      align: 'center',
+    },
+    {
+      title: '유형',
+      dataIndex: 'category',
+      key: 'category',
+      align: 'center',
+    },
+    {
+      title: '채택',
+      dataIndex: 'isDone',
+      key: 'isDone',
+      align: 'center',
+    },
+    {
+      title: '용돈',
+      dataIndex: 'money',
+      key: 'money',
+      sorter: (a: DataSourceType, b: DataSourceType) => {
+        // let first: number = a.money
+        // let second: number = b.money
+        // if (first === '기본') {
+        //   first = '50'
+        // }
+        // if (second === '기본') {
+        //   second = '50'
+        // }
+        // return Number(first) - Number(second)
+        return a.money - b.money
+      },
+      align: 'center',
+    },
+    {
+      title: '답변수',
+      dataIndex: 'answerCounts',
+      key: 'answerCounts',
+
+      sorter: (a: DataSourceType, b: DataSourceType) =>
+        a.answerCounts - b.answerCounts,
+      align: 'center',
+    },
+    {
+      title: '등록일',
+      dataIndex: 'date',
+      key: 'date',
+      render: (text: string) => timeDifference(text),
+      sorter: (a: DataSourceType, b: DataSourceType) => {
+        const first = new Date(a.date)
+        const second = new Date(b.date)
+        return first.getTime() - second.getTime()
+      },
+      align: 'center',
+    },
+  ]
+
+  useEffect(() => {
+    getAllPost()
+  }, [])
+
   return (
     <div>
       <div className="partnerAnswer">
