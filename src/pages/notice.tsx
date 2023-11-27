@@ -105,6 +105,9 @@ function Notice() {
 
   useEffect(() => {
     getAllNotices()
+  }, [])
+
+  useEffect(() => {
     getSessionStorageId(originalNoticeList)
   }, [originalNoticeList])
 
