@@ -1,5 +1,7 @@
-import React from 'react'
+/* eslint-disable no-underscore-dangle */
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import MainAnsBox from '../components_ques/MainAnsBox'
@@ -7,34 +9,10 @@ import { AnswerInfo } from '../types/mainQues'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import 'swiper/css/autoplay'
-
-interface Notice {
-  id: number
-  type: string
-  title: string
-  date: string
-}
-
-const initialNotices: Notice[] = [
-  {
-    id: 15,
-    type: '[공지]',
-    title: '효다닥 사용자 무료 교육 안내ㅣ23년 9월 20일(수)',
-    date: '23.07.24',
-  },
-  {
-    id: 14,
-    type: '[이벤트]',
-    title: '효다닥 X 오더퀸 결합 서비스 신규 가입 20% 추가 할인 (~12.31)',
-    date: '23.07.22',
-  },
-  {
-    id: 13,
-    type: '[공지]',
-    title: '효다닥 서비스 접속 정상화 안내',
-    date: '22.12.10',
-  },
-]
+import { INotice } from '../types/notice'
+import formatCategory from '../utils/formatCategory'
+import formatDate from '../utils/formateDate'
+import setPagination from '../utils/pagination'
 
 // 답변 데이터 중 답변자, 제목 가져오기
 const dataJson: AnswerInfo[] = [
@@ -42,47 +20,46 @@ const dataJson: AnswerInfo[] = [
     respondent: '차은우',
     title: '1-서브웨이 어떻게 먹어요...',
     url: '/quest_detail/abc123',
+    idx: 1,
   },
   {
     respondent: '서강준',
     title: '2-서브웨이 어떻게 먹어요...',
     url: '/quest_detail/abc123',
+    idx: 2,
   },
   {
     respondent: '박보검',
     title: '3-서브웨이 어떻게 먹어요...',
     url: '/quest_detail/abc123',
+    idx: 3,
   },
 ]
 
 export default function MainQues() {
-  // // 더보기 클릭 시, 밑으로 3개씩 공지사항 보이는 기능
-  // const [notices, setNotices] = useState<Notice[]>(initialNotices)
+  const [noticeList, setNoticeList] = useState<INotice[]>([])
 
-  // const loadMoreNotices = () => {
-  //   const newNotices: Notice[] = [
-  //     ...notices,
-  //     {
-  //       id: 12,
-  //       type: '[공지]',
-  //       title: 'Chrome 91 업데이트에 따른 로그인 오류 안내',
-  //       date: '22.06.09',
-  //     },
-  //     {
-  //       id: 11,
-  //       type: '[이벤트]',
-  //       title: '효다닥 신규 가입자 3개월 무료 제공 혜택',
-  //       date: '22.05.24',
-  //     },
-  //     {
-  //       id: 10,
-  //       type: '[공지]',
-  //       title: '효다닥 서비스 접속 정상화 안내',
-  //       date: '22.01.10',
-  //     },
-  //   ]
-  //   setNotices(newNotices)
-  // }
+  const currentPage = 1
+  const itemsPerPage = 3
+
+  // notice-pagination
+  const { currentItems } = setPagination(noticeList, currentPage, itemsPerPage)
+
+  // noitce-api
+  const getAllNotices = () => {
+    axios
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
+      .then((response) => {
+        setNoticeList(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  useEffect(() => {
+    getAllNotices()
+  })
 
   return (
     <>
@@ -153,7 +130,7 @@ export default function MainQues() {
             autoplay={{ delay: 5000 }}
           >
             {dataJson.map((el) => (
-              <SwiperSlide>
+              <SwiperSlide key={el.idx}>
                 <MainAnsBox data={el} />
               </SwiperSlide>
             ))}
@@ -164,18 +141,24 @@ export default function MainQues() {
           <p>공지사항</p>
           <div className="notice_list">
             <ul>
-              {initialNotices.map((notice) => (
-                <Link to={`/notice/article/${notice.id}`}>
-                  <li key={notice.id}>
-                    <div>{notice.id}</div>
-                    <div className="notice_title">
-                      <div>{notice.type}</div>
-                      <div>{notice.title}</div>
-                    </div>
-                    <div className="notice_date">{notice.date}</div>
-                  </li>
-                </Link>
-              ))}
+              {currentItems.map((notice, index) => {
+                const adjustedIndex =
+                  (currentPage - 1) * itemsPerPage + index + 1
+                return (
+                  <Link to={`/notice/article/${notice.idx}`} key={notice._id}>
+                    <li>
+                      <div>{adjustedIndex}</div>
+                      <div className="notice_title">
+                        <div>[{formatCategory(notice.category)}]</div>
+                        <div>{notice.title}</div>
+                      </div>
+                      <div className="notice_date">
+                        {formatDate(notice.createTime)}
+                      </div>
+                    </li>
+                  </Link>
+                )
+              })}
             </ul>
           </div>
           <div className="notice_more">
@@ -186,10 +169,6 @@ export default function MainQues() {
               </button>
             </Link>
           </div>
-          {/* <button type="button" onClick={loadMoreNotices}>
-            <img src="/img/plus-icon.svg" alt="더보기icon" />
-            더보기
-          </button> */}
         </div>
       </div>
     </>
