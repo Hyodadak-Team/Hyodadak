@@ -35,6 +35,7 @@ function Notice() {
   // notice-menu
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
+    sessionStorage.setItem('noticeMenuId', menuId.toString())
 
     // 이미 초기 데이터가 있는 경우
     const filteredList = setActiveList(menuId, originalNoticeList)
@@ -89,10 +90,23 @@ function Notice() {
         alert('초기 데이터 셋 실패')
       })
   }
+  const getSessionStorageId = (initList: INotice[]) => {
+    const storeMenuId = sessionStorage.getItem('noticeMenuId')
+
+    if (storeMenuId) {
+      const storedMenuIdNumber = parseInt(storeMenuId, 10)
+      setActiveMenu(storedMenuIdNumber)
+
+      // 이미 초기 데이터가 있는 경우
+      const filteredList = setActiveList(storedMenuIdNumber, initList)
+      setNoticeList(filteredList)
+    }
+  }
 
   useEffect(() => {
     getAllNotices()
-  }, [])
+    getSessionStorageId(originalNoticeList)
+  }, [originalNoticeList])
 
   return (
     <>
