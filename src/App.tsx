@@ -73,7 +73,7 @@ function App() {
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/quest_detail/abc123"
+            path="/quest_detail/:id"
             element={<QuestionDetail user={user} />}
           />
           <Route path="join" element={<Join />} />
