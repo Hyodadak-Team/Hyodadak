@@ -45,7 +45,7 @@ export default function MainPageAnswerer() {
       console.error(err)
     }
   }
-  console.log(post)
+
   const postData: Array<IDataSourceType> = post?.map(
     (data: IPostDataType): IDataSourceType => {
       return {
@@ -70,7 +70,11 @@ export default function MainPageAnswerer() {
       title: '제목 + 내용',
       dataIndex: 'title',
       key: 'title',
-      render: (text: string) => <Link to="/quest_detail/abc123">{text}</Link>,
+      render: (text: string, data: IDataSourceType) => (
+        <Link state={data.key} to={`/quest_detail/${data.key}`}>
+          {text}
+        </Link>
+      ),
       align: 'center',
     },
     {
