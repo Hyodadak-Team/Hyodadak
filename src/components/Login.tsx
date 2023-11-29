@@ -1,25 +1,25 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-// import axios from 'axios'
+import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate()
+  const id = useRef(null)
+  const pw = useRef(null)
 
   const navigateToJoin = () => {
     navigate('/join')
   }
-  // const sendData = async () => {
-  //   axios
-  //     .post('http://localhost:4000/login', {
-  //       id: id,
-  //       password: password,
-  //     })
-  //     .then((result) => {
-  //       console.log(result)
-  //       window.localStorage.setItem('token', result.data.token)
-  //       navigate('/')
-  //     })
-  // }
+
+  // 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
+  const sendData = async () => {
+    axios.post('http://localhost:4000/login', { id, pw }).then((result) => {
+      console.log(result)
+      window.localStorage.setItem('token', result.data.token)
+      navigate('/')
+    })
+  }
+
   return (
     <div className="all">
       <div className="container">
@@ -28,10 +28,18 @@ export default function Login() {
           <div className="login_wrap">
             <form>
               <div className="login_form_row">
-                <input type="text" placeholder="아이디를 입력해주세요" />
+                <input
+                  type="text"
+                  placeholder="아이디를 입력해주세요"
+                  ref={id}
+                />
               </div>
               <div className="login_form_row">
-                <input type="password" placeholder="비밀번호를 입력해주세요" />
+                <input
+                  type="password"
+                  placeholder="비밀번호를 입력해주세요"
+                  ref={id}
+                />
               </div>
               <div className="comment_rule">
                 <span className="material-symbols-outlined">error</span>
@@ -41,7 +49,9 @@ export default function Login() {
                 <button
                   type="button"
                   className="member_login"
-                  // onClick={sendData}
+                  onClick={() => {
+                    sendData()
+                  }}
                 >
                   로그인
                 </button>

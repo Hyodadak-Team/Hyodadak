@@ -1,7 +1,5 @@
-import React, { useRef, useCallback } from 'react'
-// import React, { useRef } from 'react'
-import axios from 'axios'
-// import { useNavigate } from 'react-router-dom'
+// import React, { useRef, useCallback } from 'react'
+import React, { useRef } from 'react'
 
 interface Type {
   joinState: object
@@ -12,40 +10,7 @@ export default function JoinMemberInfo(props: Type) {
   const { joinState, setJoinState } = props
   const userId = useRef(null)
   const userPw = useRef(null)
-  // const navigate = useNavigate()
-
-  const onSubmit = useCallback(async () => {
-    try {
-      await axios
-        .post('http://localhost:4000/join', {
-          joinState,
-        })
-        .then((res) => {
-          // eslint-disable-next-line react-hooks/exhaustive-deps
-          console.log('response:', res)
-          if (res.status === 200) {
-            // navigate('/Login')
-          }
-        })
-    } catch (err) {
-      console.error(err)
-    }
-  }, [joinState])
-  console.log(joinState)
-  // const initData = () => {
-  //   axios
-  //     .post('http://localhost:4000/join/init')
-  //     .then(function (response) {
-  //       console.log(response)
-  //       if (response.status === 200) {
-  //         alert('초기 데이터 셋 성공')
-  //       }
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error)
-  //       alert('초기 데이터 셋 실패')
-  //     })
-  // }
+  // const userPwCheck = useRef(null)
 
   return (
     <div className="all">
@@ -80,6 +45,7 @@ export default function JoinMemberInfo(props: Type) {
                 <input
                   type="password"
                   placeholder="비밀번호를 한 번 더 입력해주세요"
+                  // ref={userPwCheck}
                 />
               </div>
             </div>
@@ -107,10 +73,9 @@ export default function JoinMemberInfo(props: Type) {
                   ...joinState,
                   pageIndex: joinState.pageIndex + 1,
                   user_id: userId.current.value,
-                  user_password: userPw.current.value,
+                  user_pw: userPw.current.value,
+                  // user_pwCheck: userPwCheck.current.value,
                 })
-                onSubmit()
-                // initData()
               }}
             >
               회원가입 완료
