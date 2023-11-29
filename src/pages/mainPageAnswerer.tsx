@@ -8,18 +8,18 @@ import PARTNER_ANSWER_DATA from '../constants/mainPageAnswererData'
 import timeDifference from '../utils/timeDifference'
 import { getAllBoard } from '../apis/board'
 
-interface DataSourceType {
+interface IDataSourceType {
   key: string
   title: string
   name: string
   category: string
   isDone: string
-  money: number // data - string으로 바꿔야함
+  money: number | string
   answerCounts: number
   date: string
 }
 
-interface PostDataType {
+interface IPostDataType {
   answers: Array<string>
   board_access: string
   board_category: Array<string>
@@ -36,7 +36,7 @@ interface PostDataType {
 }
 
 export default function MainPageAnswerer() {
-  const [post, setPost] = useState<Array<PostDataType>>([])
+  const [post, setPost] = useState<Array<IPostDataType>>([])
   const getAllPost = async () => {
     try {
       const res = await getAllBoard()
@@ -46,13 +46,16 @@ export default function MainPageAnswerer() {
     }
   }
   console.log(post)
-  const postData: Array<DataSourceType> = post?.map(
-    (data: PostDataType): DataSourceType => {
+  const postData: Array<IDataSourceType> = post?.map(
+    (data: IPostDataType): IDataSourceType => {
       return {
         // eslint-disable-next-line no-underscore-dangle
         key: data._id,
         name: data.writer_id,
-        title: data.board_title,
+        title: `${data.board_title} / ${data.board_contents.substring(
+          0,
+          25,
+        )}...`,
         category: data.board_category[0],
         isDone: data.selected_answer ? '완료' : '미완료',
         money: data.board_point,
@@ -62,7 +65,7 @@ export default function MainPageAnswerer() {
     },
   )
 
-  const columns: ColumnsType<DataSourceType> = [
+  const columns: ColumnsType<IDataSourceType> = [
     {
       title: '제목 + 내용',
       dataIndex: 'title',
@@ -92,17 +95,16 @@ export default function MainPageAnswerer() {
       title: '용돈',
       dataIndex: 'money',
       key: 'money',
-      sorter: (a: DataSourceType, b: DataSourceType) => {
-        // let first: number = a.money
-        // let second: number = b.money
-        // if (first === '기본') {
-        //   first = '50'
-        // }
-        // if (second === '기본') {
-        //   second = '50'
-        // }
-        // return Number(first) - Number(second)
-        return a.money - b.money
+      sorter: (a: IDataSourceType, b: IDataSourceType) => {
+        let first: number | string = a.money
+        let second: number | string = b.money
+        if (first === '기본') {
+          first = 50
+        }
+        if (second === '기본') {
+          second = 50
+        }
+        return Number(first) - Number(second)
       },
       align: 'center',
     },
@@ -111,7 +113,7 @@ export default function MainPageAnswerer() {
       dataIndex: 'answerCounts',
       key: 'answerCounts',
 
-      sorter: (a: DataSourceType, b: DataSourceType) =>
+      sorter: (a: IDataSourceType, b: IDataSourceType) =>
         a.answerCounts - b.answerCounts,
       align: 'center',
     },
@@ -120,7 +122,7 @@ export default function MainPageAnswerer() {
       dataIndex: 'date',
       key: 'date',
       render: (text: string) => timeDifference(text),
-      sorter: (a: DataSourceType, b: DataSourceType) => {
+      sorter: (a: IDataSourceType, b: IDataSourceType) => {
         const first = new Date(a.date)
         const second = new Date(b.date)
         return first.getTime() - second.getTime()
