@@ -59,7 +59,7 @@ export default function MainQues() {
 
   useEffect(() => {
     getAllNotices()
-  })
+  }, [])
 
   return (
     <>

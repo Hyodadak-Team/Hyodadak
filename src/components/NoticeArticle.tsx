@@ -1,50 +1,49 @@
-import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
+import { useLayoutEffect, useState } from 'react'
 import axios from 'axios'
 import RoundBtn from '../composables/Button/RoundBtn'
-import { INotice } from '../types/notice'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
 import formatContent from '../utils/formatContent'
 
 function NoticeArticle() {
-  const { idx } = useParams()
-  const [noticeList, setNoticeList] = useState([])
-  const [filteredNotice, setFilteredNotice] = useState<INotice>()
+  const location = useLocation()
+  const noticeId = location.state.id
+  const [notice, setNotice] = useState()
+  // const [filteredNotice, noticeList] = location.state
 
-  // noitce-api
-  const getAllNotices = () => {
+  const getNotice = () => {
     axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/${noticeId}`)
       .then((response) => {
-        setNoticeList(response.data)
+        console.log(response.data)
+        setNotice(response.data)
       })
       .catch((error) => {
         console.log(error)
       })
   }
-
-  useEffect(() => {
-    getAllNotices()
+  useLayoutEffect(() => {
+    getNotice()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+  // useEffect(() => {
+  //   const foundNotice: INotice | undefined = noticeList.find(
+  //     (notice: INotice) => notice.idx === Number(idx),
+  //   )
+  //   setFilteredNotice(foundNotice)
+  //   window.scrollTo(0, 0)
+  // }, [noticeList, idx])
 
-  useEffect(() => {
-    const foundNotice: INotice | undefined = noticeList.find(
-      (notice: INotice) => notice.idx === Number(idx),
-    )
-    setFilteredNotice(foundNotice)
-    window.scrollTo(0, 0)
-  }, [noticeList, idx])
+  // let noticeIndex
+  // let prevNotice: INotice | undefined
+  // let nextNotice: INotice | undefined
 
-  let noticeIndex
-  let prevNotice: INotice | undefined
-  let nextNotice: INotice | undefined
-
-  if (filteredNotice) {
-    noticeIndex = filteredNotice.idx
-    prevNotice = noticeList[noticeIndex - 1]
-    nextNotice = noticeList[noticeIndex + 1]
-  }
+  // if (filteredNotice) {
+  //   noticeIndex = filteredNotice.idx
+  //   prevNotice = noticeList[noticeIndex - 1]
+  //   nextNotice = noticeList[noticeIndex + 1]
+  // }
 
   return (
     <div className="innerBox ques">
@@ -58,45 +57,39 @@ function NoticeArticle() {
           <li>공지사항</li>
         </Link>
       </div>
-      {filteredNotice && (
+      {notice && (
         <>
           <div className="ques_title">
             <p className="article title bold">
-              [{formatCategory(filteredNotice.category)}] {filteredNotice.title}
+              [{formatCategory(notice.category)}] {notice.title}
             </p>
-            <p className="article date">
-              {formatDate(filteredNotice.createTime)}
-            </p>
+            <p className="article date">{formatDate(notice.createTime)}</p>
           </div>
           <div className="divide-list" />
-          <div className="article-content">{formatContent(filteredNotice)}</div>
+          <div className="article-content">{formatContent(notice)}</div>
           <div className="divide-list" />
-          <div className="article-control">
-            <div className="prev_page">
-              <p>이전</p>
-              {prevNotice !== undefined ? (
-                <Link to={`/notice/article/${prevNotice.idx}`}>
-                  <p>
-                    [{formatCategory(prevNotice.category)}] {prevNotice.title}
-                  </p>
-                </Link>
-              ) : (
-                <p className="no_article">이전 게시물이 없습니다.</p>
-              )}
-            </div>
-            <div className="next_page">
-              <p>다음</p>
-              {nextNotice !== undefined ? (
-                <Link to={`/notice/article/${nextNotice.idx}`}>
-                  <p>
-                    [{formatCategory(nextNotice.category)}] {nextNotice.title}
-                  </p>
-                </Link>
-              ) : (
-                <p className="no_article">다음 게시물이 없습니다.</p>
-              )}
-            </div>
-          </div>
+          {/* <div className="article-control"> */}
+          {/*   <div className="prev_page"> */}
+          {/*     <p>이전</p> */}
+          {/*     {prevId !== null ? ( */}
+          {/*       <Link to="/notice/article" state={{ id: prevId }}> */}
+          {/*         <p>{prevId}</p> */}
+          {/*       </Link> */}
+          {/*     ) : ( */}
+          {/*       <p className="no_article">이전 게시물이 없습니다.</p> */}
+          {/*     )} */}
+          {/*   </div> */}
+          {/*   <div className="next_page"> */}
+          {/*     <p>다음</p> */}
+          {/*     {nextId !== null ? ( */}
+          {/*       <Link to="/notice/article" state={{ id: nextId }}> */}
+          {/*         <p>{nextId}</p> */}
+          {/*       </Link> */}
+          {/*     ) : ( */}
+          {/*       <p className="no_article">다음 게시물이 없습니다.</p> */}
+          {/*     )} */}
+          {/*   </div> */}
+          {/* </div> */}
         </>
       )}
       <div className="divide-list" />

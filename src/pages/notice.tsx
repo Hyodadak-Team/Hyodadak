@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
@@ -71,6 +71,7 @@ function Notice() {
       .then((response) => {
         setOriginalNoticeList(response.data)
         setNoticeList(response.data)
+        console.log(response.data)
       })
       .catch((error) => {
         console.log(error)
@@ -102,8 +103,7 @@ function Notice() {
       setNoticeList(filteredList)
     }
   }
-
-  useEffect(() => {
+  useLayoutEffect(() => {
     getAllNotices()
   }, [])
 
@@ -179,14 +179,14 @@ function Notice() {
             </div>
             <div className="notice_list-section">
               {currentItems.map((notice: INotice, index) => {
+                const pageLength = Math.ceil(sortedList.length / itemsPerPage)
                 const adjustedIndex =
-                  (currentPage - 1) * itemsPerPage + index + 1
+                  (pageLength - currentPage) * itemsPerPage +
+                  (sortedList.length % itemsPerPage) -
+                  index
                 return (
                   <div className="notice_list" key={notice._id}>
-                    <Link
-                      to={`/notice/article/${notice.idx}`}
-                      state={{ notice, noticeList }}
-                    >
+                    <Link to="/notice/article" state={{ id: notice._id }}>
                       <div
                         className="notice_box"
                         onClick={() => {
@@ -216,7 +216,7 @@ function Notice() {
             {selectedNotice && <NoticeArticle />}
             <Pagination
               itemsPerPage={itemsPerPage}
-              totalItems={sortedList.length}
+              totalItems={noticeList.length}
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
