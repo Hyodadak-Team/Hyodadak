@@ -15,16 +15,16 @@ function Pagination({
   return (
     <ul className="pagination">
       {pageNumbers.map((number) => (
-        <li key={number} className={number === currentPage ? 'active' : ''}>
-          <a
-            onClick={(e) => {
-              e.preventDefault()
-              onPageChange(number)
-            }}
-            href="!#"
-          >
-            {number}
-          </a>
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions
+        <li
+          key={number}
+          className={number === currentPage ? 'active' : ''}
+          onClick={(e) => {
+            e.preventDefault()
+            onPageChange(number)
+          }}
+        >
+          <a href="!#">{number}</a>
         </li>
       ))}
     </ul>

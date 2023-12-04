@@ -1,51 +1,36 @@
+/* eslint-disable no-underscore-dangle */
 import { Link, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import axios from 'axios'
 import RoundBtn from '../composables/Button/RoundBtn'
-import { INotice } from '../types/notice'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
 import formatContent from '../utils/formatContent'
 
 function NoticeArticle() {
-  const { idx } = useParams()
-  const [noticeList, setNoticeList] = useState([])
-  const [filteredNotice, setFilteredNotice] = useState<INotice>()
+  const { index } = useParams()
+  const [notice, setNotice] = useState()
+  const [prevNotice, setPrevNotice] = useState()
+  const [nextNotice, setNextNotice] = useState()
 
-  // noitce-api
-  const getAllNotices = () => {
+  const getNotices = (idx) => {
     axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/three/${idx}`)
       .then((response) => {
-        setNoticeList(response.data)
+        setPrevNotice(response.data[0])
+        setNotice(response.data[1])
+        setNextNotice(response.data[2])
+        console.log(response.data)
       })
       .catch((error) => {
         console.log(error)
       })
   }
 
-  useEffect(() => {
-    getAllNotices()
-  }, [])
-
-  useEffect(() => {
-    const foundNotice: INotice | undefined = noticeList.find(
-      (notice: INotice) => notice.idx === Number(idx),
-    )
-    setFilteredNotice(foundNotice)
+  useLayoutEffect(() => {
     window.scrollTo(0, 0)
-  }, [noticeList, idx])
-
-  let noticeIndex
-  let prevNotice: INotice | undefined
-  let nextNotice: INotice | undefined
-
-  if (filteredNotice) {
-    noticeIndex = filteredNotice.idx
-    prevNotice = noticeList[noticeIndex - 1]
-    nextNotice = noticeList[noticeIndex + 1]
-  }
-
+    getNotices(index)
+  }, [index])
   return (
     <div className="innerBox ques">
       <div className="ques_navbar">
@@ -58,24 +43,23 @@ function NoticeArticle() {
           <li>공지사항</li>
         </Link>
       </div>
-      {filteredNotice && (
+      {notice && (
         <>
           <div className="ques_title">
             <p className="article title bold">
-              [{formatCategory(filteredNotice.category)}] {filteredNotice.title}
+              [{formatCategory(notice.category)}] {notice.title}
             </p>
-            <p className="article date">
-              {formatDate(filteredNotice.createTime)}
-            </p>
+            <p className="article date">{formatDate(notice.createTime)}</p>
           </div>
           <div className="divide-list" />
-          <div className="article-content">{formatContent(filteredNotice)}</div>
+          <div className="article-content">{formatContent(notice)}</div>
           <div className="divide-list" />
           <div className="article-control">
             <div className="prev_page">
               <p>이전</p>
-              {prevNotice !== undefined ? (
-                <Link to={`/notice/article/${prevNotice.idx}`}>
+              {prevNotice !== null ? (
+                // eslint-disable-next-line no-underscore-dangle
+                <Link to={`/notice/article/${Number(index - 1)}`}>
                   <p>
                     [{formatCategory(prevNotice.category)}] {prevNotice.title}
                   </p>
@@ -86,8 +70,9 @@ function NoticeArticle() {
             </div>
             <div className="next_page">
               <p>다음</p>
-              {nextNotice !== undefined ? (
-                <Link to={`/notice/article/${nextNotice.idx}`}>
+              {nextNotice !== null ? (
+                // eslint-disable-next-line no-underscore-dangle
+                <Link to={`/notice/article/${Number(index - 1)}`}>
                   <p>
                     [{formatCategory(nextNotice.category)}] {nextNotice.title}
                   </p>
