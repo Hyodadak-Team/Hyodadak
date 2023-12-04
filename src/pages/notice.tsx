@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
@@ -186,7 +186,7 @@ function Notice() {
                   index
                 return (
                   <div className="notice_list" key={notice._id}>
-                    <Link to="/notice/article" state={{ id: notice._id }}>
+                    <Link to={`/notice/article/${adjustedIndex}`}>
                       <div
                         className="notice_box"
                         onClick={() => {
