@@ -194,9 +194,9 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                       {answer.comments.length}개의 댓글 보기
                     </p>
                   </div>
-                  {answer.comments.map((comment) => {
-                    return (
-                      <div className="questionDetail_answerList_box_reply">
+                  <div className="questionDetail_answerList_box_reply">
+                    {answer.comments.map((comment) => {
+                      return (
                         <div className="questionDetail_answerList_box_reply_list">
                           <div className="questionDetail_answerList_box_reply_list_img_box">
                             <img
@@ -217,28 +217,28 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                             </p>
                           </div>
                         </div>
-                        <form className="questionDetail_answerList_box_reply_input">
-                          <div className="questionDetail_answerList_box_reply_input_img">
-                            <img
-                              src="/img/detail_profile_dog.svg"
-                              alt="프로필 이미지"
-                            />
-                          </div>
-                          <div className="questionDetail_answerList_box_reply_input_box">
-                            <textarea
-                              className="questionDetail_answerList_box_reply_input_text"
-                              placeholder="하고싶은 말을 적어보세요!"
-                            />
-                            <input
-                              className="questionDetail_answerList_box_reply_input_submit"
-                              type="submit"
-                              value="작성"
-                            />
-                          </div>
-                        </form>
+                      )
+                    })}
+                    <form className="questionDetail_answerList_box_reply_input">
+                      <div className="questionDetail_answerList_box_reply_input_img">
+                        <img
+                          src="/img/detail_profile_dog.svg"
+                          alt="프로필 이미지"
+                        />
                       </div>
-                    )
-                  })}
+                      <div className="questionDetail_answerList_box_reply_input_box">
+                        <textarea
+                          className="questionDetail_answerList_box_reply_input_text"
+                          placeholder="하고싶은 말을 적어보세요!"
+                        />
+                        <input
+                          className="questionDetail_answerList_box_reply_input_submit"
+                          type="submit"
+                          value="작성"
+                        />
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             )
