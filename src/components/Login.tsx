@@ -1,24 +1,34 @@
-import React, { useRef } from 'react'
+import React, { useRef, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate()
-  const id = useRef(null)
-  const pw = useRef(null)
+  const id = useRef('')
+  const pw = useRef('')
 
   const navigateToJoin = () => {
-    navigate('/join')
+    navigate('/')
   }
 
   // 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
-  const sendData = async () => {
-    axios.post('http://localhost:4000/login', { id, pw }).then((result) => {
-      console.log(result)
-      window.localStorage.setItem('token', result.data.token)
-      navigate('/')
-    })
-  }
+  const sendData = useCallback(async () => {
+    try {
+      await axios
+        .post('http://localhost:4000/login', {
+          id,
+          pw,
+        })
+        .then((res) => {
+          console.log('response:', res)
+          if (res.status === 200) {
+            navigate('/')
+          }
+        })
+    } catch (err) {
+      console.error(err)
+    }
+  }, [id, pw, navigate])
 
   return (
     <div className="all">
