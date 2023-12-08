@@ -1,34 +1,44 @@
-import React, { useRef, useCallback } from 'react'
+import React, { useEffect, useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Login() {
   const navigate = useNavigate()
-  const id = useRef('')
-  const pw = useRef('')
+  const [id, setId] = useState<string>('')
+  const [pw, setPw] = useState<string>('')
 
   const navigateToJoin = () => {
     navigate('/')
   }
 
-  // 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
-  const sendData = useCallback(async () => {
-    try {
-      await axios
-        .post('http://localhost:4000/login', {
-          id,
-          pw,
-        })
-        .then((res) => {
-          console.log('response:', res)
-          if (res.status === 200) {
-            navigate('/')
-          }
-        })
-    } catch (err) {
-      console.error(err)
-    }
-  }, [id, pw, navigate])
+  const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setId(e.target.value)
+  }
+
+  const handlePwChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const newPassword = e.target.value
+    setPw(newPassword)
+  }
+
+  const sendData = () => {
+    console.log(id, pw)
+    axios
+      .post('http://localhost:4000/login', { id, pw })
+      .then(function (response) {
+        if (response.status === 200) {
+          navigate('/')
+        }
+      })
+      .catch(function (error) {
+        console.log(error)
+        // alert('초기 데이터 셋 실패')
+      })
+  }
+
+  useEffect(() => {
+    sendData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="all">
@@ -41,14 +51,16 @@ export default function Login() {
                 <input
                   type="text"
                   placeholder="아이디를 입력해주세요"
-                  ref={id}
+                  value={id}
+                  onChange={handleIdChange}
                 />
               </div>
               <div className="login_form_row">
                 <input
                   type="password"
                   placeholder="비밀번호를 입력해주세요"
-                  ref={id}
+                  value={pw}
+                  onChange={handlePwChange}
                 />
               </div>
               <div className="comment_rule">
