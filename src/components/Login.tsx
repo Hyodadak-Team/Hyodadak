@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
@@ -8,7 +8,7 @@ export default function Login() {
   const [pw, setPw] = useState<string>('')
 
   const navigateToJoin = () => {
-    navigate('/')
+    navigate('/join')
   }
 
   const handleIdChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -16,8 +16,7 @@ export default function Login() {
   }
 
   const handlePwChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const newPassword = e.target.value
-    setPw(newPassword)
+    setPw(e.target.value)
   }
 
   const sendData = () => {
@@ -26,7 +25,9 @@ export default function Login() {
       .post('http://localhost:4000/login', { id, pw })
       .then(function (response) {
         if (response.status === 200) {
-          navigate('/')
+          console.log(response)
+          window.localStorage.setItem('token', response.data.token)
+          navigate('/main_ques')
         }
       })
       .catch(function (error) {
@@ -35,10 +36,10 @@ export default function Login() {
       })
   }
 
-  useEffect(() => {
-    sendData()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  // useEffect(() => {
+  //   sendData()
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [])
 
   return (
     <div className="all">
