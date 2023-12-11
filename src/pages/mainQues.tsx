@@ -1,7 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Pagination } from 'swiper/modules'
 import MainAnsBox from '../components_ques/MainAnsBox'
@@ -12,6 +11,7 @@ import 'swiper/css/autoplay'
 import { INotice } from '../types/notice'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
+import { getLatestThree, getLength } from '../apis/notice'
 
 // 답변 데이터 중 답변자, 제목 가져오기
 const dataJson: AnswerInfo[] = [
@@ -37,34 +37,28 @@ const dataJson: AnswerInfo[] = [
 
 export default function MainQues() {
   const [noticeList, setNoticeList] = useState<INotice[]>([])
-  const [noticeListCount, setnoticeListCount] = useState(0)
-  const getLatestNotices = () => {
-    axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/latest`)
-      .then((response) => {
-        console.log(response.data)
-        setNoticeList(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const [lengthOfNotices, setLengthOfNotices] = useState(0)
+  const getNotices = async () => {
+    try {
+      const res = await getLatestThree()
+      setNoticeList(res)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-  const getNoticeListCount = () => {
-    axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/count`)
-      .then((response) => {
-        console.log(response.data)
-        setnoticeListCount(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const getLengthOfNoticeList = async () => {
+    try {
+      const res = await getLength()
+      setLengthOfNotices(res)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   useEffect(() => {
-    getLatestNotices()
-    getNoticeListCount()
+    getNotices()
+    getLengthOfNoticeList()
   }, [])
 
   return (
@@ -148,7 +142,7 @@ export default function MainQues() {
           <div className="notice_list">
             <ul>
               {noticeList.map((notice: INotice, index) => {
-                const adjustedIndex = noticeListCount - index
+                const adjustedIndex = lengthOfNotices - index
                 return (
                   <Link
                     to={`/notice/article/${adjustedIndex}`}

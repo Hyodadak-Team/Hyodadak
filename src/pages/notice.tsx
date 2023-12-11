@@ -2,7 +2,6 @@
 /* eslint-disable react/button-has-type */
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
 import setPagination from '../utils/pagination'
@@ -13,6 +12,7 @@ import openNewTab from '../utils/openNewTab'
 import formatDate from '../utils/formateDate'
 import formatCategory from '../utils/formatCategory'
 import setActiveList from '../utils/setActiveList'
+import { getAllBoard, init } from '../apis/notice'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -65,32 +65,23 @@ function Notice() {
   }
 
   // test axios
-  const getAllNotices = () => {
-    axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
-      .then((response) => {
-        setOriginalNoticeList(response.data)
-        setNoticeList(response.data)
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const getAllNotices = async () => {
+    try {
+      const res = await getAllBoard()
+      setOriginalNoticeList(res)
+      setNoticeList(res)
+    } catch (err) {
+      console.error(err)
+    }
   }
-  const initData = () => {
-    axios
-      .post(`${import.meta.env.VITE_SERVER_API_URL}/notice/init`)
-      .then(function (response) {
-        console.log(response)
-        if (response.status === 200) {
-          alert('초기 데이터 셋 성공')
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-        alert('초기 데이터 셋 실패')
-      })
+  const setInitData = async () => {
+    try {
+      await init()
+    } catch (err) {
+      console.error(err)
+    }
   }
+
   const getSessionStorageId = (initList: INotice[]) => {
     const storeMenuId = sessionStorage.getItem('noticeMenuId')
 
@@ -147,7 +138,7 @@ function Notice() {
                 <p>{menu.content}</p>
               </div>
             ))}
-            <button type="button" onClick={initData}>
+            <button type="button" onClick={setInitData}>
               공지사항 초기 데이터
             </button>
           </div>
