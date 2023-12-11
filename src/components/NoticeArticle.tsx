@@ -17,7 +17,6 @@ function NoticeArticle() {
   const getNotices = async (idx: number) => {
     try {
       const [prev, cur, next] = await getPrevAndCurAndNext(idx)
-      console.log('prev', prev, 'next', next)
       setPrevNotice(prev)
       setNotice(cur)
       setNextNotice(next)
@@ -57,7 +56,7 @@ function NoticeArticle() {
           <div className="article-control">
             <div className="prev_page">
               <p>이전</p>
-              {prevNotice !== undefined ? (
+              {prevNotice !== null && prevNotice !== undefined ? (
                 <Link to={`/notice/article/${index - 1}`}>
                   <p>
                     [{formatCategory(prevNotice.category)}] {prevNotice.title}
@@ -69,7 +68,7 @@ function NoticeArticle() {
             </div>
             <div className="next_page">
               <p>다음</p>
-              {nextNotice !== undefined ? (
+              {nextNotice !== null && nextNotice !== undefined ? (
                 <Link to={`/notice/article/${index + 1}`}>
                   <p>
                     [{formatCategory(nextNotice.category)}] {nextNotice.title}
