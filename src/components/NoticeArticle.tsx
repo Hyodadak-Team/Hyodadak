@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import { Link, useParams } from 'react-router-dom'
 import { useLayoutEffect, useState } from 'react'
 import RoundBtn from '../composables/Button/RoundBtn'
@@ -12,8 +11,8 @@ function NoticeArticle() {
   const params = useParams()
   const index = Number(params.index)
   const [notice, setNotice] = useState<INotice>()
-  const [prevNotice, setPrevNotice] = useState()
-  const [nextNotice, setNextNotice] = useState()
+  const [prevNotice, setPrevNotice] = useState<INotice>()
+  const [nextNotice, setNextNotice] = useState<INotice>()
 
   const getNotices = async (idx: number) => {
     try {
@@ -58,9 +57,8 @@ function NoticeArticle() {
           <div className="article-control">
             <div className="prev_page">
               <p>이전</p>
-              {prevNotice !== null ? (
-                // eslint-disable-next-line no-underscore-dangle
-                <Link to={`/notice/article/${Number(index - 1)}`}>
+              {prevNotice !== undefined ? (
+                <Link to={`/notice/article/${index - 1}`}>
                   <p>
                     [{formatCategory(prevNotice.category)}] {prevNotice.title}
                   </p>
@@ -71,9 +69,8 @@ function NoticeArticle() {
             </div>
             <div className="next_page">
               <p>다음</p>
-              {nextNotice !== null ? (
-                // eslint-disable-next-line no-underscore-dangle
-                <Link to={`/notice/article/${Number(index - 1)}`}>
+              {nextNotice !== undefined ? (
+                <Link to={`/notice/article/${index - 1}`}>
                   <p>
                     [{formatCategory(nextNotice.category)}] {nextNotice.title}
                   </p>
