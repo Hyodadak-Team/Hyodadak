@@ -70,7 +70,7 @@ function NoticeArticle() {
             <div className="next_page">
               <p>다음</p>
               {nextNotice !== undefined ? (
-                <Link to={`/notice/article/${index - 1}`}>
+                <Link to={`/notice/article/${index + 1}`}>
                   <p>
                     [{formatCategory(nextNotice.category)}] {nextNotice.title}
                   </p>
