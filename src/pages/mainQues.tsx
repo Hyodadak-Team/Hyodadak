@@ -12,7 +12,6 @@ import 'swiper/css/autoplay'
 import { INotice } from '../types/notice'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
-import setPagination from '../utils/pagination'
 
 // 답변 데이터 중 답변자, 제목 가져오기
 const dataJson: AnswerInfo[] = [
@@ -38,18 +37,12 @@ const dataJson: AnswerInfo[] = [
 
 export default function MainQues() {
   const [noticeList, setNoticeList] = useState<INotice[]>([])
-
-  const currentPage = 1
-  const itemsPerPage = 3
-
-  // notice-pagination
-  const { currentItems } = setPagination(noticeList, currentPage, itemsPerPage)
-
-  // noitce-api
-  const getAllNotices = () => {
+  const [noticeListCount, setnoticeListCount] = useState(0)
+  const getLatestNotices = () => {
     axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/all`)
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/latest`)
       .then((response) => {
+        console.log(response.data)
         setNoticeList(response.data)
       })
       .catch((error) => {
@@ -57,8 +50,21 @@ export default function MainQues() {
       })
   }
 
+  const getNoticeListCount = () => {
+    axios
+      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/count`)
+      .then((response) => {
+        console.log(response.data)
+        setnoticeListCount(response.data)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   useEffect(() => {
-    getAllNotices()
+    getLatestNotices()
+    getNoticeListCount()
   }, [])
 
   return (
@@ -141,11 +147,13 @@ export default function MainQues() {
           <p>공지사항</p>
           <div className="notice_list">
             <ul>
-              {currentItems.map((notice: INotice, index) => {
-                const adjustedIndex =
-                  (currentPage - 1) * itemsPerPage + index + 1
+              {noticeList.map((notice: INotice, index) => {
+                const adjustedIndex = noticeListCount - index
                 return (
-                  <Link to={`/notice/article/${notice.idx}`} key={notice._id}>
+                  <Link
+                    to={`/notice/article/${adjustedIndex}`}
+                    key={notice._id}
+                  >
                     <li>
                       <div>{adjustedIndex}</div>
                       <div className="notice_title">

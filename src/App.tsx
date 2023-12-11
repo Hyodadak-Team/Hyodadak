@@ -50,7 +50,7 @@ function App() {
         <Route>
           <Route path="/" element={<Index />} />
           <Route path="/notice" element={<Notice />} />
-          <Route path="/notice/article/:idx" element={<NoticeArticle />} />
+          <Route path="/notice/article/:index" element={<NoticeArticle />} />
           <Route path="/simulation" element={<SimulationQues />} />
           <Route path="/simulation/subwayhome" element={<SubWay1 />} />
           <Route path="/simulation/subway2" element={<SubWay2 />} />
@@ -73,7 +73,7 @@ function App() {
           <Route path="/partner_ques" element={<PartnerQuestion />} />
           <Route path="/login" element={<Login />} />
           <Route
-            path="/quest_detail/abc123"
+            path="/quest_detail/:id"
             element={<QuestionDetail user={user} />}
           />
           <Route path="join" element={<Join />} />
