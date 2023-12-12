@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { PartnerInfo } from '../types/searchPartner'
 import PartnerBox from '../components_ques/PartnerBox'
 
 export default function SearchPartner() {
-  // 데이터 가져오기
+  // 답변자 전체 데이터 가져와야. 현재는 더보기 기능 확인 위해 여러개 넣어둠.
   const dataJson: PartnerInfo[] = [
     {
       image: 'partnerbox_img.svg',
@@ -51,7 +51,175 @@ export default function SearchPartner() {
       answer: 20,
       point: 20000,
     },
+
+    {
+      image: 'partnerbox_img.svg',
+      name: '6',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '7',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '8',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '9',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '10',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '1',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '2',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '3',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '4',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '5',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '6',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '7',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '8',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '9',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '10',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '1',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
+    {
+      image: 'partnerbox_img.svg',
+      name: '2',
+      category: ['무인주문기', '이동수단', '기타'],
+      expl: '월/화/수에 소통이 활발한 파트너입니다.',
+      level: 3,
+      answer: 20,
+      point: 20000,
+    },
   ]
+
+  // 더보기 기능
+  const initialVisible = 10 // 초기에 보이는 답변자 수
+
+  const [visibleData, setVisibleData] = useState<PartnerInfo[]>(
+    dataJson.slice(0, initialVisible),
+  )
+  const [visibleCount, setVisibleCount] = useState(initialVisible)
+
+  const loadMoreData = () => {
+    const nextVisible = visibleCount + 10
+    setVisibleData(dataJson.slice(0, nextVisible))
+    setVisibleCount(nextVisible)
+  }
 
   return (
     <>
@@ -95,10 +263,19 @@ export default function SearchPartner() {
 
       <div className="innerBox ques">
         <div className="partner_list">
-          {dataJson.map((el) => (
+          {visibleData.map((el) => (
             <PartnerBox data={el} />
           ))}
         </div>
+
+        {visibleCount < dataJson.length && (
+          <div className="partner_more">
+            <button type="button" onClick={loadMoreData}>
+              <img src="/img/plus-icon.svg" alt="더보기icon" />
+              더보기
+            </button>
+          </div>
+        )}
       </div>
     </>
   )
