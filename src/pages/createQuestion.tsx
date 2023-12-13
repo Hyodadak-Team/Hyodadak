@@ -2,7 +2,11 @@ import { PlusOutlined } from '@ant-design/icons'
 import { Button, ConfigProvider, Form, Input, Select, Upload } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components_ques/Title'
-import { questionPoints, questionTypes } from '../constants/questionBoard'
+import {
+  questionAccessList,
+  questionPoints,
+  questionTypes,
+} from '../constants/questionBoard'
 import { TQuestionField } from '../types/questionBoard'
 import { createBoard } from '../apis/board'
 
@@ -34,6 +38,7 @@ function CreateQuestion() {
         board_point: values.board_point,
         writer_user_info: { user_type: 'questioner' },
         board_img: [],
+        // board_create_time: Date.now(),
       }
       await createBoard(boardData)
     } catch (err) {
@@ -116,6 +121,23 @@ function CreateQuestion() {
               </div>
             </div>
             <Form.Item<TQuestionField>
+              label="공개 범위를 설정해주세요"
+              name="board_access"
+              className="form_label"
+              rules={[{ required: true, message: '공개 범위를 설정해주세요!' }]}
+            >
+              <Select
+                placeholder="누구에게 공개하실 건가요?"
+                className="form_selectBox"
+              >
+                {questionAccessList.map((ques) => (
+                  <Select.Option key={ques.id} value={ques.access}>
+                    {ques.option}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item<TQuestionField>
               label="유형을 설정해주세요"
               name="board_category"
               className="form_label"
@@ -156,7 +178,6 @@ function CreateQuestion() {
                 신속히 받을 수 있습니다.
               </p>
             </div>
-
             <Form.Item>
               <div className="button_section">
                 <div className="form_button">
