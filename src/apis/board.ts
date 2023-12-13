@@ -39,5 +39,13 @@ export const createBoard = async (formData: TQuestionField) => {
 }
 
 // UPDATE
+export const modifyBoard = async (id: string, formData: TQuestionField) => {
+  try {
+    const res = await api.put(`/board//modify-board/${id}`, formData)
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
 
 // DELETE

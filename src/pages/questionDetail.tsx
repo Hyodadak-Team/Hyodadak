@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import '../styles/questionDetail.scss'
@@ -286,17 +287,19 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 {postData?.board_category} ·{' '}
                 {timeDifference(postData?.create_time as unknown as string)}
               </p>
-              <p className="questionDetail_header_sub_modify">
+              <div className="questionDetail_header_sub_modify">
                 {/* 사용자가 게시글의 주인인 경우 조건 추가 해서 렌더링 */}
-                <div className="questionDetail_header_sub_modify_modify">
-                  <img src="/img/detail_pen_icon.svg" alt="수정하기" />
-                  <p>게시물 수정하기</p>
-                </div>
+                <Link to={`/modify/${postData?._id}`}>
+                  <div className="questionDetail_header_sub_modify_modify">
+                    <img src="/img/detail_pen_icon.svg" alt="수정하기" />
+                    <p>게시물 수정하기</p>
+                  </div>
+                </Link>
                 <div className="questionDetail_header_sub_modify_delete">
                   <img src="/img/detail_waste_icon.svg" alt="삭제하기" />
                   <p>게시물 삭제하기</p>
                 </div>
-              </p>
+              </div>
             </div>
           </div>
           <div className="questionDetail_detail">
