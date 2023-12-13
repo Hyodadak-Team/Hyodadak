@@ -12,9 +12,11 @@ export interface IQuestion {
 }
 
 export type TQuestionField = {
-  point?: number
-  type?: string
-  title?: string
-  photo?: string
-  content?: string
+  board_title: string
+  board_contents: string
+  board_category: string
+  board_access: string
+  board_point: number
+  writer_user_info: object
+  board_img?: Array<string>
 }

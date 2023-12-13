@@ -1,3 +1,4 @@
+import { TQuestionField } from '../types/questionBoard'
 import api from './index'
 
 export const init = async () => {
@@ -9,6 +10,7 @@ export const init = async () => {
   }
 }
 
+// READ
 export const getAllBoard = async () => {
   try {
     const res = await api.get('/board/all')
@@ -25,3 +27,17 @@ export const getBoardDetail = async (id: string) => {
     return console.error(err)
   }
 }
+
+// CREATE
+export const createBoard = async (formData: TQuestionField) => {
+  try {
+    const res = await api.post('/board/create-board', formData)
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
+
+// UPDATE
+
+// DELETE

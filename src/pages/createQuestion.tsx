@@ -2,8 +2,13 @@ import { PlusOutlined } from '@ant-design/icons'
 import { Button, ConfigProvider, Form, Input, Select, Upload } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import Title from '../components_ques/Title'
-import { questionPoints, questionTypes } from '../constants/questionBoard'
+import {
+  questionAccessList,
+  questionPoints,
+  questionTypes,
+} from '../constants/questionBoard'
 import { TQuestionField } from '../types/questionBoard'
+import { createBoard } from '../apis/board'
 
 const { TextArea } = Input
 
@@ -23,8 +28,27 @@ function CreateQuestion() {
 
   const navigate = useNavigate()
 
-  const onFinish = (values: unknown) => {
+  const submitForm = async (values: TQuestionField) => {
+    try {
+      const boardData = {
+        board_title: values.board_title,
+        board_contents: values.board_contents,
+        board_category: values.board_category,
+        board_access: values.board_access,
+        board_point: values.board_point,
+        writer_user_info: { user_type: 'questioner', writer_id: '기믄정' },
+        board_img: [],
+        // board_create_time: Date.now(),
+      }
+      await createBoard(boardData)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const onFinish = (values: TQuestionField) => {
     console.log('Success:', values)
+    submitForm(values)
 
     // redirect
     navigate('/questionBoard')
@@ -54,7 +78,7 @@ function CreateQuestion() {
           >
             <Form.Item<TQuestionField>
               label="제목을 입력해주세요"
-              name="title"
+              name="board_title"
               className="form_label"
               rules={[{ required: true, message: '제목을 입력해주세요!' }]}
             >
@@ -62,7 +86,7 @@ function CreateQuestion() {
             </Form.Item>
             <Form.Item<TQuestionField>
               label="내용을 작성해주세요"
-              name="content"
+              name="board_contents"
               className="form_label"
               rules={[{ required: true, message: '내용을 작성해주세요!' }]}
             >
@@ -75,7 +99,7 @@ function CreateQuestion() {
             <div className="form_image">
               <Form.Item<TQuestionField>
                 label="이미지를 첨부해주세요"
-                name="photo"
+                name="board_img"
                 className="form_label"
                 valuePropName="fileList"
                 getValueFromEvent={normFile}
@@ -97,8 +121,25 @@ function CreateQuestion() {
               </div>
             </div>
             <Form.Item<TQuestionField>
+              label="공개 범위를 설정해주세요"
+              name="board_access"
+              className="form_label"
+              rules={[{ required: true, message: '공개 범위를 설정해주세요!' }]}
+            >
+              <Select
+                placeholder="누구에게 공개하실 건가요?"
+                className="form_selectBox"
+              >
+                {questionAccessList.map((ques) => (
+                  <Select.Option key={ques.id} value={ques.access}>
+                    {ques.option}
+                  </Select.Option>
+                ))}
+              </Select>
+            </Form.Item>
+            <Form.Item<TQuestionField>
               label="유형을 설정해주세요"
-              name="type"
+              name="board_category"
               className="form_label"
               rules={[{ required: true, message: '유형을 설정해주세요!' }]}
             >
@@ -115,12 +156,12 @@ function CreateQuestion() {
             </Form.Item>
             <Form.Item<TQuestionField>
               label="용돈을 설정해주세요"
-              name="point"
+              name="board_point"
               rules={[{ required: true, message: '용돈을 설정해주세요!' }]}
             >
               <Select placeholder="기본" className="form_selectBox">
                 {questionPoints.map((ques) => (
-                  <Select.Option key={ques.type} value={ques.type}>
+                  <Select.Option key={ques.type} value={ques.point}>
                     {ques.type}
                   </Select.Option>
                 ))}
@@ -137,7 +178,6 @@ function CreateQuestion() {
                 신속히 받을 수 있습니다.
               </p>
             </div>
-
             <Form.Item>
               <div className="button_section">
                 <div className="form_button">

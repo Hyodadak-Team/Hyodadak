@@ -24,6 +24,11 @@ type AnswersType = {
   comments: Array<CommentsType>
 }
 
+interface IWriterInfo {
+  user_type: string
+  writer_id: string
+}
+
 interface IPostDataType {
   answers: Array<AnswersType>
   board_access: string
@@ -36,8 +41,9 @@ interface IPostDataType {
   selected_answer: Array<AnswersType>
   status: string
   views: number
-  writer_id: string
+  // writer_id: string
   _id: string
+  writer_user_info: IWriterInfo
 }
 
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
@@ -86,7 +92,8 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 {postData?.board_point}
               </p>
               <p className="questionDetail_header_property_category">
-                {postData?.writer_id} · {postData?.board_category[0]}
+                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.board_category}
               </p>
               <p className="questionDetail_header_property_time">
                 {timeDifference(postData?.create_time as unknown as string)}
@@ -275,7 +282,8 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
             <div className="questionDetail_header_sub">
               <p className="questionDetail_header_sub_property">
                 {/* 카테고리 string으로 변경되면 수정할 것 */}
-                {postData?.writer_id} · {postData?.board_category[0]} ·{' '}
+                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.board_category} ·{' '}
                 {timeDifference(postData?.create_time as unknown as string)}
               </p>
               <p className="questionDetail_header_sub_modify">
