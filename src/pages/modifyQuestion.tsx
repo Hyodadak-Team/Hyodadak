@@ -10,7 +10,7 @@ import {
   questionPoints,
   questionTypes,
 } from '../constants/questionBoard'
-import { getBoardDetail } from '../apis/board'
+import { getBoardDetail, modifyBoard } from '../apis/board'
 
 const { TextArea } = Input
 
@@ -47,12 +47,28 @@ function UpdateQuestion() {
     }
   }
 
-  useEffect(() => {
-    getBoard()
-  }, [])
+  const modifyForm = async (values: TQuestionField) => {
+    try {
+      const boardId = params.id as unknown as string
+      const boardData = {
+        board_title: values.board_title,
+        board_contents: values.board_contents,
+        board_category: values.board_category,
+        board_access: values.board_access,
+        board_point: values.board_point,
+        writer_user_info: { writer_id: '기믄정' },
+        board_img: [],
+        // board_create_time: Date.now(),
+      }
+      await modifyBoard(boardId, boardData)
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   const onFinish = (values: TQuestionField) => {
     console.log('Success:', values)
+    modifyForm(values)
 
     // redirect
     navigate('/questionBoard')
@@ -61,6 +77,11 @@ function UpdateQuestion() {
   const onFinishFailed = (errorInfo: unknown) => {
     console.log('Failed:', errorInfo)
   }
+
+  useEffect(() => {
+    getBoard()
+  }, [])
+
   return (
     <ConfigProvider
       theme={{
