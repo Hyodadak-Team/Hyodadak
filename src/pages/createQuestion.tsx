@@ -34,7 +34,7 @@ function CreateQuestion() {
         board_title: values.board_title,
         board_contents: values.board_contents,
         board_category: values.board_category,
-        board_access: 'public',
+        board_access: values.board_access,
         board_point: values.board_point,
         writer_user_info: { user_type: 'questioner' },
         board_img: [],
