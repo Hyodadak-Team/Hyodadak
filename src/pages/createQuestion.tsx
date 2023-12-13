@@ -36,7 +36,7 @@ function CreateQuestion() {
         board_category: values.board_category,
         board_access: values.board_access,
         board_point: values.board_point,
-        writer_user_info: { user_type: 'questioner' },
+        writer_user_info: { user_type: 'questioner', writer_id: '기믄정' },
         board_img: [],
         // board_create_time: Date.now(),
       }
