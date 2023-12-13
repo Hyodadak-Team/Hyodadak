@@ -33,6 +33,7 @@ import Subway18 from './pages/SimulationSubWay/Subway18'
 import Subway19 from './pages/SimulationSubWay/Subway19'
 import SearchPartner from './pages/searchPartner'
 import SubWay9 from './pages/SimulationSubWay/Subway9'
+import UpdateQuestion from './pages/modifyQuestion'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
@@ -81,6 +82,7 @@ function App() {
           <Route path="/questionBoard" element={<QuestionBoard />} />
           <Route path="/createQuestion" element={<CreateQuestion />} />
           <Route path="/searchPartner" element={<SearchPartner />} />
+          <Route path="/modify/:id" element={<UpdateQuestion />} />
         </Route>
       </Routes>
     </div>
