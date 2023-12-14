@@ -13,21 +13,30 @@ interface QuestionDetailProps {
 // 게시글 상세 내용 타입설정
 
 type CommentsType = {
-  comments_contents: string
-  comments_create_time: string
+  comment_contents: string
+  comment_create_time: string
+  comment_user_info: CommentUserInfoType
+}
+type CommentUserInfoType = {
+  user_id: string
+  pro_img: string
+}
+type AnswerUserInfoType = {
+  pro_img: string
+  interest_category: Array<string>
   user_id: string
 }
 
 type AnswersType = {
-  user_id: string
-  answers_contents: string
-  answers_create_time: number
+  answer_user_info: AnswerUserInfoType
+  answer_contents: string
+  answer_create_time: number
   comments: Array<CommentsType>
 }
 
 interface IWriterInfo {
   user_type: string
-  writer_id: string
+  user_id: string
 }
 
 interface IPostDataType {
@@ -60,6 +69,8 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
       console.error(error)
     }
   }
+  console.log(postData)
+
   const partnerReqBoxClick = () => {
     // if (
     //   partnerReqBox.current?.classList.value ===
@@ -93,7 +104,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 {postData?.board_point}
               </p>
               <p className="questionDetail_header_property_category">
-                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.writer_user_info.user_id} ·{' '}
                 {postData?.board_category}
               </p>
               <p className="questionDetail_header_property_time">
@@ -168,7 +179,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
           {postData?.answers.map((answer) => {
             return (
               <div
-                key={answer.user_id}
+                key={answer.answer_user_info.user_id}
                 className="questionDetail_answerList innerBox "
               >
                 <div className="questionDetail_answerList_box">
@@ -176,15 +187,26 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                     <div className="questionDetail_answerList_box_profile_left">
                       <img
                         className="questionDetail_answerList_box_profile_left_img"
-                        src="/img/detail_default_profile_icon.svg"
+                        src={`/img/${answer.answer_user_info.pro_img}`}
                         alt="프로필 이미지"
                       />
                       <div className="questionDetail_answerList_box_profile_left_text">
                         <p className="questionDetail_answerList_box_profile_left_text_id">
-                          {answer.user_id}
+                          {answer.answer_user_info.user_id}
                         </p>
                         <p className="questionDetail_answerList_box_profile_left_text_category">
-                          이동수단, 무인자판기에서 활동 중
+                          {answer.answer_user_info.interest_category.map(
+                            (
+                              category: string,
+                              idx: number,
+                              array: Array<string>,
+                            ) => {
+                              return idx === array.length - 1
+                                ? `${category}`
+                                : `${category}, `
+                            },
+                          )}
+                          에서 활동 중
                         </p>
                       </div>
                     </div>
@@ -196,32 +218,35 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                   </div>
                   <div className="questionDetail_answerList_box_detail">
                     <p className="questionDetail_answerList_box_detail_text">
-                      {answer.answers_contents}
+                      {answer.answer_contents}
                     </p>
                     <p className="questionDetail_answerList_box_detail_viewReply">
                       {answer.comments.length}개의 댓글 보기
                     </p>
                   </div>
                   <div className="questionDetail_answerList_box_reply">
-                    {answer.comments.map((comment) => {
+                    {answer.comments.map((comment, idx) => {
                       return (
-                        <div className="questionDetail_answerList_box_reply_list">
+                        <div
+                          key={`${comment.comment_user_info.user_id + idx}`}
+                          className="questionDetail_answerList_box_reply_list"
+                        >
                           <div className="questionDetail_answerList_box_reply_list_img_box">
                             <img
                               className="questionDetail_answerList_box_reply_list_img"
-                              src="/img/detail_profile_dog.svg"
+                              src={`/img/${comment.comment_user_info.pro_img}`}
                               alt="프로필이미지"
                             />
                           </div>
                           <div className="questionDetail_answerList_box_reply_list_text">
                             <div className="questionDetail_answerList_box_reply_list_text_info">
-                              <p>{comment.user_id}</p>
+                              <p>{comment.comment_user_info.user_id}</p>
                               <p>
-                                | {timeDifference(comment.comments_create_time)}
+                                | {timeDifference(comment.comment_create_time)}
                               </p>
                             </div>
                             <p className="questionDetail_answerList_box_reply_list_text_content">
-                              {comment.comments_contents}
+                              {comment.comment_contents}
                             </p>
                           </div>
                         </div>
@@ -283,7 +308,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
             <div className="questionDetail_header_sub">
               <p className="questionDetail_header_sub_property">
                 {/* 카테고리 string으로 변경되면 수정할 것 */}
-                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.writer_user_info.user_id} ·{' '}
                 {postData?.board_category} ·{' '}
                 {timeDifference(postData?.create_time as unknown as string)}
               </p>
@@ -338,13 +363,16 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
           </div>
           {postData?.answers.map((answer) => {
             return (
-              <div key={answer.user_id} className="questionDetail_answerList">
+              <div
+                key={answer.answer_user_info.user_id}
+                className="questionDetail_answerList"
+              >
                 <div className="questionDetail_answerList_box">
                   <div className="questionDetail_answerList_box_profile">
                     <div className="questionDetail_answerList_box_profile_left">
                       <img
                         className="questionDetail_answerList_box_profile_left_img"
-                        src="/img/detail_default_profile_icon.svg"
+                        src={`/img/${answer.answer_user_info.pro_img}`}
                         alt="프로필 이미지"
                       />
                       <div className="questionDetail_answerList_box_profile_left_text">
@@ -353,12 +381,23 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                             Lv.3
                           </p>
                           <p className="questionDetail_answerList_box_profile_left_text_id">
-                            {answer.user_id}
+                            {answer.answer_user_info.user_id}
                           </p>
                         </div>
                         <div className="questionDetail_answerList_box_profile_left_text_bottom">
                           <p className="questionDetail_answerList_box_profile_left_text_category">
-                            이동수단, 무인자판기에서 활동 중
+                            {answer.answer_user_info.interest_category.map(
+                              (
+                                category: string,
+                                idx: number,
+                                array: Array<string>,
+                              ) => {
+                                return idx === array.length - 1
+                                  ? `${category}`
+                                  : `${category}, `
+                              },
+                            )}
+                            에서 활동 중
                           </p>
                         </div>
                       </div>
@@ -383,33 +422,33 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                   </div>
                   <div className="questionDetail_answerList_box_detail">
                     <p className="questionDetail_answerList_box_detail_text">
-                      {answer.answers_contents}
+                      {answer.answer_contents}
                     </p>
                     <p className="questionDetail_answerList_box_detail_viewReply">
                       {answer.comments.length}개의 댓글 보기
                     </p>
                   </div>
                   <div className="questionDetail_answerList_box_reply">
-                    {answer.comments.map((comments) => {
+                    {answer.comments.map((comment, idx) => {
                       return (
                         <div
-                          key={comments.user_id}
+                          key={`${comment.comment_user_info.user_id + idx}`}
                           className="questionDetail_answerList_box_reply_list"
                         >
                           <div className="questionDetail_answerList_box_reply_list_img_box">
                             <img
                               className="questionDetail_answerList_box_reply_list_img"
-                              src="/img/detail_profile_dog.svg"
+                              src={`/img/${comment.comment_user_info.pro_img}`}
                               alt="프로필이미지"
                             />
                           </div>
                           <div className="questionDetail_answerList_box_reply_list_text">
                             <div className="questionDetail_answerList_box_reply_list_text_info">
-                              <p>{comments.user_id}</p>
+                              <p>{comment.comment_user_info.user_id}</p>
                               <p>
                                 |{' '}
                                 {timeDifference(
-                                  comments.comments_create_time as unknown as string,
+                                  comment.comment_create_time as unknown as string,
                                 )}
                               </p>
                               {/* 댓글 작성자인 경우에만 보이도록 조건부 렌더링 */}
@@ -423,7 +462,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                               />
                             </div>
                             <p className="questionDetail_answerList_box_reply_list_text_content">
-                              {comments.comments_contents}
+                              {comment.comment_contents}
                             </p>
                           </div>
                         </div>
