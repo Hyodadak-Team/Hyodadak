@@ -27,7 +27,7 @@ type AnswersType = {
 
 interface IWriterInfo {
   user_type: string
-  writer_id: string
+  user_id: string
 }
 
 interface IPostDataType {
@@ -60,6 +60,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
       console.error(error)
     }
   }
+  console.log(postData)
 
   const partnerReqBoxClick = () => {
     // if (
@@ -94,7 +95,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                 {postData?.board_point}
               </p>
               <p className="questionDetail_header_property_category">
-                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.writer_user_info.user_id} ·{' '}
                 {postData?.board_category}
               </p>
               <p className="questionDetail_header_property_time">
@@ -284,7 +285,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
             <div className="questionDetail_header_sub">
               <p className="questionDetail_header_sub_property">
                 {/* 카테고리 string으로 변경되면 수정할 것 */}
-                {postData?.writer_user_info.writer_id} ·{' '}
+                {postData?.writer_user_info.user_id} ·{' '}
                 {postData?.board_category} ·{' '}
                 {timeDifference(postData?.create_time as unknown as string)}
               </p>

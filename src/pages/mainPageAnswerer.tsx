@@ -37,6 +37,14 @@ interface IPostDataType {
 
 export default function MainPageAnswerer() {
   const [post, setPost] = useState<Array<IPostDataType>>([])
+  // const initBoard = async () => {
+  //   try {
+  //     await init()
+  //   } catch (err) {
+  //     console.error(err)
+  //   }
+  // }
+  // initBoard()
   const getAllPost = async () => {
     try {
       const res = await getAllBoard()
