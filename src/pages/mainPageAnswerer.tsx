@@ -22,7 +22,7 @@ interface IDataSourceType {
 interface IPostDataType {
   answers: Array<string>
   board_access: string
-  board_category: Array<string>
+  board_category: string
   board_contents: string
   board_img: Array<string>
   board_point: number
@@ -56,7 +56,7 @@ export default function MainPageAnswerer() {
           0,
           25,
         )}...`,
-        category: data.board_category[0],
+        category: data.board_category,
         isDone: data.selected_answer ? '완료' : '미완료',
         money: data.board_point,
         answerCounts: data.answers.length,

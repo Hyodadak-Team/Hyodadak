@@ -13,15 +13,15 @@ interface QuestionDetailProps {
 // 게시글 상세 내용 타입설정
 
 type CommentsType = {
-  comments_contents: string
-  comments_create_time: string
+  comment_contents: string
+  comment_create_time: string
   user_id: string
 }
 
 type AnswersType = {
   user_id: string
-  answers_contents: string
-  answers_create_time: number
+  answer_contents: string
+  answer_create_time: number
   comments: Array<CommentsType>
 }
 
@@ -60,6 +60,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
       console.error(error)
     }
   }
+
   const partnerReqBoxClick = () => {
     // if (
     //   partnerReqBox.current?.classList.value ===
@@ -196,7 +197,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                   </div>
                   <div className="questionDetail_answerList_box_detail">
                     <p className="questionDetail_answerList_box_detail_text">
-                      {answer.answers_contents}
+                      {answer.answer_contents}
                     </p>
                     <p className="questionDetail_answerList_box_detail_viewReply">
                       {answer.comments.length}개의 댓글 보기
@@ -217,11 +218,11 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                             <div className="questionDetail_answerList_box_reply_list_text_info">
                               <p>{comment.user_id}</p>
                               <p>
-                                | {timeDifference(comment.comments_create_time)}
+                                | {timeDifference(comment.comment_create_time)}
                               </p>
                             </div>
                             <p className="questionDetail_answerList_box_reply_list_text_content">
-                              {comment.comments_contents}
+                              {comment.comment_contents}
                             </p>
                           </div>
                         </div>
@@ -383,7 +384,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                   </div>
                   <div className="questionDetail_answerList_box_detail">
                     <p className="questionDetail_answerList_box_detail_text">
-                      {answer.answers_contents}
+                      {answer.answer_contents}
                     </p>
                     <p className="questionDetail_answerList_box_detail_viewReply">
                       {answer.comments.length}개의 댓글 보기
@@ -409,7 +410,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                               <p>
                                 |{' '}
                                 {timeDifference(
-                                  comments.comments_create_time as unknown as string,
+                                  comments.comment_create_time as unknown as string,
                                 )}
                               </p>
                               {/* 댓글 작성자인 경우에만 보이도록 조건부 렌더링 */}
@@ -423,7 +424,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                               />
                             </div>
                             <p className="questionDetail_answerList_box_reply_list_text_content">
-                              {comments.comments_contents}
+                              {comments.comment_contents}
                             </p>
                           </div>
                         </div>

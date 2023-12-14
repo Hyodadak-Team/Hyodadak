@@ -27,6 +27,22 @@ export const getBoardDetail = async (id: string) => {
     return console.error(err)
   }
 }
+export const postAnswerReply = async (
+  boardId: string | undefined,
+  answerId: string,
+  userId: string,
+  comment: string,
+) => {
+  try {
+    const res = await api.put(`add-comment/${boardId}/${answerId}`, {
+      user_id: userId,
+      comment_contents: comment,
+    })
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
 
 // CREATE
 export const createBoard = async (formData: TQuestionField) => {
