@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import '../styles/questionDetail.scss'
 import PartnerRequest from '../components_ques/PartnerRequest'
-import { getBoardDetail } from '../apis/board'
+import { createAnswer, getBoardDetail } from '../apis/board'
 import timeDifference from '../utils/timeDifference'
 // props 타입 설정(유저)
 interface QuestionDetailProps {
@@ -59,8 +59,11 @@ interface IPostDataType {
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const params = useParams()
   const [postData, setPostData] = useState<IPostDataType>()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [submitToggle, setSubmitToggle] = useState<boolean>(false)
   const { user } = props
   const partnerReqBox = useRef<HTMLDivElement>(null)
+  const answerInput = useRef<HTMLTextAreaElement>(null)
   const getPostDetail = async () => {
     try {
       const res = await getBoardDetail(params.id as unknown as string)
@@ -69,7 +72,27 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
       console.error(error)
     }
   }
-  console.log(postData)
+
+  // 답변등록
+  const postAnswer = async () => {
+    try {
+      await createAnswer(
+        params.id as unknown as string,
+        answerInput.current?.value,
+      )
+      getPostDetail()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  const anwerOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    postAnswer()
+    if (answerInput.current) {
+      answerInput.current.value = ''
+    }
+    setSubmitToggle((prev) => !prev)
+  }
 
   const partnerReqBoxClick = () => {
     // if (
@@ -156,8 +179,14 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
             </div>
           </div>
           <div className="questionDetail_answer">
-            <form className="innerBox">
+            <form
+              onSubmit={(e) => {
+                anwerOnSubmit(e)
+              }}
+              className="innerBox"
+            >
               <textarea
+                ref={answerInput}
                 className="questionDetail_answer_input"
                 placeholder="답변을 상세히 기입해주세요"
               />

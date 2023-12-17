@@ -21,23 +21,7 @@ export const getAllBoard = async () => {
 }
 export const getBoardDetail = async (id: string) => {
   try {
-    const res = await api.get(`/board/detail/${id}`)
-    return res.data
-  } catch (err) {
-    return console.error(err)
-  }
-}
-export const postAnswerReply = async (
-  boardId: string | undefined,
-  answerId: string,
-  userId: string,
-  comment: string,
-) => {
-  try {
-    const res = await api.put(`add-comment/${boardId}/${answerId}`, {
-      user_id: userId,
-      comment_contents: comment,
-    })
+    const res = await api.get(`/board/board/${id}`)
     return res.data
   } catch (err) {
     return console.error(err)
@@ -48,6 +32,25 @@ export const postAnswerReply = async (
 export const createBoard = async (formData: TQuestionField) => {
   try {
     const res = await api.post('/board/create-board', formData)
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
+
+export const createAnswer = async (
+  boardId: string,
+  answer: string | undefined,
+) => {
+  try {
+    const res = await api.patch(`/board/answer/add/${boardId}`, {
+      answer_user_info: {
+        user_id: 'jiwonKing',
+        pro_img: 'm1',
+        interest_category: ['이동수단', '무인자판기', '기타'],
+      },
+      answer_contents: answer,
+    })
     return res.data
   } catch (err) {
     return console.error(err)
