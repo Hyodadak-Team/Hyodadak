@@ -1,8 +1,13 @@
-import React, { useRef } from 'react'
+import React, { Dispatch, SetStateAction, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Login() {
+interface Type {
+  setLogin: Dispatch<SetStateAction<boolean>>
+}
+
+export default function Login(props: Type) {
+  const { setLogin } = props
   const navigate = useNavigate()
   const id = useRef(null)
   const pw = useRef(null)
@@ -12,12 +17,18 @@ export default function Login() {
   }
 
   // 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
-  const sendData = async () => {
-    axios.post('http://localhost:4000/login', { id, pw }).then((result) => {
-      console.log(result)
-      window.localStorage.setItem('token', result.data.token)
-      navigate('/')
-    })
+  const sendData = async (data) => {
+    axios
+      .post('http://localhost:4000/login', {
+        id: data.id.current.value,
+        pw: data.pw.current.value,
+      })
+      .then((result) => {
+        console.log(result.data.token)
+        window.localStorage.setItem('token', result.data.token)
+        setLogin(true)
+        navigate('/')
+      })
   }
 
   return (
@@ -38,7 +49,7 @@ export default function Login() {
                 <input
                   type="password"
                   placeholder="비밀번호를 입력해주세요"
-                  ref={id}
+                  ref={pw}
                 />
               </div>
               <div className="comment_rule">
@@ -50,7 +61,7 @@ export default function Login() {
                   type="button"
                   className="member_login"
                   onClick={() => {
-                    sendData()
+                    sendData({ id, pw })
                   }}
                 >
                   로그인

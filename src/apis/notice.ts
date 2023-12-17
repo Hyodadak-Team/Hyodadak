@@ -9,36 +9,36 @@ export const init = async () => {
   }
 }
 
-export const getAllBoard = async () => {
+export const allNotices = async () => {
   try {
-    const res = await api.get('/notice/all')
+    const res = await api.get('/notice/notices')
     return res.data
   } catch (err) {
     return console.error(err)
   }
 }
 
-export const getPrevAndCurAndNext = async (index: number) => {
+export const prevAndCurAndNextNotices = async (index: number) => {
   try {
-    const res = await api.get(`/notice/three/${index}`)
+    const res = await api.get(`/notice/prev-now-next/${index}`)
     return res.data
   } catch (err) {
     return console.error(err)
   }
 }
 
-export const getLatestThree = async () => {
+export const latestThreeNotices = async () => {
   try {
-    const res = await api.get('notice/latest')
+    const res = await api.get('notice/latest-notice')
     return res.data
   } catch (err) {
     return console.error(err)
   }
 }
 
-export const getLength = async () => {
+export const noticesLength = async () => {
   try {
-    const res = await api.get('/notice/count')
+    const res = await api.get('/notice/notices-count')
     return res.data
   } catch (err) {
     return console.error(err)

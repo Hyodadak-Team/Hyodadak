@@ -1,13 +1,32 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Button } from 'antd'
 import AlertModal from '../components_res/AlertModal'
 
 interface HeaderQuesProps {
   user: boolean
+  login: boolean
+  setLogin: Dispatch<SetStateAction<boolean>>
 }
 
 export default function HeadeQues(props: HeaderQuesProps) {
-  const { user } = props
+  const { user, login, setLogin } = props
+  const navigate = useNavigate()
+  const logout = () => {
+    window.localStorage.clear()
+    navigate('/login')
+    setLogin(false)
+  }
+  const navigateLogin = () => {
+    navigate('/login')
+  }
+  console.log(user)
   const [notice, setNotice] = useState<boolean>(false)
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
@@ -35,7 +54,13 @@ export default function HeadeQues(props: HeaderQuesProps) {
             <Link to="/simulation">체험하기</Link>
           </li>
         </ul>
-        <div className="blank"> </div>
+        <div className="blank">
+          {login ? (
+            <Button onClick={logout}>로그아웃</Button>
+          ) : (
+            <Button onClick={navigateLogin}>로그인 ㄱㄱ</Button>
+          )}
+        </div>
         <ul className="flexBtw">
           <li>
             <div className="btn_notice_box">

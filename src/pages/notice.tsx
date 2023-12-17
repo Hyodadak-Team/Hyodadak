@@ -6,13 +6,12 @@ import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
 import setPagination from '../utils/pagination'
 import Pagination from '../composables/Pagination'
-import NoticeArticle from '../components/NoticeArticle'
 import Title from '../components_ques/Title'
 import openNewTab from '../utils/openNewTab'
 import formatDate from '../utils/formateDate'
 import formatCategory from '../utils/formatCategory'
 import setActiveList from '../utils/setActiveList'
-import { getAllBoard, init } from '../apis/notice'
+import { allNotices, init } from '../apis/notice'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -29,7 +28,7 @@ function Notice() {
   const [currentPage, setCurrentPage] = useState(1)
   const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
   const [searchItem, setSearchItem] = useState('')
-  const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
+  // const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
   const itemsPerPage = 7
 
   // notice-menu
@@ -47,11 +46,7 @@ function Notice() {
     setCurrentPage(pageNumber)
   }
 
-  const { sortedList, currentItems } = setPagination(
-    noticeList,
-    currentPage,
-    itemsPerPage,
-  )
+  const { currentItems } = setPagination(noticeList, currentPage, itemsPerPage)
 
   // notice-search
   const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,7 +62,8 @@ function Notice() {
   // test axios
   const getAllNotices = async () => {
     try {
-      const res = await getAllBoard()
+      const res = await allNotices()
+      console.log(res)
       setOriginalNoticeList(res)
       setNoticeList(res)
     } catch (err) {
@@ -170,10 +166,10 @@ function Notice() {
             </div>
             <div className="notice_list-section">
               {currentItems.map((notice: INotice, index) => {
-                const pageLength = Math.ceil(sortedList.length / itemsPerPage)
+                const pageLength = Math.ceil(noticeList.length / itemsPerPage)
                 const adjustedIndex =
                   (pageLength - currentPage) * itemsPerPage +
-                  (sortedList.length % itemsPerPage) -
+                  (noticeList.length % itemsPerPage) -
                   index
                 return (
                   <div className="notice_list" key={notice._id}>
@@ -181,11 +177,11 @@ function Notice() {
                       <div
                         className="notice_box"
                         onClick={() => {
-                          setSelectedNotice(notice)
+                          // setSelectedNotice(notice)
                         }}
                         onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
                           if (e.key === 'Enter' || e.key === ' ') {
-                            setSelectedNotice(notice)
+                            // setSelectedNotice(notice)
                           }
                         }}
                         role="button"
@@ -204,7 +200,7 @@ function Notice() {
                 )
               })}
             </div>
-            {selectedNotice && <NoticeArticle />}
+            {/* {selectedNotice && <NoticeArticle />} */}
             <Pagination
               itemsPerPage={itemsPerPage}
               totalItems={noticeList.length}

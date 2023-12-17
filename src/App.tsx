@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import axios from 'axios'
 import Index from './pages/index'
 import Notice from './pages/notice'
 import Mypage from './pages/mypage'
@@ -37,15 +38,36 @@ import UpdateQuestion from './pages/modifyQuestion'
 
 function App() {
   const [user, setUser] = useState<boolean>(false)
+  const [login, setLogin] = useState<boolean>(false)
   const [chat, setChat] = useState<boolean>(true)
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
     setUser(false)
     setChat(true)
   }, [])
+  useEffect(() => {
+    const token = window.localStorage.getItem('token')
+    if (token) {
+      axios
+        .post('http://localhost:4000/login/verify-jwt', {
+          token,
+        })
+        .then((result) => {
+          console.log(result)
+          setLogin(true)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+  }, [])
   return (
     <div className="App">
-      {user ? <HeaderRes user={user} /> : <HeaderQues user={user} />}
+      {user ? (
+        <HeaderRes user={user} login={login} setLogin={setLogin} />
+      ) : (
+        <HeaderQues user={user} login={login} setLogin={setLogin} />
+      )}
       {chat && <Chat />}
       <Routes>
         <Route>
@@ -72,10 +94,10 @@ function App() {
           <Route path="/myres" element={<MyResponse />} />
           <Route path="/main_res" element={<MainPageAnswerer />} />
           <Route path="/partner_ques" element={<PartnerQuestion />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<Login setLogin={setLogin} />} />
           <Route
             path="/quest_detail/:id"
-            element={<QuestionDetail user={user} />}
+            element={<QuestionDetail login={login} />}
           />
           <Route path="join" element={<Join />} />
           <Route path="/main_ques" element={<MainQues />} />
