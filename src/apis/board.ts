@@ -57,6 +57,26 @@ export const createAnswer = async (
   }
 }
 
+export const createComment = async (
+  boardId: string,
+  answerId: string,
+  comment: string | undefined,
+) => {
+  try {
+    const res = await api.patch(`board/comment/add/${boardId}/${answerId}`, {
+      comment_contents: comment,
+      comment_user_info: {
+        user_id: 'jiwonKing',
+        pro_img: 'm1',
+        interest_category: ['이동수단', '무인자판기', '기타'],
+      },
+    })
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
+
 // UPDATE
 export const modifyBoard = async (id: string, formData: TQuestionField) => {
   try {

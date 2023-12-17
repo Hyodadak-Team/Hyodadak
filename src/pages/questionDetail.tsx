@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import '../styles/questionDetail.scss'
 import PartnerRequest from '../components_ques/PartnerRequest'
-import { createAnswer, getBoardDetail } from '../apis/board'
+import { createAnswer, createComment, getBoardDetail } from '../apis/board'
 import timeDifference from '../utils/timeDifference'
 // props 타입 설정(유저)
 interface QuestionDetailProps {
@@ -32,6 +32,7 @@ type AnswersType = {
   answer_contents: string
   answer_create_time: number
   comments: Array<CommentsType>
+  _id: string
 }
 
 interface IWriterInfo {
@@ -56,6 +57,8 @@ interface IPostDataType {
   writer_user_info: IWriterInfo
 }
 
+type CommentInputRefType = { id: string; ref: HTMLTextAreaElement | null }
+
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const params = useParams()
   const [postData, setPostData] = useState<IPostDataType>()
@@ -64,6 +67,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const { user } = props
   const partnerReqBox = useRef<HTMLDivElement>(null)
   const answerInput = useRef<HTMLTextAreaElement>(null)
+  const commentInput = useRef<Array<CommentInputRefType>>([])
   const getPostDetail = async () => {
     try {
       const res = await getBoardDetail(params.id as unknown as string)
@@ -93,6 +97,36 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
     }
     setSubmitToggle((prev) => !prev)
   }
+  // 댓글 등록
+  const postComment = async (
+    answerId: string,
+    targetAnswer: CommentInputRefType | undefined,
+  ) => {
+    try {
+      await createComment(
+        params.id as unknown as string,
+        answerId,
+        targetAnswer?.ref?.value,
+      )
+      getPostDetail()
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  const commentOnSubmit = (
+    e: React.FormEvent<HTMLFormElement>,
+    answerId: string,
+  ) => {
+    e.preventDefault()
+    const targetAnswer = commentInput.current.find(
+      (target) => target.id === answerId,
+    )
+    postComment(answerId, targetAnswer)
+    if (targetAnswer?.ref?.value) {
+      targetAnswer.ref.value = ''
+    }
+    setSubmitToggle((prev) => !prev)
+  }
 
   const partnerReqBoxClick = () => {
     // if (
@@ -111,11 +145,13 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
         'questionDetail_answerList_box_profile_partnerRequest'
     }
   }
+
   useEffect(() => {
     getPostDetail()
     // 의존성 배열 eslint 오류 해결 할 것
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
   return (
     <div>
       {user ? (
@@ -281,7 +317,12 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                         </div>
                       )
                     })}
-                    <form className="questionDetail_answerList_box_reply_input">
+                    <form
+                      className="questionDetail_answerList_box_reply_input"
+                      onSubmit={(e) => {
+                        commentOnSubmit(e, answer._id)
+                      }}
+                    >
                       <div className="questionDetail_answerList_box_reply_input_img">
                         <img
                           src="/img/detail_profile_dog.svg"
@@ -292,6 +333,15 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                         <textarea
                           className="questionDetail_answerList_box_reply_input_text"
                           placeholder="하고싶은 말을 적어보세요!"
+                          ref={(ref) => {
+                            // 해당 answer의 input이 ref에 없으면 추가
+                            const targetEl = commentInput.current.find(
+                              (target) => target.id === answer._id,
+                            )
+                            if (!targetEl) {
+                              commentInput.current.push({ id: answer._id, ref })
+                            }
+                          }}
                         />
                         <input
                           className="questionDetail_answerList_box_reply_input_submit"
@@ -498,7 +548,12 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                       )
                     })}
 
-                    <form className="questionDetail_answerList_box_reply_input">
+                    <form
+                      className="questionDetail_answerList_box_reply_input"
+                      onSubmit={(e) => {
+                        commentOnSubmit(e, answer._id)
+                      }}
+                    >
                       <div className="questionDetail_answerList_box_reply_input_img">
                         <img
                           src="/img/detail_profile_dog.svg"
@@ -510,6 +565,15 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                         <textarea
                           className="questionDetail_answerList_box_reply_input_text"
                           placeholder="하고싶은 말을 적어보세요!"
+                          ref={(ref) => {
+                            // 해당 answer의 input이 ref에 없으면 추가
+                            const targetEl = commentInput.current.find(
+                              (target) => target.id === answer._id,
+                            )
+                            if (!targetEl) {
+                              commentInput.current.push({ id: answer._id, ref })
+                            }
+                          }}
                         />
                         <input
                           className="questionDetail_answerList_box_reply_input_submit"
