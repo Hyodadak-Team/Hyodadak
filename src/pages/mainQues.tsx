@@ -11,7 +11,7 @@ import 'swiper/css/autoplay'
 import { INotice } from '../types/notice'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
-import { getLatestThree, getLength } from '../apis/notice'
+import { latestThreeNotices, noticesLength } from '../apis/notice'
 
 // 답변 데이터 중 답변자, 제목 가져오기
 const dataJson: AnswerInfo[] = [
@@ -40,7 +40,7 @@ export default function MainQues() {
   const [lengthOfNotices, setLengthOfNotices] = useState(0)
   const getNotices = async () => {
     try {
-      const res = await getLatestThree()
+      const res = await latestThreeNotices()
       setNoticeList(res)
     } catch (err) {
       console.error(err)
@@ -49,7 +49,7 @@ export default function MainQues() {
 
   const getLengthOfNoticeList = async () => {
     try {
-      const res = await getLength()
+      const res = await noticesLength()
       setLengthOfNotices(res)
     } catch (err) {
       console.error(err)

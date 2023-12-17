@@ -5,7 +5,7 @@ import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
 import formatContent from '../utils/formatContent'
 import { INotice } from '../types/notice'
-import { getPrevAndCurAndNext } from '../apis/notice'
+import { prevAndCurAndNextNotices } from '../apis/notice'
 
 function NoticeArticle() {
   const params = useParams()
@@ -16,7 +16,7 @@ function NoticeArticle() {
 
   const getNotices = async (idx: number) => {
     try {
-      const [prev, cur, next] = await getPrevAndCurAndNext(idx)
+      const [prev, cur, next] = await prevAndCurAndNextNotices(idx)
       setPrevNotice(prev)
       setNotice(cur)
       setNextNotice(next)
