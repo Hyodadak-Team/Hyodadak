@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { questionTypes } from '../constants/questionBoard'
 import RoundBtn from '../composables/Button/RoundBtn'
 import ToggleBtn from '../composables/Button/ToggleBtn'
@@ -8,7 +8,7 @@ import Pagination from '../composables/Pagination'
 import setPagination from '../utils/pagination'
 import { IQuestion } from '../types/questionBoard'
 import Title from '../components_ques/Title'
-import { getAllBoard } from '../apis/board'
+import { deleteBoard, getAllBoard } from '../apis/board'
 import formatDate from '../utils/formateDate'
 
 type TitleType = {
@@ -16,6 +16,8 @@ type TitleType = {
 }
 
 function QuestionBoard() {
+  const navigate = useNavigate()
+
   const itemsPerPage = 5
   const [currentPage, setCurrentPage] = useState(1)
   const [questionList, setQuestionList] = useState<Array<IQuestion>>([])
@@ -39,9 +41,22 @@ function QuestionBoard() {
     }
   }
 
+  const deletePost = async (boardId: string | undefined) => {
+    try {
+      await deleteBoard(boardId as unknown as string)
+      navigate('/questionBoard')
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
   useEffect(() => {
     getQuestions()
   }, [])
+
+  useEffect(() => {
+    getQuestions()
+  }, [questionList])
 
   return (
     <div className="innerBox ques">
@@ -90,7 +105,18 @@ function QuestionBoard() {
                   <Link to={`/modify/${ques._id}`}>
                     <p className="question_control_edit">수정</p>
                   </Link>
-                  <p className="question_control_delete">삭제</p>
+                  <div
+                    onClick={() => deletePost(ques?._id)}
+                    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        deletePost(ques?._id)
+                      }
+                    }}
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <p className="question_control_delete">삭제</p>
+                  </div>
                 </div>
               </div>
               <div className="question_title">
