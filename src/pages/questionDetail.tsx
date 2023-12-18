@@ -1,9 +1,14 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import '../styles/questionDetail.scss'
 import PartnerRequest from '../components_ques/PartnerRequest'
-import { createAnswer, createComment, getBoardDetail } from '../apis/board'
+import {
+  createAnswer,
+  createComment,
+  deleteBoard,
+  getBoardDetail,
+} from '../apis/board'
 import timeDifference from '../utils/timeDifference'
 // props 타입 설정(유저)
 interface QuestionDetailProps {
@@ -61,6 +66,7 @@ type CommentInputRefType = { id: string; ref: HTMLTextAreaElement | null }
 
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const params = useParams()
+  const navigate = useNavigate()
   const [postData, setPostData] = useState<IPostDataType>()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [submitToggle, setSubmitToggle] = useState<boolean>(false)
@@ -151,6 +157,15 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
     // 의존성 배열 eslint 오류 해결 할 것
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  const deletePost = async (boardId: string | undefined) => {
+    try {
+      await deleteBoard(boardId as unknown as string)
+      navigate('/questionBoard')
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return (
     <div>
@@ -399,7 +414,17 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                     <p>게시물 수정하기</p>
                   </div>
                 </Link>
-                <div className="questionDetail_header_sub_modify_delete">
+                <div
+                  className="questionDetail_header_sub_modify_delete"
+                  onClick={() => deletePost(postData?._id)}
+                  onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      deletePost(postData?._id)
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                >
                   <img src="/img/detail_waste_icon.svg" alt="삭제하기" />
                   <p>게시물 삭제하기</p>
                 </div>
