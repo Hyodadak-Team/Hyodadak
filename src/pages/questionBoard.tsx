@@ -8,6 +8,7 @@ import setPagination from '../utils/pagination'
 import { IQuestion } from '../types/questionBoard'
 import Title from '../components_ques/Title'
 import { getAllBoard } from '../apis/board'
+import formatDate from '../utils/formateDate'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -80,7 +81,9 @@ function QuestionBoard() {
                     {ques.board_category}
                   </p>
                   <div className="divide-circle" />
-                  <p className="question_property_date">{ques.create_time}</p>
+                  <p className="question_property_date">
+                    {formatDate(ques.create_time)}
+                  </p>
                 </div>
                 <div className="question_control">
                   <p className="question_control_edit">수정</p>
