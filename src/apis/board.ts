@@ -80,7 +80,7 @@ export const createComment = async (
 // UPDATE
 export const modifyBoard = async (id: string, formData: TQuestionField) => {
   try {
-    const res = await api.put(`/board//modify-board/${id}`, formData)
+    const res = await api.put(`/board/board/modify/${id}`, formData)
     return res.data
   } catch (err) {
     return console.error(err)
