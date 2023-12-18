@@ -9,14 +9,14 @@ interface Type {
 export default function Login(props: Type) {
   const { setLogin } = props
   const navigate = useNavigate()
-  const [id, setId] = useState<string>('')
-  const [pw, setPw] = useState<string>('')
+  const id = useRef(null)
+  const pw = useRef(null)
 
   const navigateToJoin = () => {
     navigate('/join')
   }
 
-// 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
+  // 로그인을 위한 통신 (로그인 버튼 클릭시 /login으로 post 요청)
   const sendData = async (data) => {
     axios
       .post('http://localhost:4000/login', {
@@ -31,32 +31,6 @@ export default function Login(props: Type) {
       })
   }
 
-  const handlePwChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPw(e.target.value)
-  }
-
-  const sendData = () => {
-    console.log(id, pw)
-    axios
-      .post('http://localhost:4000/login', { id, pw })
-      .then(function (response) {
-        if (response.status === 200) {
-          console.log(response)
-          window.localStorage.setItem('token', response.data.token)
-          navigate('/main_ques')
-        }
-      })
-      .catch(function (error) {
-        console.log(error)
-        // alert('초기 데이터 셋 실패')
-      })
-  }
-
-  // useEffect(() => {
-  //   sendData()
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [])
-
   return (
     <div className="all">
       <div className="container">
@@ -68,8 +42,7 @@ export default function Login(props: Type) {
                 <input
                   type="text"
                   placeholder="아이디를 입력해주세요"
-                  value={id}
-                  onChange={handleIdChange}
+                  ref={id}
                 />
               </div>
               <div className="login_form_row">
