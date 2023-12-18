@@ -97,7 +97,7 @@ function App() {
           <Route path="/login" element={<Login setLogin={setLogin} />} />
           <Route
             path="/quest_detail/:id"
-            element={<QuestionDetail login={login} />}
+            element={<QuestionDetail user={user} />}
           />
           <Route path="join" element={<Join />} />
           <Route path="/main_ques" element={<MainQues />} />
