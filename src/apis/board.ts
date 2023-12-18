@@ -13,7 +13,7 @@ export const init = async () => {
 // READ
 export const getAllBoard = async () => {
   try {
-    const res = await api.get('/board/all')
+    const res = await api.get('/board/boards')
     return res.data
   } catch (err) {
     return console.error(err)
