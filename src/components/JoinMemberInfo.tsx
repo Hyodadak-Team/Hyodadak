@@ -12,6 +12,8 @@ export default function JoinMemberInfo(props: Type) {
   const userPw = useRef(null)
   // const userPwCheck = useRef(null)
 
+  // const sendIdData =
+
   return (
     <div className="all">
       <div className="container">
