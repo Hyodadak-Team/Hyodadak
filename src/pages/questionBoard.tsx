@@ -89,56 +89,60 @@ function QuestionBoard() {
         </div>
         <div className="questionBox">
           {currentItems.map((ques: IQuestion) => (
-            <div key={ques._id} className="question">
-              <div className="question_header">
-                <div className="question_property">
-                  <p className="question_property_point">{ques.board_point}</p>
-                  <p className="question_property_type">
-                    {ques.board_category}
-                  </p>
-                  <div className="divide-circle" />
-                  <p className="question_property_date">
-                    {formatDate(ques.create_time)}
-                  </p>
+            <Link to={`/quest_detail/${ques._id}`}>
+              <div key={ques._id} className="question">
+                <div className="question_header">
+                  <div className="question_property">
+                    <p className="question_property_point">
+                      {ques.board_point}
+                    </p>
+                    <p className="question_property_type">
+                      {ques.board_category}
+                    </p>
+                    <div className="divide-circle" />
+                    <p className="question_property_date">
+                      {formatDate(ques.create_time)}
+                    </p>
+                  </div>
+                  <div className="question_control">
+                    <Link to={`/modify/${ques._id}`}>
+                      <p className="question_control_edit">수정</p>
+                    </Link>
+                    <div
+                      onClick={() => deletePost(ques?._id)}
+                      onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          deletePost(ques?._id)
+                        }
+                      }}
+                      role="button"
+                      tabIndex={0}
+                    >
+                      <p className="question_control_delete">삭제</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="question_control">
-                  <Link to={`/modify/${ques._id}`}>
-                    <p className="question_control_edit">수정</p>
-                  </Link>
-                  <div
-                    onClick={() => deletePost(ques?._id)}
-                    onKeyDown={(e: React.KeyboardEvent<HTMLDivElement>) => {
-                      if (e.key === 'Enter' || e.key === ' ') {
-                        deletePost(ques?._id)
-                      }
-                    }}
-                    role="button"
-                    tabIndex={0}
-                  >
-                    <p className="question_control_delete">삭제</p>
+                <div className="question_title">
+                  <p>{ques.board_title}</p>
+                  {ques.board_img.length !== 0 && (
+                    <img src="/img/photo_icon.svg" alt="photos-icon" />
+                  )}
+                </div>
+                <div className="question_footer">
+                  <p className="question_detail">{ques.board_contents}</p>
+                  <div className="question_counts">
+                    <div className="question_counts_footer_answers">
+                      <img src="/img/chat_icon.svg" alt="chat-icon" />
+                      <p>답변 {ques.answers}</p>
+                    </div>
+                    <div className="question_counts_footer_views">
+                      <img src="/img/eye_icon.svg" alt="eye-icon" />
+                      <p>조회수 {ques.views}</p>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="question_title">
-                <p>{ques.board_title}</p>
-                {ques.board_img.length !== 0 && (
-                  <img src="/img/photo_icon.svg" alt="photos-icon" />
-                )}
-              </div>
-              <div className="question_footer">
-                <p className="question_detail">{ques.board_contents}</p>
-                <div className="question_counts">
-                  <div className="question_counts_footer_answers">
-                    <img src="/img/chat_icon.svg" alt="chat-icon" />
-                    <p>답변 {ques.answers}</p>
-                  </div>
-                  <div className="question_counts_footer_views">
-                    <img src="/img/eye_icon.svg" alt="eye-icon" />
-                    <p>조회수 {ques.views}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
         <Pagination
