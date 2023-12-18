@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import '../styles/questionDetail.scss'
-import PartnerRequest from '../components_ques/PartnerRequest'
+// import PartnerRequest from '../components_ques/PartnerRequest'
 import {
   createAnswer,
   createComment,
@@ -20,7 +20,6 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const params = useParams()
   const navigate = useNavigate()
   const [postData, setPostData] = useState<PostDataType>()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [submitToggle, setSubmitToggle] = useState<boolean>(false)
   const { user } = props
   const partnerReqBox = useRef<HTMLDivElement>(null)
@@ -53,7 +52,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
     if (answerInput.current) {
       answerInput.current.value = ''
     }
-    setSubmitToggle((prev) => !prev)
+    setSubmitToggle(() => !submitToggle)
   }
   // 댓글 등록
   const postComment = async (
@@ -83,7 +82,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
     if (targetAnswer?.ref?.value) {
       targetAnswer.ref.value = ''
     }
-    setSubmitToggle((prev) => !prev)
+    setSubmitToggle(() => !submitToggle)
   }
 
   const partnerReqBoxClick = () => {
@@ -469,7 +468,7 @@ export default function DetailPageAnswerer(props: QuestionDetailProps) {
                         ref={partnerReqBox}
                         className="questionDetail_answerList_box_profile_partnerRequest hide"
                       >
-                        <PartnerRequest />
+                        {/* <PartnerRequest /> */}
                       </div>
                       <p className="questionDetail_answerList_box_profile_right_select">
                         채택하기
