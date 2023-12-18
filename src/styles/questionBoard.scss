@@ -74,9 +74,12 @@
         }
 
         .question_control {
-          color: $main-color;
           cursor: pointer;
           gap: 16px;
+
+          p {
+            color: $main-color;
+          }
         }
       }
       .question_title {

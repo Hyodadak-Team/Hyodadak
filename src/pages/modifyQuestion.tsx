@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, ConfigProvider, Form, Input, Select, Upload } from 'antd'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { TQuestionField } from '../types/questionBoard'
 import Title from '../components_ques/Title'
@@ -206,9 +206,11 @@ function UpdateQuestion() {
             <Form.Item>
               <div className="button_section">
                 <div className="form_button">
-                  <Button htmlType="reset">
-                    <p>작성 취소하기</p>
-                  </Button>
+                  <Link to="/questionBoard">
+                    <Button htmlType="button">
+                      <p>작성 취소하기</p>
+                    </Button>
+                  </Link>
                 </div>
                 <div className="form_button submit">
                   <Button htmlType="submit">

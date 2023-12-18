@@ -13,7 +13,7 @@ export const init = async () => {
 // READ
 export const getAllBoard = async () => {
   try {
-    const res = await api.get('/board/all')
+    const res = await api.get('/board/boards')
     return res.data
   } catch (err) {
     return console.error(err)
@@ -31,7 +31,7 @@ export const getBoardDetail = async (id: string) => {
 // CREATE
 export const createBoard = async (formData: TQuestionField) => {
   try {
-    const res = await api.post('/board/create-board', formData)
+    const res = await api.post('/board/board/add', formData)
     return res.data
   } catch (err) {
     return console.error(err)
@@ -80,7 +80,7 @@ export const createComment = async (
 // UPDATE
 export const modifyBoard = async (id: string, formData: TQuestionField) => {
   try {
-    const res = await api.put(`/board//modify-board/${id}`, formData)
+    const res = await api.put(`/board/board/modify/${id}`, formData)
     return res.data
   } catch (err) {
     return console.error(err)
