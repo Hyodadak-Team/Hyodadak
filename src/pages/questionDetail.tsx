@@ -10,64 +10,16 @@ import {
   getBoardDetail,
 } from '../apis/board'
 import timeDifference from '../utils/timeDifference'
-// props 타입 설정(유저)
-interface QuestionDetailProps {
-  user: boolean
-}
-
-// 게시글 상세 내용 타입설정
-
-type CommentsType = {
-  comment_contents: string
-  comment_create_time: string
-  comment_user_info: CommentUserInfoType
-}
-type CommentUserInfoType = {
-  user_id: string
-  pro_img: string
-}
-type AnswerUserInfoType = {
-  pro_img: string
-  interest_category: Array<string>
-  user_id: string
-}
-
-type AnswersType = {
-  answer_user_info: AnswerUserInfoType
-  answer_contents: string
-  answer_create_time: number
-  comments: Array<CommentsType>
-  _id: string
-}
-
-interface IWriterInfo {
-  user_type: string
-  user_id: string
-}
-
-interface IPostDataType {
-  answers: Array<AnswersType>
-  board_access: string
-  board_category: Array<string>
-  board_contents: string
-  board_img: Array<string>
-  board_point: number
-  board_title: string
-  create_time: string
-  selected_answer: Array<AnswersType>
-  status: string
-  views: number
-  // writer_id: string
-  _id: string
-  writer_user_info: IWriterInfo
-}
-
-type CommentInputRefType = { id: string; ref: HTMLTextAreaElement | null }
+import {
+  QuestionDetailProps,
+  CommentInputRefType,
+  PostDataType,
+} from '../types/questionDetail'
 
 export default function DetailPageAnswerer(props: QuestionDetailProps) {
   const params = useParams()
   const navigate = useNavigate()
-  const [postData, setPostData] = useState<IPostDataType>()
+  const [postData, setPostData] = useState<PostDataType>()
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [submitToggle, setSubmitToggle] = useState<boolean>(false)
   const { user } = props
