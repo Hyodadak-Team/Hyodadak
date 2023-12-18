@@ -31,7 +31,7 @@ export const getBoardDetail = async (id: string) => {
 // CREATE
 export const createBoard = async (formData: TQuestionField) => {
   try {
-    const res = await api.post('/board/create-board', formData)
+    const res = await api.post('/board/board/add', formData)
     return res.data
   } catch (err) {
     return console.error(err)
