@@ -133,7 +133,7 @@ function QuestionBoard() {
                   <div className="question_counts">
                     <div className="question_counts_footer_answers">
                       <img src="/img/chat_icon.svg" alt="chat-icon" />
-                      <p>답변 {ques.answers}</p>
+                      <p>답변 {ques.answers.length}</p>
                     </div>
                     <div className="question_counts_footer_views">
                       <img src="/img/eye_icon.svg" alt="eye-icon" />
