@@ -88,3 +88,11 @@ export const modifyBoard = async (id: string, formData: TQuestionField) => {
 }
 
 // DELETE
+export const deleteBoard = async (id: string) => {
+  try {
+    return await api.delete(`/board/board/delete/${id}`)
+  } catch (err) {
+    console.error(err)
+    throw err
+  }
+}
