@@ -89,8 +89,8 @@ function QuestionBoard() {
         </div>
         <div className="questionBox">
           {currentItems.map((ques: IQuestion) => (
-            <Link to={`/quest_detail/${ques._id}`}>
-              <div key={ques._id} className="question">
+            <div key={ques._id} className="question">
+              <Link to={`/quest_detail/${ques._id}`}>
                 <div className="question_header">
                   <div className="question_property">
                     <p className="question_property_point">
@@ -141,8 +141,8 @@ function QuestionBoard() {
                     </div>
                   </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           ))}
         </div>
         <Pagination
