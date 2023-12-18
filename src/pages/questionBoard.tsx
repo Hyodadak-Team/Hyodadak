@@ -14,7 +14,7 @@ type TitleType = {
 function QuestionBoard() {
   const itemsPerPage = 5
   const [currentPage, setCurrentPage] = useState(1)
-  const { sortedList, currentItems } = setPagination(
+  const { currentItems } = setPagination(
     questionList,
     currentPage,
     itemsPerPage,
@@ -93,7 +93,7 @@ function QuestionBoard() {
         </div>
         <Pagination
           itemsPerPage={itemsPerPage}
-          totalItems={sortedList.length}
+          totalItems={currentItems.length}
           currentPage={currentPage}
           onPageChange={handlePageChange}
         />
