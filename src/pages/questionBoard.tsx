@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { questionTypes } from '../constants/questionBoard'
 import RoundBtn from '../composables/Button/RoundBtn'
 import ToggleBtn from '../composables/Button/ToggleBtn'
@@ -86,7 +87,9 @@ function QuestionBoard() {
                   </p>
                 </div>
                 <div className="question_control">
-                  <p className="question_control_edit">수정</p>
+                  <Link to={`/modify/${ques._id}`}>
+                    <p className="question_control_edit">수정</p>
+                  </Link>
                   <p className="question_control_delete">삭제</p>
                 </div>
               </div>
