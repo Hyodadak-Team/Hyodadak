@@ -1,14 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { PlusOutlined } from '@ant-design/icons'
 import { Button, ConfigProvider, Form, Input, Select, Upload } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
+import { TQuestionField } from '../types/questionBoard'
 import Title from '../components_ques/Title'
 import {
   questionAccessList,
   questionPoints,
   questionTypes,
 } from '../constants/questionBoard'
-import { TQuestionField } from '../types/questionBoard'
-import { createBoard } from '../apis/board'
+import { getBoardDetail, modifyBoard } from '../apis/board'
 
 const { TextArea } = Input
 
@@ -23,24 +25,42 @@ type TitleType = {
   data: [string, string, string, string]
 }
 
-function CreateQuestion() {
-  const currentUrl: TitleType['data'] = ['질문하기', '/createQuestion', '', '']
+const currentUrl: TitleType['data'] = ['질문하기', '/createQuestion', '', '']
 
+function UpdateQuestion() {
+  const params = useParams()
   const navigate = useNavigate()
+  const [form] = Form.useForm()
 
-  const submitForm = async (values: TQuestionField) => {
+  const getBoard = async () => {
     try {
+      const prevData = await getBoardDetail(params.id as unknown as string)
+      form.setFieldsValue({
+        board_title: prevData.board_title,
+        board_contents: prevData.board_contents,
+        board_access: prevData.board_access,
+        board_category: prevData.board_category,
+        board_point: prevData.board_point,
+      })
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const modifyForm = async (values: TQuestionField) => {
+    try {
+      const boardId = params.id as unknown as string
       const boardData = {
         board_title: values.board_title,
         board_contents: values.board_contents,
         board_category: values.board_category,
         board_access: values.board_access,
         board_point: values.board_point,
-        writer_user_info: { user_type: 'questioner', writer_id: '기믄정' },
+        writer_user_info: { writer_id: '기믄정' },
         board_img: [],
         // board_create_time: Date.now(),
       }
-      await createBoard(boardData)
+      await modifyBoard(boardId, boardData)
     } catch (err) {
       console.error(err)
     }
@@ -48,7 +68,7 @@ function CreateQuestion() {
 
   const onFinish = (values: TQuestionField) => {
     console.log('Success:', values)
-    submitForm(values)
+    modifyForm(values)
 
     // redirect
     navigate('/questionBoard')
@@ -57,6 +77,10 @@ function CreateQuestion() {
   const onFinishFailed = (errorInfo: unknown) => {
     console.log('Failed:', errorInfo)
   }
+
+  useEffect(() => {
+    getBoard()
+  }, [])
 
   return (
     <ConfigProvider
@@ -75,6 +99,7 @@ function CreateQuestion() {
             onFinishFailed={onFinishFailed}
             autoComplete="off"
             layout="vertical"
+            form={form}
           >
             <Form.Item<TQuestionField>
               label="제목을 입력해주세요"
@@ -181,13 +206,15 @@ function CreateQuestion() {
             <Form.Item>
               <div className="button_section">
                 <div className="form_button">
-                  <Button htmlType="reset">
-                    <p>작성 취소하기</p>
-                  </Button>
+                  <Link to="/questionBoard">
+                    <Button htmlType="button">
+                      <p>작성 취소하기</p>
+                    </Button>
+                  </Link>
                 </div>
                 <div className="form_button submit">
                   <Button htmlType="submit">
-                    <p>질문 올리기</p>
+                    <p>질문 수정하기</p>
                   </Button>
                 </div>
               </div>
@@ -199,4 +226,4 @@ function CreateQuestion() {
   )
 }
 
-export default CreateQuestion
+export default UpdateQuestion

@@ -1,36 +1,35 @@
-/* eslint-disable no-underscore-dangle */
 import { Link, useParams } from 'react-router-dom'
 import { useLayoutEffect, useState } from 'react'
-import axios from 'axios'
 import RoundBtn from '../composables/Button/RoundBtn'
 import formatCategory from '../utils/formatCategory'
 import formatDate from '../utils/formateDate'
 import formatContent from '../utils/formatContent'
+import { INotice } from '../types/notice'
+import { prevAndCurAndNextNotices } from '../apis/notice'
 
 function NoticeArticle() {
-  const { index } = useParams()
-  const [notice, setNotice] = useState()
-  const [prevNotice, setPrevNotice] = useState()
-  const [nextNotice, setNextNotice] = useState()
+  const params = useParams()
+  const index = Number(params.index)
+  const [notice, setNotice] = useState<INotice>()
+  const [prevNotice, setPrevNotice] = useState<INotice>()
+  const [nextNotice, setNextNotice] = useState<INotice>()
 
-  const getNotices = (idx) => {
-    axios
-      .get(`${import.meta.env.VITE_SERVER_API_URL}/notice/three/${idx}`)
-      .then((response) => {
-        setPrevNotice(response.data[0])
-        setNotice(response.data[1])
-        setNextNotice(response.data[2])
-        console.log(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const getNotices = async (idx: number) => {
+    try {
+      const [prev, cur, next] = await prevAndCurAndNextNotices(idx)
+      setPrevNotice(prev)
+      setNotice(cur)
+      setNextNotice(next)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
     getNotices(index)
   }, [index])
+
   return (
     <div className="innerBox ques">
       <div className="ques_navbar">
@@ -57,9 +56,8 @@ function NoticeArticle() {
           <div className="article-control">
             <div className="prev_page">
               <p>이전</p>
-              {prevNotice !== null ? (
-                // eslint-disable-next-line no-underscore-dangle
-                <Link to={`/notice/article/${Number(index - 1)}`}>
+              {prevNotice !== null && prevNotice !== undefined ? (
+                <Link to={`/notice/article/${index - 1}`}>
                   <p>
                     [{formatCategory(prevNotice.category)}] {prevNotice.title}
                   </p>
@@ -70,9 +68,8 @@ function NoticeArticle() {
             </div>
             <div className="next_page">
               <p>다음</p>
-              {nextNotice !== null ? (
-                // eslint-disable-next-line no-underscore-dangle
-                <Link to={`/notice/article/${Number(index - 1)}`}>
+              {nextNotice !== null && nextNotice !== undefined ? (
+                <Link to={`/notice/article/${index + 1}`}>
                   <p>
                     [{formatCategory(nextNotice.category)}] {nextNotice.title}
                   </p>

@@ -1,13 +1,31 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  Dispatch,
+  SetStateAction,
+} from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { Button } from 'antd'
 import AlertModal from '../components_res/AlertModal'
 
 interface HeaderResProps {
   user: boolean
+  login: boolean
+  setLogin: Dispatch<SetStateAction<boolean>>
 }
 
 export default function HeadeRes(props: HeaderResProps) {
-  const { user } = props
+  const { user, login, setLogin } = props
+  const navigate = useNavigate()
+  const logout = () => {
+    window.localStorage.clear()
+    navigate('/login')
+    setLogin(false)
+  }
+  const navigateLogin = () => {
+    navigate('/login')
+  }
   const [notice, setNotice] = useState<boolean>(false)
   const [register, setRegister] = useState<boolean>(false)
   const noticeRef = useRef<HTMLDivElement>(null)
@@ -29,7 +47,13 @@ export default function HeadeRes(props: HeaderResProps) {
         <Link to="/">
           <img src="" alt="효다닥로고" />
         </Link>
-        <div className="blank"> </div>
+        <div className="blank">
+          {login ? (
+            <Button onClick={logout}>로그아웃</Button>
+          ) : (
+            <Button onClick={navigateLogin}>로그인 ㄱㄱ</Button>
+          )}
+        </div>
         <ul className="flexBtw">
           <li>
             <div className="btn_notice_box">

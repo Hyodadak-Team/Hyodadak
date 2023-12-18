@@ -1,20 +1,25 @@
 export interface IQuestion {
-  id: number
-  point: number
-  type: string
-  date: string
-  title: string
-  photo: string
-  content: string
-  answers: number
+  answers: Array<string>
+  board_access: string
+  board_category: string
+  board_contents: string
+  board_img: Array<string>
+  board_point: number
+  board_title: string
+  create_time: string
+  selected_answer: string
+  status: string
   views: number
-  isAdopted: boolean
+  writer_id: string
+  _id: string
 }
 
 export type TQuestionField = {
-  point?: number
-  type?: string
-  title?: string
-  photo?: string
-  content?: string
+  board_title: string
+  board_contents: string
+  board_category: string
+  board_access: string
+  board_point: number
+  writer_user_info: object
+  board_img?: Array<string>
 }

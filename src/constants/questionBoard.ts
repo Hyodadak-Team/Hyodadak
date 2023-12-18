@@ -14,6 +14,12 @@ export const questionPoints = [
   { id: 3, type: '많이', point: 500 },
 ]
 
+export const questionAccessList = [
+  { id: 1, access: 'public', option: '공개' },
+  { id: 2, access: 'partner', option: '파트너 공개' },
+  { id: 3, access: 'private', option: '비공개' },
+]
+
 export const questionList = [
   {
     id: 1,
