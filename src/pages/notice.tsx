@@ -1,17 +1,17 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable react/button-has-type */
-import { useEffect, useLayoutEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { INotice, INoticeMenu } from '../types/notice'
 import noticeMenu from '../constants/noticeMenu'
-import setPagination from '../utils/pagination'
+
 import Pagination from '../composables/Pagination'
 import Title from '../components_ques/Title'
 import openNewTab from '../utils/openNewTab'
 import formatDate from '../utils/formateDate'
 import formatCategory from '../utils/formatCategory'
-import setActiveList from '../utils/setActiveList'
-import { allNotices, init } from '../apis/notice'
+
+import { init, pagination, noticesLength } from '../apis/notice'
 
 type TitleType = {
   data: [string, string, string, string]
@@ -23,22 +23,21 @@ const DIGITAL_LEARNING_CENTER_URL =
 function Notice() {
   const currentUrl: TitleType['data'] = ['공지사항', '/notice', '', '']
 
-  const [activeMenu, setActiveMenu] = useState(1)
+  const [activeMenu, setActiveMenu] = useState(0)
   const [noticeList, setNoticeList] = useState<INotice[]>([])
   const [currentPage, setCurrentPage] = useState(1)
-  const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
-  const [searchItem, setSearchItem] = useState('')
+  const [noticeLength, setNoticeLength] = useState(0)
+  // const [originalNoticeList, setOriginalNoticeList] = useState<INotice[]>([])
+  // const [searchItem, setSearchItem] = useState('')
   // const [selectedNotice, setSelectedNotice] = useState<INotice | null>(null)
   const itemsPerPage = 7
 
   // notice-menu
   const handleMenuClick = (menuId: number) => {
     setActiveMenu(menuId)
-    sessionStorage.setItem('noticeMenuId', menuId.toString())
-
-    // 이미 초기 데이터가 있는 경우
-    const filteredList = setActiveList(menuId, originalNoticeList)
-    setNoticeList(filteredList)
+    // // 이미 초기 데이터가 있는 경우
+    // const filteredList = setActiveList(menuId, originalNoticeList)
+    // setNoticeList(filteredList)
   }
 
   // notice-pagination
@@ -46,26 +45,23 @@ function Notice() {
     setCurrentPage(pageNumber)
   }
 
-  const { currentItems } = setPagination(noticeList, currentPage, itemsPerPage)
-
   // notice-search
-  const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchItem(e.currentTarget.value)
-  }
-  const searchContent = () => {
-    const filteredList = originalNoticeList.filter((notice: INotice) =>
-      notice.title.includes(searchItem),
-    )
-    setNoticeList(filteredList)
-  }
+  // const searchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchItem(e.currentTarget.value)
+  // }
+  // const searchContent = () => {
+  //   const filteredList = originalNoticeList.filter((notice: INotice) =>
+  //     notice.title.includes(searchItem),
+  //   )
+  //   setNoticeList(filteredList)
+  // }
 
   // test axios
-  const getAllNotices = async () => {
+  const getNoticesLength = async (categoryNumber) => {
     try {
-      const res = await allNotices()
+      const res = await noticesLength(categoryNumber)
       console.log(res)
-      setOriginalNoticeList(res)
-      setNoticeList(res)
+      setNoticeLength(res)
     } catch (err) {
       console.error(err)
     }
@@ -77,26 +73,23 @@ function Notice() {
       console.error(err)
     }
   }
-
-  const getSessionStorageId = (initList: INotice[]) => {
-    const storeMenuId = sessionStorage.getItem('noticeMenuId')
-
-    if (storeMenuId) {
-      const storedMenuIdNumber = parseInt(storeMenuId, 10)
-      setActiveMenu(storedMenuIdNumber)
-
-      // 이미 초기 데이터가 있는 경우
-      const filteredList = setActiveList(storedMenuIdNumber, initList)
-      setNoticeList(filteredList)
+  const getNoticesByPage = async (categoryNumber, page) => {
+    try {
+      const res = await pagination(categoryNumber, page)
+      console.log(res)
+      setNoticeList(res)
+    } catch (err) {
+      console.error(err)
     }
   }
-  useLayoutEffect(() => {
-    getAllNotices()
-  }, [])
 
   useEffect(() => {
-    getSessionStorageId(originalNoticeList)
-  }, [originalNoticeList])
+    getNoticesLength(activeMenu)
+  }, [activeMenu])
+
+  useEffect(() => {
+    getNoticesByPage(activeMenu, currentPage)
+  }, [activeMenu, currentPage])
 
   return (
     <>
@@ -143,19 +136,19 @@ function Notice() {
               <input
                 className="search-input ques"
                 placeholder="궁금한 내용을 입력해보세요"
-                value={searchItem}
-                onChange={searchHandler}
+                // value={searchItem}
+                // onChange={searchHandler}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    searchContent()
+                    // searchContent()
                   }
                 }}
               />
               <button
-                onClick={searchContent}
+                // onClick={searchContent}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter') {
-                    searchContent()
+                    // searchContent()
                   }
                 }}
                 tabIndex={0}
@@ -165,11 +158,11 @@ function Notice() {
               </button>
             </div>
             <div className="notice_list-section">
-              {currentItems.map((notice: INotice, index) => {
-                const pageLength = Math.ceil(noticeList.length / itemsPerPage)
+              {noticeList.map((notice: INotice, index) => {
+                const pageLength = Math.ceil(noticeLength / itemsPerPage)
                 const adjustedIndex =
                   (pageLength - currentPage) * itemsPerPage +
-                  (noticeList.length % itemsPerPage) -
+                  (noticeLength % itemsPerPage) -
                   index
                 return (
                   <div className="notice_list" key={notice._id}>
@@ -203,7 +196,7 @@ function Notice() {
             {/* {selectedNotice && <NoticeArticle />} */}
             <Pagination
               itemsPerPage={itemsPerPage}
-              totalItems={noticeList.length}
+              totalItems={noticeLength}
               currentPage={currentPage}
               onPageChange={handlePageChange}
             />
