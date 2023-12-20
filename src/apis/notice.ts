@@ -36,9 +36,27 @@ export const latestThreeNotices = async () => {
   }
 }
 
-export const noticesLength = async () => {
+export const noticesLength = async (categoryNumber) => {
   try {
-    const res = await api.get('/notice/notices-count')
+    const res = await api.get(`/notice/notices-count/${categoryNumber}`)
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
+
+export const pagination = async (categoryNumber, page) => {
+  try {
+    const res = await api.get(`/notice/pagination/${categoryNumber}/${page}`)
+    return res.data
+  } catch (err) {
+    return console.error(err)
+  }
+}
+
+export const noticesByCategory = async (categoryNumber) => {
+  try {
+    const res = await api.get(`/notice/notices/category/${categoryNumber}`)
     return res.data
   } catch (err) {
     return console.error(err)
