@@ -5,12 +5,12 @@ import { Modal } from 'antd'
 
 export default function ProfileModal({
   type,
-  open,
-  setOpen,
+  openProfile,
+  setOpenProfile,
 }: {
   type: string
-  open: boolean
-  setOpen: (el: boolean) => void
+  openProfile: boolean
+  setOpenProfile: (el: boolean) => void
 }) {
   const [confirmLoading, setConfirmLoading] = useState(false)
   const [selectedProfile, setSelectedProfile] = useState('female') // 나중에 백엔드에서 값 받아와서 기본값 설정
@@ -18,13 +18,13 @@ export default function ProfileModal({
   const handleOk = () => {
     setConfirmLoading(true)
     setTimeout(() => {
-      setOpen(false)
+      setOpenProfile(false)
       setConfirmLoading(false)
     }, 2000)
   }
 
   const handleCancel = () => {
-    setOpen(false)
+    setOpenProfile(false)
   }
 
   const handleProfileClick = (profile: string): void => {
@@ -36,7 +36,7 @@ export default function ProfileModal({
     <Modal
       className={type}
       title="프로필 선택"
-      open={open}
+      open={openProfile}
       onOk={handleOk}
       confirmLoading={confirmLoading}
       onCancel={handleCancel}
