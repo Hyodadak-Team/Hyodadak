@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom'
 import Title from '../components_ques/Title'
 import ManagementBox from '../components_res/ManagementBox'
 import ProfileModal from '../components/PropfileModal'
+import api from '../apis'
+import EditUserInfoModal from '../components/EditUserInfoModal'
 
 export default function Mypage() {
-  const [open, setOpen] = useState(false)
+  const [openProfile, setOpenProfile] = useState(false)
+  const [openUserInfo, setOpenUserInfo] = useState(false)
   const [userData, setUserData] = useState({
     profileImg: '',
     name: '박지원',
@@ -21,6 +24,15 @@ export default function Mypage() {
   }) // 백엔드 작업 후 빈 {} 로 수정필요
   const [modifiyInput, setModifiyInput] = useState('')
   const [modifiyMode, setModifiyMode] = useState(false)
+
+  const fetchData = async () => {
+    const res = await api.get(
+      `http://localhost:4000/api/user/user?user_id=${1}`,
+    )
+    console.log('??????', res)
+    // setUserData(res)
+  }
+
   useEffect(() => {
     // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
     setUserData({
@@ -35,6 +47,7 @@ export default function Mypage() {
       intro:
         '안녕하세요~! 저는 송파구에 사는 IT 천재 박지원입니다. 모르시는 것들에 대해 얼마든지 질문주세요. 친절하게 답변 해드릴게요. 가까운 분들이라면 직접 찾아가서 알려드릴 수 도 있어요!',
     })
+    fetchData()
   }, [])
 
   useEffect(() => {}, [modifiyMode])
@@ -55,7 +68,7 @@ export default function Mypage() {
   } = userData
 
   const showModal = () => {
-    setOpen(true)
+    setOpenProfile(true)
   }
 
   return type === 'ques' ? (
@@ -76,9 +89,12 @@ export default function Mypage() {
             <button className="edit_btn" type="button" onClick={showModal}>
               프로필 수정
             </button>
-            <ProfileModal type="ques profile" open={open} setOpen={setOpen} />
+            <ProfileModal
+              type="ques profile"
+              openProfile={openProfile}
+              setOpenProfile={setOpenProfile}
+            />
           </div>
-
           <div className="nameBox">
             {modifiyMode ? (
               <>
@@ -150,7 +166,11 @@ export default function Mypage() {
                 </div>
               </button>
             </div>
-            <ProfileModal type="res profile" open={open} setOpen={setOpen} />
+            <ProfileModal
+              type="res profile"
+              openProfile={openProfile}
+              setOpenProfile={setOpenProfile}
+            />
           </div>
           <div className="my_info_text">
             <h3>
@@ -174,11 +194,21 @@ export default function Mypage() {
             </ul>
             <p className="intro">{intro}</p>
             <div className="acconut flexBtw">
-              <Link to="/">정보수정</Link> |<Link to="/">로그아웃</Link> |
-              <Link to="/">회원탈퇴</Link>
+              <button
+                className="btn_edit_info"
+                type="button"
+                onClick={() => setOpenUserInfo(!openUserInfo)}
+              >
+                정보수정
+              </button>{' '}
+              |<Link to="/">로그아웃</Link> |<Link to="/">회원탈퇴</Link>
             </div>
           </div>
         </div>
+        <EditUserInfoModal
+          openUserInfo={openUserInfo}
+          setOpenUserInfo={setOpenUserInfo}
+        />
         <div className="flexBtw">
           <ManagementBox
             data={[
