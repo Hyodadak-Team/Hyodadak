@@ -1,37 +1,20 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  Dispatch,
-  SetStateAction,
-} from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { Button } from 'antd'
+import React, { useState, useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import AlertModal from '../components_res/AlertModal'
 
 interface HeaderQuesProps {
   user: boolean
-  login: boolean
-  setLogin: Dispatch<SetStateAction<boolean>>
 }
 
 export default function HeadeQues(props: HeaderQuesProps) {
-  const { user, login, setLogin } = props
-  const navigate = useNavigate()
-  const logout = () => {
-    window.localStorage.clear()
-    navigate('/login')
-    setLogin(false)
-  }
-  const navigateLogin = () => {
-    navigate('/login')
-  }
-  console.log(user)
+  const { user } = props
   const [notice, setNotice] = useState<boolean>(false)
+  const [token, setToken] = useState<string | null>('')
   useEffect(() => {
-    // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
+    const getToken = localStorage.getItem('token')
+    setToken(getToken)
     setNotice(false)
-  }, [])
+  }, []) // TODO: 나중에 의존성 배열에 전역적으로 user의 로그인상태를 확인해주는 변수를 담아서 로그인에 따라 헤더가 변경되도록 변경 필요!!!
   const noticeRef = useRef<HTMLDivElement>(null)
   const noticeBtnClick = (): void => {
     if (noticeRef.current?.classList.value === 'alertBox') {
@@ -40,6 +23,7 @@ export default function HeadeQues(props: HeaderQuesProps) {
       noticeRef.current.classList.value = 'alertBox'
     }
   }
+
   return (
     <div className="header header_ques">
       <div className="innerBox flexBtw">
@@ -54,13 +38,7 @@ export default function HeadeQues(props: HeaderQuesProps) {
             <Link to="/simulation">체험하기</Link>
           </li>
         </ul>
-        <div className="blank">
-          {login ? (
-            <Button onClick={logout}>로그아웃</Button>
-          ) : (
-            <Button onClick={navigateLogin}>로그인 ㄱㄱ</Button>
-          )}
-        </div>
+        <div className="blank"> </div>
         <ul className="flexBtw">
           <li>
             <div className="btn_notice_box">
@@ -77,11 +55,20 @@ export default function HeadeQues(props: HeaderQuesProps) {
               </div>
             </div>
           </li>
-          <li>
-            <Link to="/mypage">
-              <img src="/img/mypage_icon.svg" alt="내정보icon" />내 정보
-            </Link>
-          </li>
+          {token !== null ? (
+            <li>
+              <Link to="/mypage">
+                <img src="/img/mypage_icon.svg" alt="내정보icon" />내 정보
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link to="/login">
+                <img src="/img/mypage_icon.svg" alt="내정보icon" />
+                로그인
+              </Link>
+            </li>
+          )}
         </ul>
         <Link
           to="/createQuestion"

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Title from '../components_ques/Title'
 import ManagementBox from '../components_res/ManagementBox'
 import ProfileModal from '../components/PropfileModal'
@@ -10,43 +10,25 @@ import EditUserInfoModal from '../components/EditUserInfoModal'
 export default function Mypage() {
   const [openProfile, setOpenProfile] = useState(false)
   const [openUserInfo, setOpenUserInfo] = useState(false)
-  const [userData, setUserData] = useState({
-    profileImg: '',
-    name: '박지원',
-    money: 1000,
-    questionNum: 4,
-    partnerNum: 5,
-    type: 'res',
-    level: 2,
-    major: ['무인자판기', '이동수단', '기타'],
-    intro:
-      '안녕하세요~! 저는 송파구에 사는 IT 천재 박지원입니다. 모르시는 것들에 대해 얼마든지 질문주세요. 친절하게 답변 해드릴게요. 가까운 분들이라면 직접 찾아가서 알려드릴 수 도 있어요!',
-  }) // 백엔드 작업 후 빈 {} 로 수정필요
+  const [userData, setUserData] = useState({}) // 백엔드 작업 후 빈 {} 로 수정필요
   const [modifiyInput, setModifiyInput] = useState('')
   const [modifiyMode, setModifiyMode] = useState(false)
+  const navigate = useNavigate()
 
   const fetchData = async () => {
-    const res = await api.get(
-      `http://localhost:4000/api/user/user?user_id=${1}`,
-    )
-    console.log('??????', res)
-    // setUserData(res)
+    const token = localStorage.getItem('token')
+    try {
+      const res = await api.get('mypage/getuser', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      setUserData(res.data)
+    } catch (err) {
+      console.error(err)
+    }
   }
-
   useEffect(() => {
-    // 나중에 백엔드에서 user정보 받아와서 업데이트 필요!
-    setUserData({
-      profileImg: '',
-      name: '박지원',
-      money: 1000,
-      questionNum: 4,
-      partnerNum: 5,
-      type: 'res',
-      level: 2,
-      major: ['무인자판기', '이동수단', '기타'],
-      intro:
-        '안녕하세요~! 저는 송파구에 사는 IT 천재 박지원입니다. 모르시는 것들에 대해 얼마든지 질문주세요. 친절하게 답변 해드릴게요. 가까운 분들이라면 직접 찾아가서 알려드릴 수 도 있어요!',
-    })
     fetchData()
   }, [])
 
@@ -56,28 +38,31 @@ export default function Mypage() {
     return (value === '' || value) && setModifiyMode(false)
   }
   const {
-    profileImg,
-    name,
-    money,
-    questionNum,
-    partnerNum,
-    type,
-    level,
-    major,
-    intro,
+    profile_img = '',
+    user_name = '',
+    point = 0,
+    select_board_answer = '',
+    partner_id = '',
+    user_type = '',
+    level = '',
+    interest_category = [],
+    intro = '',
   } = userData
 
   const showModal = () => {
     setOpenProfile(true)
   }
-
-  return type === 'ques' ? (
+  const logout = () => {
+    window.localStorage.clear()
+    navigate('/login')
+  }
+  return user_type === 'ques' ? (
     <div className="innerBox ques">
       <Title data={['내 정보', '/notice', '', '']} />
       <main className="mypage_ques">
         <div className="profile">
           <div className="imgBox imgBox_ques">
-            {profileImg ? (
+            {profile_img ? (
               <img src="" alt="프로필 이미지" />
             ) : (
               <img
@@ -99,7 +84,7 @@ export default function Mypage() {
             {modifiyMode ? (
               <>
                 <input
-                  defaultValue={name}
+                  defaultValue={user_name}
                   onChange={(e) => setModifiyInput(e.target.value)}
                   data-testid="modify-input"
                   className="modify_input"
@@ -114,7 +99,7 @@ export default function Mypage() {
               </>
             ) : (
               <>
-                <p>{name}</p>
+                <p>{user_name}</p>
                 <Link
                   to="#/"
                   onClick={() => setModifiyMode((cur: boolean) => !cur)}
@@ -127,20 +112,23 @@ export default function Mypage() {
         </div>
         <ul className="info">
           <li>
-            <p>보유용돈 : {money}원</p>
+            <p>보유용돈 : {point || 0}원</p>
             <Link to="/simulation">용돈 충전하기</Link>
           </li>
           <li>
-            <p>채택질문 : {questionNum}개</p>
+            <p>채택질문 : {select_board_answer || 0}개</p>
             <Link to="/questionboard">내 질문 보기</Link>
           </li>
           <li>
-            <p>파트너 수 : {partnerNum}명</p>
+            <p>파트너 수 : {partner_id?.length || 0}명</p>
             <Link to="/mypartner">파트너 관리</Link>
           </li>
         </ul>
         <p className="logout">
-          <Link to="/logout">로그아웃</Link>|<Link to="/quit">회원탈퇴</Link>
+          <button type="button" onClick={logout}>
+            로그아웃
+          </button>
+          |<Link to="/quit">회원탈퇴</Link>
         </p>
       </main>
     </div>
@@ -151,7 +139,7 @@ export default function Mypage() {
         <div className="my_info">
           <div className="my_info_profile">
             <div className="profile_box">
-              {profileImg ? (
+              {profile_img ? (
                 <img src="" alt="프로필 이미지" />
               ) : (
                 <img
@@ -174,34 +162,40 @@ export default function Mypage() {
           </div>
           <div className="my_info_text">
             <h3>
-              <span className="pink">Lv.{level}</span>
-              {name}
+              <span className="pink">Lv.{level || 0}</span>
+              {user_name}
             </h3>
-            <p className="major">{major.map((el: string) => `${el} · `)}</p>
+            <p className="interest_category">
+              {interest_category?.map((el: string) => `${el} · `)}
+            </p>
             <ul className="spec flexBox">
               <li>
                 채택 받은 질문
-                <span className="pink"> {questionNum}</span>
+                <span className="pink"> {select_board_answer || 0}</span>
               </li>
               <li>
                 보유 용돈
-                <span className="pink"> {money}</span>
+                <span className="pink"> {point || 0}</span>
               </li>
               <li>
                 파트너
-                <span className="pink"> {partnerNum}</span>
+                <span className="pink"> {partner_id?.length || 0}</span>
               </li>
             </ul>
             <p className="intro">{intro}</p>
             <div className="acconut flexBtw">
               <button
-                className="btn_edit_info"
+                className="btn_update"
                 type="button"
                 onClick={() => setOpenUserInfo(!openUserInfo)}
               >
                 정보수정
               </button>{' '}
-              |<Link to="/">로그아웃</Link> |<Link to="/">회원탈퇴</Link>
+              |{' '}
+              <button className="btn_update" type="button" onClick={logout}>
+                로그아웃
+              </button>{' '}
+              |<Link to="/">회원탈퇴</Link>
             </div>
           </div>
         </div>
